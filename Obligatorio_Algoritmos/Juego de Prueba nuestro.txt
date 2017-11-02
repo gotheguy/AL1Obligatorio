@@ -1,0 +1,124 @@
+//       miSistema.crearSistemaDeEmergencias(5);
+//       
+//       miSistema.agregarCiudad("Montevideo");
+//       miSistema.agregarCiudad("Canelones");
+//       miSistema.agregarCiudad("Maldonado");
+//       miSistema.agregarCiudad("Artigas");
+//       miSistema.agregarCiudad("Tacuarembo");
+//       
+//       miSistema.registrarAmbulancia("SCE8928", 1);
+//       miSistema.registrarAmbulancia("SCE8927", 1);
+//       miSistema.registrarAmbulancia("AAA8928", 2);
+//       miSistema.registrarAmbulancia("AAA8927", 2);
+//       miSistema.registrarAmbulancia("RAA8928", 5);
+//       miSistema.registrarAmbulancia("DAA8928", 4);
+//       //miSistema.registrarAmbulancia("BAA8928", 3);       
+//       
+//       miSistema.registrarChofer("SCE8928", "JOAQUIN SOTO", "37231406");                            
+//       miSistema.registrarChofer("SCE8927", "DIEGO BIDONDO", "47231406");                            
+//       miSistema.registrarChofer("AAA8928", "JUAN VEIGA", "31231406");                            
+//       
+//       miSistema.agregarRuta(1, 2, 50);
+//       miSistema.agregarRuta(1, 3, 120);
+//       miSistema.agregarRuta(1, 4, 240);
+//       miSistema.agregarRuta(1, 5, 370);
+//       miSistema.agregarRuta(2, 3, 50);
+//       miSistema.agregarRuta(2, 4, 190);
+//       
+//       miSistema.ambulanciaMasCercana(1);
+//       
+//       miSistema.deshabilitarAmbulancia("SCE8927");
+//       
+//       miSistema.ambulanciaMasCercana(1);
+//       
+//       miSistema.ambulanciaMasCercana(3);
+//       
+//       miSistema.deshabilitarAmbulancia("AAA8927");
+//       
+//       miSistema.ambulanciaMasCercana(3);
+//       
+//       miSistema.deshabilitarAmbulancia("AAA8928");
+//       
+//       miSistema.ambulanciaMasCercana(3);
+
+
+
+//            p.Ver(s.crearSistemaDeEmergencias(10),TipoRet.OK,"Se crea el Sistema con un maximo de 10");
+//            p.Ver(s.agregarCiudad("Montevideo"),TipoRet.OK,"Se agrega Montevideo al sistema"); 
+//            
+//            p.Ver(s.registrarAmbulancia("SAA1111", 1), TipoRet.OK, "Se registro la ambulancia SAA1111 correctamente");
+//            p.Ver(s.registrarAmbulancia("SAA1112", 2), TipoRet.ERROR, "Se intenta agregar una ambulancia en una ciudad que no existe");
+//            
+//            p.Ver(s.agregarCiudad("Canelones"),TipoRet.OK,"Se agrega Canelones al sistema"); 
+//            
+//            p.Ver(s.registrarAmbulancia("SAA1111",2), TipoRet.ERROR, "Se intenta agregar la ambulancia SAA1111 la cual ya existe en el sistema");
+//            p.Ver(s.registrarAmbulancia("AAA1111",2), TipoRet.OK, "Se registro la ambulancia AAA1111 correctamente");
+//            p.Ver(s.registrarAmbulancia("AAA1112",2), TipoRet.OK, "Se registro la ambulancia AAA1112 correctamente");
+//            
+//            p.Ver(s.agregarCiudad("Maldonado"),TipoRet.OK,"Se agrega Maldonado al sistema");
+//            p.Ver(s.agregarCiudad("Rocha"),TipoRet.OK,"Se agrega Rocha al sistema");            
+//            p.Ver(s.agregarCiudad("Tacuarembo"),TipoRet.OK,"Se agrega Tacuarembo al sistema");
+//            p.Ver(s.agregarCiudad("Colonia"),TipoRet.OK,"Se agrega Colonia al sistema");
+//            p.Ver(s.agregarCiudad("Artigas"),TipoRet.OK,"Se agrega Artigas al sistema");
+//            p.Ver(s.agregarCiudad("Salto"),TipoRet.OK,"Se agrega Salto al sistema");
+//            p.Ver(s.agregarCiudad("Rivera"),TipoRet.OK,"Se agrega Rivera al sistema");
+//            p.Ver(s.agregarCiudad("Paysandu"),TipoRet.OK,"Se agrega Paysandu al sistema");
+//            p.Ver(s.agregarCiudad("Soriano"),TipoRet.ERROR,"Se intenta agregar Soriano pero excedemos el limite de ciudades");
+//            
+//            p.Ver(s.registrarAmbulancia("SAA1112",1), TipoRet.OK, "Se registro la ambulancia SAA1112 correctamente");
+//            p.Ver(s.registrarAmbulancia("RAA1112",5), TipoRet.OK, "Se registro la ambulancia RAA1111 correctamente");
+//            p.Ver(s.registrarAmbulancia("FAA1111",9), TipoRet.OK, "Se registro la ambulancia FAA1111 correctamente");
+//            p.Ver(s.registrarAmbulancia("CAA1111",7), TipoRet.OK, "Se registro la ambulancia CAA1111 correctamente");
+//            p.Ver(s.registrarAmbulancia("GAA1111",4), TipoRet.OK, "Se registro la ambulancia GAA1111 correctamente");
+//            p.Ver(s.registrarAmbulancia("LAA1111",6), TipoRet.OK, "Se registro la ambulancia LAA1111 correctamente");
+//            
+//            p.Ver(s.registrarChofer("SAA1111", "JOAQUIN SOTO", "37231406"), TipoRet.OK, "Se registro un chofer correctamente");
+//            p.Ver(s.registrarChofer("SAA1112", "DIEGO BIDONDO", "47231406"), TipoRet.OK, "Se registro un chofer correctamente");
+//            p.Ver(s.registrarChofer("AAA1111", "JUAN VEIGA", "35231406"), TipoRet.OK, "Se registro un chofer correctamente");
+//            p.Ver(s.registrarChofer("LAA1111", "MARCELO SANCHEZ", "36231406"), TipoRet.OK, "Se registro un chofer correctamente");
+//            p.Ver(s.registrarChofer("AAA1112", "SANTIAGO TOPHAM", "49231406"), TipoRet.OK, "Se registro un chofer correctamente");
+//            p.Ver(s.registrarChofer("AAA1112", "CARLOS DIAZ", "29231436"), TipoRet.OK, "Se registro un chofer correctamente");
+//            p.Ver(s.registrarChofer("IAA1111", "AGUSTIN SOTO", "35331436"), TipoRet.ERROR, "Se intenta agregar un chofer en una ambulancia que no existe");
+//            
+//            p.Ver(s.agregarRuta(1, 2, 50), TipoRet.OK, "Se agrega ruta de Montevideo a Canelones con una demora 50 de minutos");
+//            p.Ver(s.agregarRuta(1, 3, 120), TipoRet.OK, "Se agrega ruta de Montevideo a Maldonado con una demora de 120 minutos");
+//            p.Ver(s.agregarRuta(1, 4, 210), TipoRet.OK, "Se agrega ruta de Montevideo a Rocha con una  demora 210 de minutos");
+//            p.Ver(s.agregarRuta(1, 5, 300), TipoRet.OK, "Se agrega ruta de Montevideo a Tacuarembo con una demora 300 de minutos");
+//            p.Ver(s.agregarRuta(2, 3, 80), TipoRet.OK, "Se agrega ruta de Canelones a Maldonado con una demora de 80 minutos");
+//            p.Ver(s.agregarRuta(2, 4, 165), TipoRet.OK, "Se agrega ruta de Canelones a Rocha con una demora 165 de minutos");
+//            p.Ver(s.agregarRuta(7, 9, 30), TipoRet.OK, "Se agrega ruta de Artigas a Rivera con una demora de 30 minutos");
+//            p.Ver(s.agregarRuta(6, 10, 110), TipoRet.OK, "Se agrega ruta de Colonia a Paysandu con una demora 110 de minutos");
+//            p.Ver(s.agregarRuta(6, 8, 300), TipoRet.OK, "Se agrega ruta de Colonia a Salto con una demora 300 de minutos");
+//            p.Ver(s.agregarRuta(3, 7, 330), TipoRet.OK, "Se agrega ruta de Maldonado a Artigas con una demora de 330 minutos");
+//            p.Ver(s.agregarRuta(5, 7, 140), TipoRet.OK, "Se agrega ruta de Tacuarembo a Artigas con una demora de 140 minutos");
+//            
+//            p.Ver(s.ambulanciaMasCercana(6), TipoRet.OK, "La ambulancia mas cercana a Colonia esta en la misma ciudad (LAA1111)");
+//            p.Ver(s.ambulanciaMasCercana(8), TipoRet.OK, "No hay ambulancias en Salto, pero existe una ambulancia en Colonia a 300 minutos");
+//            
+//            p.Ver(s.deshabilitarAmbulancia("LAA1111"), TipoRet.OK, "Se deshabilita la unica ambulancia LAA1111 de Colonia");
+//            p.Ver(s.ambulanciaMasCercana(8), TipoRet.OK, "No hay ambulancias en Salto y tampoco ambulancias disponibles en Colonia (unica ciudad con conexion a Salto)");  
+//            
+//            p.Ver(s.rutaMasRapida(1, 8), TipoRet.OK, "No hay ni ruta directa ni con conexion entre Montevideo y Salto");
+//            p.Ver(s.rutaMasRapida(1, 4), TipoRet.OK, "La Ruta mas rapida de Montevideo a Rocha es por ahora la directa");
+//            
+//            p.Ver(s.modificarDemora(2, 4, 155), TipoRet.OK, "Modificamos la demora entre Canelones y Rocha bajando 10 minutos");
+//            
+//            p.Ver(s.rutaMasRapida(1, 4), TipoRet.OK, "La Ruta mas rapida de Montevideo a Rocha es ahora yendo por Canelones");
+//            
+//            p.Ver(s.rutaMasRapida(1, 7), TipoRet.OK, "La Ruta mas rapida de Montevideo a Artigas es conectando en Tacuarembo");
+//            
+//            p.Ver(s.agregarRuta(1, 7, 439), TipoRet.OK, "Se agrega ruta de Montevideo a Artigas con una demora de 439 minutos");
+//            
+//            p.Ver(s.rutaMasRapida(1, 7), TipoRet.OK, "La Ruta mas rapida de Montevideo a Artigas es ahora la directa");
+//            
+//            p.Ver(s.agregarRuta(1, 7, 440), TipoRet.OK, "Se modifica la demora de Montevideo a Artigas subiendo 1 minuto");
+//            
+//            p.Ver(s.rutaMasRapida(1, 7), TipoRet.OK, "La Ruta mas rapida de Montevideo a Artigas sigue siendo la directa aunque coincide en minutos con la ruta que conecta en Tacuarembo");
+//            
+//            p.Ver(s.ciudadesEnRadio(7, 60), TipoRet.OK, "Rivera es la unica ciudad a menos de 60 minutos de Artigas");
+//            
+//            p.Ver(s.ciudadesEnRadio(7, 160), TipoRet.OK, "Rivera y Tacuarembo son las unicas ciudad a menos de 160 minutos de Artigas");
+//            
+//            p.Ver(s.ciudadesEnRadio(7, 441), TipoRet.OK, "Rivera, Tacuarembo, Maldonado y Montevideo son las unicas ciudad a menos de 441 minutos de Artigas");
+//            
+//            p.ImprimirResultado();

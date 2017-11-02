@@ -4,13 +4,26 @@ import obligatorio.Retorno.Resultado;
 
 public class Sistema implements ISistema {
 
+    private ListaCiudades listaCiudades;
+    
+    public ListaCiudades getListaCiudades() {
+        return listaCiudades;
+    }
+
+    public void setListaCiudades(ListaCiudades listaCiudades) {
+        this.listaCiudades = listaCiudades;
+    }
+    
 	@Override
 	public Retorno crearSistemaReservas(int cantCiudades) {
 		Retorno ret = new Retorno();
 		
-		ret.resultado = Resultado.NO_IMPLEMENTADA;
-		
-		return ret;
+                if (cantCiudades <= 0){   
+                    ret.resultado = Resultado.ERROR_1;
+                    System.out.println("La cantidad de ciudades es inferior a 1.");
+                }
+                
+	return ret;
 	}
 
 	@Override

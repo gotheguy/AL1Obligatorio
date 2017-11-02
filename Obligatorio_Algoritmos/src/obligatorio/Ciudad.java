@@ -1,8 +1,9 @@
+
 package obligatorio;
+
 
 public class Ciudad {
     
-        
     private int id;
     private String nombre;
 
@@ -34,4 +35,5 @@ public class Ciudad {
         
         return this.getId()==ciudad.getId();
     }
+    
 }
