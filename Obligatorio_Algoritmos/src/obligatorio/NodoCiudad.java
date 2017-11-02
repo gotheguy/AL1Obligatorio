@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-
-package obligatorio;
-
-=======
  
 package obligatorio;
 
 
->>>>>>> aa7782c05fa278f14c64d8c7697905991093299e
 public class NodoCiudad {
     
     private Ciudad ciudad;
     private NodoCiudad siguiente;
-<<<<<<< HEAD
-    private ListaCrucero lista;
-=======
->>>>>>> aa7782c05fa278f14c64d8c7697905991093299e
+    private ListaAmbulancia lista;
 
     public Ciudad getCiudad() {
         return ciudad;
@@ -32,27 +23,19 @@ public class NodoCiudad {
     public void setSiguiente(NodoCiudad siguiente) {
         this.siguiente = siguiente;
     }
-<<<<<<< HEAD
 
-    public ListaCrucero getLista() {
+    public ListaAmbulancia getLista() {
         return lista;
     }
 
-    public void setLista(ListaCrucero lista) {
+    public void setLista(ListaAmbulancia lista) {
         this.lista = lista;
     }
-=======
->>>>>>> aa7782c05fa278f14c64d8c7697905991093299e
     
     public NodoCiudad(Ciudad ciudad){
         
         this.setCiudad(ciudad);
         this.setSiguiente(null);
-<<<<<<< HEAD
-        this.setLista(new ListaCrucero());
+        this.setLista(new ListaAmbulancia());
     }
 }
-=======
-    }
-}
->>>>>>> aa7782c05fa278f14c64d8c7697905991093299e

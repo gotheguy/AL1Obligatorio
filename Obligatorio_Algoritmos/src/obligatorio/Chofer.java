@@ -1,0 +1,32 @@
+
+package obligatorio;
+
+
+public class Chofer {
+    
+    private String cedula;
+    private String nombre;
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public Chofer (String cedula,String nombre){
+        
+        this.setCedula(cedula);
+        this.setNombre(nombre);
+    }
+    
+}
