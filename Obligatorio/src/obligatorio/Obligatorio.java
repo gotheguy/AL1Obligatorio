@@ -5,8 +5,6 @@
  */
 package obligatorio;
 
-import obligatorio.ISistema;
-
 public class Obligatorio {
 
     public static void main(String[] args) {

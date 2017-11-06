@@ -1,6 +1,6 @@
 package obligatorio;
 
-public class ListaCiudades implements IListaSimple {
+public class ListaCiudades {
 
     private NodoCiudad inicio;
     private NodoCiudad ultimo;
