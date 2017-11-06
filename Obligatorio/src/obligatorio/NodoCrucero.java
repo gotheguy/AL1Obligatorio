@@ -16,11 +16,11 @@ public class NodoCrucero {
     private ListaCliente listaCliente;
 
 
-    public Crucero getAmbulancia() {
+    public Crucero getCrucero() {
         return crucero;
     }
 
-    public void setAmbulancia(Crucero crucero) {
+    public void setCrucero(Crucero crucero) {
         this.crucero = crucero;
     }
 
@@ -32,7 +32,7 @@ public class NodoCrucero {
         this.siguiente = siguiente;
     }
 
-    public ListaCliente getListaChofer() {
+    public ListaCliente getListaCliente() {
         return listaCliente;
     }
 
@@ -47,10 +47,6 @@ public class NodoCrucero {
         this.setSiguiente(null);
         this.setListaCrucero(new ListaCrucero());
 
-    }
-
-    private void setCrucero(Crucero crucero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void setListaCrucero(ListaCrucero listaCrucero) {

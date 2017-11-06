@@ -11,4 +11,41 @@ package obligatorio;
  */
 public class ListaCrucero {
     
+    private NodoCrucero inicio;
+    private NodoCrucero ultimo;
+    private int contador;
+    
+    
+     public ListaCrucero() {
+
+        this.setInicio(null);
+        this.setUltimo(null);
+        this.contador = 0;
+
+    }
+
+    public NodoCrucero getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(NodoCrucero inicio) {
+        this.inicio = inicio;
+    }
+
+    public NodoCrucero getUltimo() {
+        return ultimo;
+    }
+
+    public void setUltimo(NodoCrucero ultimo) {
+        this.ultimo = ultimo;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+    
 }
