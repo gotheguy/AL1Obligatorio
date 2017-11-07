@@ -17,13 +17,20 @@ public class Sistema {
 	public Retorno crearSistemaReservas(int cantCiudades) {
 		Retorno ret = new Retorno();
 		
-                if (cantCiudades <= 0){   
+                if (cantCiudades < 0){   
                     ret.resultado = Resultado.ERROR_1;
                     System.out.println("La cantidad de ciudades es inferior a 1.");
+                } else {
+
+                    if (this.getListaCiudades() == null) {
+                        this.setListaCiudades(new ListaCiudades(0));
+                    }
                 }
-                
-	return ret;
-	}
+                this.getListaCiudades().setCota(cantCiudades);
+                ret.resultado = Resultado.OK;
+                        
+            return ret;
+	} 
 
 	
 	public Retorno destruirSistemaReservas() {
