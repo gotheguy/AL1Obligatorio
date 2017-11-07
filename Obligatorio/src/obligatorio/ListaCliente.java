@@ -5,12 +5,10 @@
  */
 package obligatorio;
 
-public class Obligatorio {
-
-    public static void main(String[] args) {
-
-        Sistema miSistema = new Sistema();
-
-    }
+/**
+ *
+ * @author Signature
+ */
+class ListaCliente {
     
 }
