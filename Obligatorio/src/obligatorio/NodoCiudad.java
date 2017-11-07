@@ -36,8 +36,7 @@ public class NodoCiudad {
     public NodoCiudad(Ciudad ciudad){
         
         this.setCiudad(ciudad);
-        this.setSiguiente(null);
-        
+        this.setSiguiente(null);        
         this.setLista(new ListaCrucero());
     }
 }

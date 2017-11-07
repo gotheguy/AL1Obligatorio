@@ -6,6 +6,8 @@ public class Sistema {
 
     private ListaCiudades listaCiudades;
     
+    
+    
     public ListaCiudades getListaCiudades() {
         return listaCiudades;
     }
@@ -14,6 +16,15 @@ public class Sistema {
         this.listaCiudades = listaCiudades;
     }
     
+    
+    
+    public Sistema() {
+
+        this.setListaCiudades(new ListaCiudades(0));
+
+    }
+    
+        
 	public Retorno crearSistemaReservas(int cantCiudades) {
 		Retorno ret = new Retorno();
 		
@@ -26,7 +37,7 @@ public class Sistema {
                         this.setListaCiudades(new ListaCiudades(0));
                     }
                 }
-                this.getListaCiudades().setCota(cantCiudades);
+                this.getListaCiudades().setTamanio(cantCiudades);
                 ret.resultado = Resultado.OK;
                         
             return ret;
@@ -42,12 +53,37 @@ public class Sistema {
 	}
 
         
-	public Retorno registrarCiudad(String ciudad) {
+	public Retorno registrarCiudad(Object ciudad) {
 		Retorno ret = new Retorno();
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
+                
+                Ciudad aux = new Ciudad();
+
+                aux.setNombre(ciudad.toString());
+                
+                //Se valida si la lista ya completó su capacidad
+                if (this.getListaCiudades().EstaLlena()) {
+
+                    System.out.println(ciudad + " no pudo ingresarse al sistema, la lista está llena");
+
+                    ret.resultado= Resultado.ERROR_1;
+                }
+                //Se busca si ya existe la ciudad en la lista
+                else if (this.getListaCiudades().BuscarObjeto(aux) != null) {
+
+                    System.out.println(ciudad + " ya existe en el sistema.");
+                    ret.resultado= Resultado.ERROR_2;
+
+                } 
+                else {
+
+                    this.getListaCiudades().agregarAlFinal(ciudad);
+                 
+                   ret.resultado= Resultado.OK;
+                }
 		
-		return ret;
+            return ret;
 	}
 
 	public Retorno registrarCrucero(String ciudad, String nombre, int estrellas, int capacidad) {
