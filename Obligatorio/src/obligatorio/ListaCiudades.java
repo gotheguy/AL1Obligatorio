@@ -102,9 +102,10 @@ public class ListaCiudades {
     }
     
      
-    public void agregarAlInicio(Object nombre){
+    public void agregarAlInicio(String nombre){
         
-        Ciudad ciudad = new Ciudad(nombre.toString());
+        Ciudad ciudad = new Ciudad();
+        ciudad.setNombre(nombre);
         NodoCiudad nuevoNodo = new NodoCiudad(ciudad);
 
         nuevoNodo.setSiguiente(nuevoNodo);
@@ -114,18 +115,22 @@ public class ListaCiudades {
         } 
         else
         {
-            nuevoNodo.setSiguiente(inicio);
+            // Guardo el nodo inicial en una variable auxiliar
+            NodoCiudad aux= this.getInicio();
+            //Guardo el nuevo nodo como el inicial
+            inicio=nuevoNodo;
             // Renombra al nuevo nodo como el inicio de la lista
-            inicio = nuevoNodo;
+            nuevoNodo.setSiguiente(aux);
+            
         }
         
         contador++;
     }
     
-     public void agregarAlFinal(Object nombre){
+     public void agregarAlFinal(String nombre){
         
-        Ciudad ciudad = new Ciudad(nombre.toString());
-
+        Ciudad ciudad = new Ciudad();
+        ciudad.setNombre(nombre);
         NodoCiudad nuevo = new NodoCiudad(ciudad);
         
         // Agrega parametro al nodo
