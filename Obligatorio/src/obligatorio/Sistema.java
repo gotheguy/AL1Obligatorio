@@ -26,21 +26,21 @@ public class Sistema {
     
         
 	public Retorno crearSistemaReservas(int cantCiudades) {
-		Retorno ret = new Retorno();
+		Retorno r = new Retorno();
 		
                 if (cantCiudades < 0){   
-                    ret.resultado = Resultado.ERROR_1;
+                    r.resultado = Resultado.ERROR_1;
                     System.out.println("La cantidad de ciudades es inferior a 1.");
                 } else {
 
                     if (this.getListaCiudades() == null) {
                         this.setListaCiudades(new ListaCiudades(0));
                     }
-                }
                 this.getListaCiudades().setTamanio(cantCiudades);
-                ret.resultado = Resultado.OK;
+                r.resultado = Resultado.OK;
+                }  
                         
-            return ret;
+            return r;
 	} 
 
 	
@@ -53,14 +53,14 @@ public class Sistema {
 	}
 
         
-	public Retorno registrarCiudad(Object ciudad) {
+	public Retorno registrarCiudad(String ciudad) {
 		Retorno ret = new Retorno();
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
                 
                 Ciudad aux = new Ciudad();
 
-                aux.setNombre(ciudad.toString());
+                aux.setNombre(ciudad);
                 
                 //Se valida si la lista ya completó su capacidad
                 if (this.getListaCiudades().EstaLlena()) {
@@ -77,9 +77,9 @@ public class Sistema {
 
                 } 
                 else {
-
+                    
                     this.getListaCiudades().agregarAlFinal(ciudad);
-                 
+                    
                    ret.resultado= Resultado.OK;
                 }
 		
