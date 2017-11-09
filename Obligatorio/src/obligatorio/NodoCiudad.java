@@ -5,7 +5,7 @@ public class NodoCiudad {
     
     private Ciudad ciudad;
     private NodoCiudad siguiente;
-    private ListaCrucero lista;
+    
 
 
     public Ciudad getCiudad() {
@@ -25,19 +25,11 @@ public class NodoCiudad {
     }
 
 
-    public ListaCrucero getLista() {
-        return lista;
-    }
-
-    public void setLista(ListaCrucero lista) {
-        this.lista = lista;
-    }
-
+    
     public NodoCiudad(Ciudad ciudad){
         
         this.setCiudad(ciudad);
         this.setSiguiente(null);        
-        this.setLista(new ListaCrucero());
     }
 }
 

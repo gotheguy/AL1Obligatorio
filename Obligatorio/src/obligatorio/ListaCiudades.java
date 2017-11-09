@@ -58,10 +58,9 @@ public class ListaCiudades {
     }
     
    
-    public Object BuscarObjeto(Object o) {
+    public Ciudad BuscarObjeto(String nombre) {
 
-        NodoCiudad nuevoNodo = null;
-        Ciudad nuevaCiudad = (Ciudad)o;
+        NodoCiudad nuevoNodo;
         
         // Consulta si la lista esta vacia
         if (!this.esVacia()) 
@@ -72,43 +71,26 @@ public class ListaCiudades {
             // Busca el objeto hasta llegar al último nodo
             while (nuevoNodo != null) 
             {
-                if (nuevaCiudad.getId() != 0) 
+                // Compara las ciudades mediante su id
+                if (nuevoNodo.getCiudad().getNombre().equals(nombre)) 
                 {
-                    // Compara las ciudades mediante su id
-                    if (nuevoNodo.getCiudad().getId() == nuevaCiudad.getId()) 
-                    {
-                        // Retorna la posición del elemento
-                        return nuevoNodo;
-                    }
-
-                } 
-                else if(nuevaCiudad.getNombre() != null) 
-                {
-
-                    if (nuevoNodo.getCiudad().getNombre().compareTo(nuevaCiudad.getNombre()) == 0)
-                    {
-                        // Retorna la posición del elemento
-                        return nuevoNodo;
-                    }
-
+                    // Retorna la posición del elemento
+                    return nuevoNodo.getCiudad();
                 }
                 nuevoNodo = nuevoNodo.getSiguiente();
             }
 
         }
 
-        return nuevoNodo;
+        return null;
 
     }
     
      
-    public void agregarAlInicio(String nombre){
+    public void agregarAlInicio(Ciudad ciudad){
         
-        Ciudad ciudad = new Ciudad();
-        ciudad.setNombre(nombre);
         NodoCiudad nuevoNodo = new NodoCiudad(ciudad);
 
-        nuevoNodo.setSiguiente(nuevoNodo);
         // Consulta si la lista esta vacia.
         if (esVacia()) {         
             inicio = nuevoNodo;
@@ -127,14 +109,9 @@ public class ListaCiudades {
         contador++;
     }
     
-     public void agregarAlFinal(String nombre){
+     public void agregarAlFinal(Ciudad ciudad){
         
-        Ciudad ciudad = new Ciudad();
-        ciudad.setNombre(nombre);
         NodoCiudad nuevo = new NodoCiudad(ciudad);
-        
-        // Agrega parametro al nodo
-        nuevo.setSiguiente(nuevo);
         
         // Consulta si la lista esta vacia o no
         if (esVacia()) {            

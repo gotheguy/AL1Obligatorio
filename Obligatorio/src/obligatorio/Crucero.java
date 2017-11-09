@@ -8,7 +8,7 @@ public class Crucero {
     
     private String nombre;
     private int cantidadHabitaciones;
-    private int categoria;
+    private int estrellas;
     
     private Set<Cliente> pasajeros;
     private Set<Servicio> servicios;
@@ -30,12 +30,12 @@ public class Crucero {
         this.cantidadHabitaciones = cantidadHabitaciones;
     }
 
-    public int getCategoria() {
-        return categoria;
+    public int getEstrellas() {
+        return estrellas;
     }
 
-    public void setCategoria(int categoria) {
-        this.categoria = categoria;
+    public void setEstrellas(int estrellas) {
+        this.estrellas = estrellas;
     }
 
     public Set<Cliente> getPasajeros() {
@@ -59,7 +59,7 @@ public class Crucero {
 
         this.setNombre(nombre);
         this.setCantidadHabitaciones(cantidadHabitaciones);
-        this.setCategoria(categoria);
+        this.setEstrellas(estrellas);
         
         this.setPasajeros(new HashSet<Cliente>());
         this.setServicios(new HashSet<Servicio>());

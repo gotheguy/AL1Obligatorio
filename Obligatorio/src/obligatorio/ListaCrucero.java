@@ -48,4 +48,84 @@ public class ListaCrucero {
         this.contador = contador;
     }
     
+    public boolean esVacia() {
+
+        return (this.getInicio() == null);
+    }
+
+    public Crucero BuscarObjeto(String nombre) {
+
+        NodoCrucero nuevoNodo;
+        
+        // Consulta si la lista esta vacia
+        if (!this.esVacia()) 
+        {
+            // Inicializa la lista agregando como inicio al nuevo nodo
+            nuevoNodo = this.getInicio();
+            
+            // Busca el objeto hasta llegar al último nodo
+            while (nuevoNodo != null) 
+            {
+                // Compara las ciudades mediante su id
+                if (nuevoNodo.getCrucero().getNombre().equals(nombre)) 
+                {
+                    // Retorna la posición del elemento
+                    return nuevoNodo.getCrucero();
+                }
+                nuevoNodo = nuevoNodo.getSiguiente();
+            }
+
+        }
+
+        return null;
+
+    }
+    
+    public void agregarAlInicio(Crucero crucero){
+        
+        NodoCrucero nuevoNodo = new NodoCrucero(crucero);
+
+        // Consulta si la lista esta vacia.
+        if (esVacia()) {         
+            inicio = nuevoNodo;
+        } 
+        else
+        {
+            // Guardo el nodo inicial en una variable auxiliar
+            NodoCrucero aux= this.getInicio();
+            //Guardo el nuevo nodo como el inicial
+            inicio=nuevoNodo;
+            // Renombra al nuevo nodo como el inicio de la lista
+            nuevoNodo.setSiguiente(aux);
+            
+        }
+        
+        contador++;
+    }
+    
+     public void agregarAlFinal(Crucero crucero){
+        
+        NodoCrucero nuevo = new NodoCrucero(crucero);
+        
+        // Consulta si la lista esta vacia o no
+        if (esVacia()) {            
+            inicio = nuevo;
+        } 
+        else
+        {
+ 
+            NodoCrucero aux = inicio;
+            // Recorre la lista hasta llegar al ultimo nodo.
+            while(aux.getSiguiente() != null)
+            {
+                aux = aux.getSiguiente();
+            }
+            // Agrega el nuevo nodo al final de la lista.
+            aux.setSiguiente(nuevo);
+        }
+        
+        contador++;
+    }
+    
+    
 }
