@@ -70,14 +70,14 @@ public class Sistema {
                 //Se valida si la lista ya completó su capacidad
                 if (this.getListaCiudades().EstaLlena()) {
 
-                    System.out.println(nombre + " no pudo ingresarse al sistema, la lista está llena");
+                    System.out.println("Registro Ciudad: "+nombre + " no pudo ingresarse al sistema, la lista está llena");
 
                     ret.resultado = Resultado.ERROR_1;
                 }
                 //Se busca si ya existe la ciudad en la lista
                 else if (this.getListaCiudades().BuscarObjeto(nombre) != null) {
                     // Si la ciudad existe retorna Error 1
-                    System.out.println(nombre + " ya existe en el sistema.");
+                    System.out.println("Registro Ciudad: "+nombre + " ya existe en el sistema.");
                     ret.resultado = Resultado.ERROR_1;
 
                 } 

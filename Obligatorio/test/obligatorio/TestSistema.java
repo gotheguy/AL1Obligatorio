@@ -34,8 +34,18 @@ public class TestSistema {
         assertEquals(Retorno.Resultado.OK,r.resultado);
         r =  s.registrarCiudad("Maldonado");
         assertEquals(Retorno.Resultado.OK,r.resultado);
+        r =  s.registrarCiudad("Salto");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r =  s.registrarCiudad("Paysandú");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.registrarCiudad("Paysandú");
+        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
         r = s.registrarCiudad("Canelones");
         assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.registrarCiudad("Artigas");
+        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
+       
+        
         
         s.destruirSistemaReservas();
     }    
