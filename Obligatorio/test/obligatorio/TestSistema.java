@@ -77,6 +77,7 @@ public class TestSistema {
         s.registrarCiudad("Maldonado");
         s.registrarCiudad("Canelones");
         s.registrarCrucero("Montevideo", "AIDAcara", 4, 500);
+        s.registrarCrucero("Montevideo", "AIDAsofia", 2, 100);
         s.registrarCrucero("Maldonado", "MSCclara", 2, 200);
         s.registrarCrucero("Maldonado", "ROYALcaribbean", 5, 400);
         s.registrarCrucero("Canelones", "MSClucia", 3, 50);
@@ -87,6 +88,8 @@ public class TestSistema {
         r = s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
         assertEquals(Retorno.Resultado.OK,r.resultado);
         r = s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.ingresarServicio("Montevideo", "AIDAsofia", "Jacuzzi");
         assertEquals(Retorno.Resultado.OK,r.resultado);
         r = s.ingresarServicio("Salto", "AIDAcara", "Limpieza");
         assertEquals(Retorno.Resultado.ERROR_2,r.resultado);
