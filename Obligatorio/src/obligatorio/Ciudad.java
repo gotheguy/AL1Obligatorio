@@ -5,7 +5,7 @@ public class Ciudad {
         
     private int id;
     private String nombre;
-
+    
     public int getId() {
         return id;
     }
@@ -21,11 +21,12 @@ public class Ciudad {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public Ciudad(int id, String nombre){
         
         this.setId(id);
         this.setNombre(nombre);
+       
     }
     
     public Ciudad(){}
