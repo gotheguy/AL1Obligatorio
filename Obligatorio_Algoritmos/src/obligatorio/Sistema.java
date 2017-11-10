@@ -141,7 +141,7 @@ public class Sistema implements ISistema {
             //actualizamos el arbol de ambulancias 
             this.getAmbulancias().InsertarOrdenado(nuevoNodo);
 
-            return TipoRet.OK;
+            return TipoRet.OK; 
 
         }
 
