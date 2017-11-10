@@ -2,9 +2,8 @@ package obligatorio;
 
 public class NodoServicio {
     
-      private Servicio servicio;
+    private Servicio servicio;
     private NodoServicio siguiente;
-    private ListaCrucero lista;
 
     public Servicio getServicio() {
         return servicio;
@@ -22,18 +21,10 @@ public class NodoServicio {
         this.siguiente = siguiente;
     }
 
-    public ListaCrucero getLista() {
-        return lista;
-    }
-
-    public void setLista(ListaCrucero lista) {
-        this.lista = lista;
-    }
-    
     public NodoServicio(Servicio servicio){
         
         this.setServicio(servicio);
         this.setSiguiente(null);
-        this.setLista(new ListaCrucero());
+
     }
 }

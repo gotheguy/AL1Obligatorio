@@ -99,26 +99,24 @@ public class Sistema {
 
                     if (estrellas < 1 || estrellas > 5) {
 
-                        System.out.println("Valor de estrellas del crucero debe ser entre 1 y 5");
+                        System.out.println("Valor de estrellas del crucero "+nombre+ " debe ser entre 1 y 5");
                         ret.resultado = Resultado.ERROR_1;
 
                     } else if (capacidad < 0) {
-                            System.out.println("La capacidad del crucero no puede ser menor a 0");
+                            System.out.println("La capacidad del crucero "+nombre+ " no puede ser menor a 0");
                             ret.resultado = Resultado.ERROR_2;
 
-                    } else if (getListaCiudades().BuscarObjeto(ciudad) != null) {
-                        // Si el crucero ya existe en esa ciudad retorna Error 4
+                    } else if (getListaCiudades().BuscarObjeto(ciudad) == null) {
+                        // Si la ciudad no existe retorna Error 4
                                 System.out.println("La ciudad de nombre " + ciudad + " no existe");
                                 ret.resultado = Resultado.ERROR_4;
-//                    }        
-//                    else if (getListaCiudades().BuscarObjeto(ciudad).getLista().BuscarObjeto(nombre) != null) {
-//                                // Si el crucero ya existe en esa ciudad retorna Error 3
-//                                System.out.println("El crucero de nombre " + nombre + " ya existe en la ciudad " + ciudad);
-//                                ret.resultado = Resultado.ERROR_3;
+                    } else if (getListaCiudades().BuscarObjeto(ciudad).getLista().BuscarObjeto(nombre) != null) {
+                                // Si el crucero ya existe en esa ciudad retorna Error 3
+                                ret.resultado = Resultado.ERROR_3;
                     } else {
                         //Se crea el crucero y se agrega a la lista crucero que contiene la ciudad
                         Crucero nuevoCrucero = new Crucero(nombre, estrellas, capacidad);                       
-                        //this.getListaCiudades().BuscarObjeto(nombre).getLista().agregarAlFinal(nuevoCrucero);
+                        getListaCiudades().BuscarObjeto(ciudad).getLista().agregarAlFinal(nuevoCrucero);
                          //retorna resultado OK
                         ret.resultado = Resultado.OK;
                     }

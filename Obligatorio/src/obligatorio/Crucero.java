@@ -10,8 +10,8 @@ public class Crucero {
     private int cantidadHabitaciones;
     private int estrellas;
     
-    private Set<Cliente> pasajeros;
-    private Set<Servicio> servicios;
+    private ListaCliente pasajeros;
+    private ListaServicios servicios;
     
     
     public String getNombre() {
@@ -38,31 +38,38 @@ public class Crucero {
         this.estrellas = estrellas;
     }
 
-    public Set<Cliente> getPasajeros() {
+    public ListaCliente getPasajeros() {
         return pasajeros;
     }
 
-    public void setPasajeros(Set<Cliente> pasajeros) {
+    public void setPasajeros(ListaCliente pasajeros) {
         this.pasajeros = pasajeros;
     }
     
-     public Set<Servicio> getServicios() {
+     public ListaServicios getServicios() {
         return servicios;
     }
 
-    public void setServicios(Set<Servicio> servicios) {
+    public void setServicios(ListaServicios servicios) {
         this.servicios = servicios;
     }
     
     
-     public Crucero(String nombre, int cantidadHabitaciones,int categoria) {
+     public Crucero(String nombre, int cantidadHabitaciones,int estrellas) {
 
         this.setNombre(nombre);
         this.setCantidadHabitaciones(cantidadHabitaciones);
         this.setEstrellas(estrellas);
         
-        this.setPasajeros(new HashSet<Cliente>());
-        this.setServicios(new HashSet<Servicio>());
+        this.setPasajeros(new ListaCliente());
+        this.setServicios(new ListaServicios());
+    }
+     
+      public Crucero(){}
+    
+    public boolean Equals(Crucero crucero){
+        
+        return this.getNombre().equals(crucero.getNombre());
     }
     
 }
