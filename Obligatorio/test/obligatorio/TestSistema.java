@@ -65,5 +65,36 @@ public class TestSistema {
         
         s.destruirSistemaReservas();
 
-    }  
+    }
+    
+     @Test
+    public void TestIngresarServicio() {
+       
+        Sistema s = new Sistema();
+        Retorno r;
+        s.crearSistemaReservas(5);
+        s.registrarCiudad("Montevideo");
+        s.registrarCiudad("Maldonado");
+        s.registrarCiudad("Canelones");
+        s.registrarCrucero("Montevideo", "AIDAcara", 4, 500);
+        s.registrarCrucero("Maldonado", "MSCclara", 2, 200);
+        s.registrarCrucero("Maldonado", "ROYALcaribbean", 5, 400);
+        s.registrarCrucero("Canelones", "MSClucia", 3, 50);
+        
+        
+        r = s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.ingresarServicio("Salto", "AIDAcara", "Limpieza");
+        assertEquals(Retorno.Resultado.ERROR_2,r.resultado);
+         r = s.ingresarServicio("Montevideo", "MSClucia", "Bar");
+        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
+        
+        s.destruirSistemaReservas();        
+    }
+        
+        
 }

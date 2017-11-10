@@ -94,29 +94,30 @@ public class Sistema {
 
 	public Retorno registrarCrucero(String ciudad, String nombre, int estrellas, int capacidad) {
 		Retorno ret = new Retorno();
-                //NodoCiudad n = this.BuscarCiudad(ciudad);                
+                Ciudad ciudadObj;
+                Crucero cruceroObj;
         	ret.resultado = Resultado.NO_IMPLEMENTADA;
 
                     if (estrellas < 1 || estrellas > 5) {
 
-                        System.out.println("Valor de estrellas del crucero "+nombre+ " debe ser entre 1 y 5");
+                        System.out.println("Registro Crucero: Valor de estrellas del crucero "+nombre+ " debe ser entre 1 y 5");
                         ret.resultado = Resultado.ERROR_1;
 
                     } else if (capacidad < 0) {
-                            System.out.println("La capacidad del crucero "+nombre+ " no puede ser menor a 0");
+                            System.out.println("Registro Crucero: La capacidad del crucero "+nombre+ " no puede ser menor a 0");
                             ret.resultado = Resultado.ERROR_2;
 
-                    } else if (getListaCiudades().BuscarObjeto(ciudad) == null) {
+                    } else if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
                         // Si la ciudad no existe retorna Error 4
-                                System.out.println("La ciudad de nombre " + ciudad + " no existe");
+                                System.out.println("Registro Crucero: La ciudad de nombre " + ciudad + " no existe");
                                 ret.resultado = Resultado.ERROR_4;
-                    } else if (getListaCiudades().BuscarObjeto(ciudad).getLista().BuscarObjeto(nombre) != null) {
+                    } else if (ciudadObj.getLista().BuscarObjeto(nombre) != null) {
                                 // Si el crucero ya existe en esa ciudad retorna Error 3
                                 ret.resultado = Resultado.ERROR_3;
                     } else {
                         //Se crea el crucero y se agrega a la lista crucero que contiene la ciudad
                         Crucero nuevoCrucero = new Crucero(nombre, estrellas, capacidad);                       
-                        getListaCiudades().BuscarObjeto(ciudad).getLista().agregarAlFinal(nuevoCrucero);
+                        ciudadObj.getLista().agregarAlFinal(nuevoCrucero);
                          //retorna resultado OK
                         ret.resultado = Resultado.OK;
                     }
@@ -127,7 +128,25 @@ public class Sistema {
 	public Retorno ingresarServicio(String ciudad, String crucero, String servicio) {
 		Retorno ret = new Retorno();
 		
-		ret.resultado = Resultado.NO_IMPLEMENTADA;
+		ret.resultado = Resultado.NO_IMPLEMENTADA;     
+                Ciudad ciudadObj;
+                Crucero cruceroObj;
+
+                    if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
+                        // Si la ciudad no existe retorna Error 2
+                                System.out.println("Ingreso Servicio: La ciudad de nombre " + ciudad + " no existe");
+                                ret.resultado = Resultado.ERROR_2;
+                    } else if ((cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero)) == null) {
+                                // Si el crucero no existe en esa ciudad retorna Error 3
+                                System.out.println("Ingreso Servicio: El crucero " + crucero + " no existe en la ciudad de "+ciudad);
+                                ret.resultado = Resultado.ERROR_1;
+                    } else {
+                        //Se crea el servicio y se agrega a la lista servicio que contiene el crucero
+                        Servicio nuevoServicio = new Servicio(servicio);                       
+                        cruceroObj.getServicios().agregarAlFinal(nuevoServicio);
+                         //retorna resultado OK
+                        ret.resultado = Resultado.OK;
+                    }                             
 		
 		return ret;
 	}
