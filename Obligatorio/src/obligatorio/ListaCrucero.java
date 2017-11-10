@@ -96,11 +96,12 @@ public class ListaCrucero {
     }
     
      public void agregarAlFinal(Crucero crucero){
-        
-        NodoCrucero nuevo = new NodoCrucero(crucero);
-        
+               
         // Consulta si la lista esta vacia o no
-        if (esVacia()) {            
+        if (esVacia()) {  
+             
+            NodoCrucero nuevo;
+            nuevo= new NodoCrucero(crucero);
             inicio = nuevo;
         } 
         else
@@ -113,6 +114,8 @@ public class ListaCrucero {
                 aux = aux.getSiguiente();
             }
             // Agrega el nuevo nodo al final de la lista.
+            NodoCrucero nuevo;
+            nuevo= new NodoCrucero(crucero);
             aux.setSiguiente(nuevo);
         }
         
