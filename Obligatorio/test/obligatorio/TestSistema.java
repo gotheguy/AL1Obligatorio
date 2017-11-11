@@ -97,7 +97,7 @@ public class TestSistema {
         assertEquals(Retorno.Resultado.OK,r.resultado);
         r = s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
         assertEquals(Retorno.Resultado.OK,r.resultado);
-        r = s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        r = s.ingresarServicio("Montevideo", "AIDAcara", "Room Service");
         assertEquals(Retorno.Resultado.OK,r.resultado);
         r = s.ingresarServicio("Montevideo", "AIDAsofia", "Jacuzzi");
         assertEquals(Retorno.Resultado.OK,r.resultado);
@@ -107,6 +107,39 @@ public class TestSistema {
         assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
         
         s.destruirSistemaReservas();        
+    }
+    
+     @Test
+    public void TestBorrarServicio(){
+
+        Sistema s = new Sistema();
+        Retorno r;
+        s.crearSistemaReservas(5);
+        s.registrarCiudad("Montevideo");
+        s.registrarCiudad("Maldonado");
+        s.registrarCiudad("Canelones");
+        s.registrarCrucero("Montevideo", "AIDAcara", 4, 500);
+        s.registrarCrucero("Montevideo", "AIDAsofia", 2, 100);
+        s.registrarCrucero("Maldonado", "MSCclara", 2, 200);
+        s.registrarCrucero("Maldonado", "ROYALcaribbean", 5, 400);
+        s.registrarCrucero("Canelones", "MSClucia", 3, 50);
+        s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Room Service");
+        s.ingresarServicio("Montevideo", "AIDAsofia", "Jacuzzi");
+        
+        r = s.borrarServicio("Montevideo", "AIDAcara", "Bar");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.borrarServicio("Montevideo", "AIDAcara", "Room Service");
+        assertEquals(Retorno.Resultado.OK,r.resultado);       
+        r = s.borrarServicio("Canelones", "AIDAsofia", "Room Service");
+        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);    
+        r = s.borrarServicio("Montevideo", "AIDAcara", "Jacuzzi");
+        assertEquals(Retorno.Resultado.ERROR_2,r.resultado);       
+        r = s.borrarServicio("Artigas", "AIDAcara", "Bar");
+        assertEquals(Retorno.Resultado.ERROR_3,r.resultado);              
+        s.destruirSistemaReservas();   
+        
     }
         
         

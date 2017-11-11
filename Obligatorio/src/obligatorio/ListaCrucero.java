@@ -7,13 +7,11 @@ public class ListaCrucero {
     private NodoCrucero ultimo;
     private int contador;
     
-    
      public ListaCrucero() {
 
         this.setInicio(null);
         this.setUltimo(null);
         this.contador = 0;
-
     }
 
     public NodoCrucero getInicio() {

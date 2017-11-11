@@ -23,7 +23,6 @@ public class Ciudad {
         this.nombre = nombre;
     }
     
-    
      public ListaCrucero getLista() {
         return lista;
     }
