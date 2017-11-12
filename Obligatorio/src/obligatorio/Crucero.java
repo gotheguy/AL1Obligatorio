@@ -1,9 +1,6 @@
 
 package obligatorio;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Crucero {
     
     private String nombre;

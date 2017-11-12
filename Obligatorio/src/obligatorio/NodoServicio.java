@@ -9,7 +9,7 @@ public class NodoServicio {
         return servicio;
     }
 
-    public void setServicio(Servicio ciudad) {
+    public void setServicio(Servicio servicio) {
         this.servicio = servicio;
     }
 

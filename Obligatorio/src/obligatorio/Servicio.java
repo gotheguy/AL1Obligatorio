@@ -16,5 +16,11 @@ class Servicio {
 
         this.setNombre(nombre);
     }
+     
+    public Servicio(){}
     
+    public boolean Equals(Servicio servicio){
+        
+        return this.getNombre().equals(servicio.getNombre());
+    }  
 }

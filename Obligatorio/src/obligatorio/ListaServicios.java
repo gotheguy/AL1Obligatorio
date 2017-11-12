@@ -6,7 +6,15 @@ public class ListaServicios {
   private NodoServicio ultimo;
   private int contador;
     
-  public NodoServicio getInicio() {
+    public ListaServicios() {
+
+        this.setInicio(null);
+        this.setUltimo(null);
+        this.contador = 0;
+
+    }
+  
+    public NodoServicio getInicio() {
         return inicio;
     }
 
@@ -34,6 +42,76 @@ public class ListaServicios {
 
         return (this.getInicio() == null);
     }
+    
+    public Servicio BuscarObjeto(String nombre) {
+
+        NodoServicio nuevoNodo;
+        
+        // Consulta si la lista esta vacia
+        if (!this.esVacia()) 
+        {
+            // Inicializa la lista agregando como inicio al nuevo nodo
+            nuevoNodo = this.getInicio();
+            
+            // Busca el objeto hasta llegar al último nodo
+            while (nuevoNodo != null) 
+            {
+                // Compara las ciudades mediante su id
+                if (nuevoNodo.getServicio().getNombre().equals(nombre)) 
+                {
+                    // Retorna la posición del elemento
+                    return nuevoNodo.getServicio();
+                }
+                nuevoNodo = nuevoNodo.getSiguiente();
+            }
+
+        }
+
+        return null;
+
+    }
+        
+        
+    public void BorrarNodo(Servicio servicio) {
+
+        if (!this.esVacia()) {
+
+            if (this.getInicio() == this.getUltimo() && this.getInicio().getServicio().getNombre().compareTo(servicio.toString()) == 0) {
+
+                this.setInicio(null);
+                this.setUltimo(null);
+                this.setContador(0);
+                
+            } else if (this.getInicio().getServicio().getNombre().compareTo(servicio.toString()) == 0) {
+
+                this.setInicio(this.getInicio().getSiguiente());
+            } else {
+
+                NodoServicio anterior;
+                NodoServicio aux;
+
+                anterior = this.getInicio();
+                aux = this.getInicio().getSiguiente();
+
+                while (aux != null && aux.getServicio().getNombre().compareTo(servicio.toString()) != 0) {
+
+                    anterior = anterior.getSiguiente();
+                    aux = aux.getSiguiente();
+                }
+                
+                if(aux!=null){
+                    
+                    anterior.setSiguiente(aux.getSiguiente());
+                    
+                    if(aux== this.getUltimo()){
+                        
+                        this.setUltimo(anterior);
+                    }
+                }
+
+            }
+        }
+    }   
     
     public void agregarAlInicio(Servicio servicio){            
 
