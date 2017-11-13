@@ -1,4 +1,3 @@
-
 package obligatorio;
 
 public class NodoCrucero {
@@ -23,7 +22,6 @@ public class NodoCrucero {
         this.siguiente = siguiente;
     }
 
-     
     public NodoCrucero(Crucero crucero){
         
         this.setCrucero(crucero);
