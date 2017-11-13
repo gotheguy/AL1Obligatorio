@@ -202,8 +202,26 @@ public class Sistema {
 
 	public Retorno realizarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();
-		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
+		Ciudad ciudadObj;
+                Crucero cruceroObj;
+                
+                 if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
+                        // Si la ciudad no existe retorna Error 3
+                                System.out.println("Realizar Reserva: La ciudad de nombre " + ciudad + " no existe");
+                                ret.resultado = Resultado.ERROR_2;
+                 }else if ((cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero)) == null) {
+                                // Si el crucero no existe en esa ciudad retorna Error 1
+                                System.out.println("Realizar Reserva: El crucero " + crucero + " no existe en la ciudad de "+ciudad);
+                                ret.resultado = Resultado.ERROR_1;
+                 }else{
+                      ListaCliente lisCli = null;
+                      Cliente clienteObj;
+                      clienteObj = lisCli.BuscarObjeto(cliente);
+                      Reserva nuevaReserva = new Reserva (ciudadObj,cruceroObj,clienteObj);
+                      ListaReserva lisRes = null;
+                      lisRes.agregarAlFinal(nuevaReserva);                                            
+                 }
 		
 		return ret;
 	}
@@ -211,8 +229,8 @@ public class Sistema {
 
 	public Retorno cancelarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();
-		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
+                
 		
 		return ret;
 	}
@@ -228,10 +246,33 @@ public class Sistema {
 
 
 	public Retorno listarServicios(String ciudad, String crucero) {
-		Retorno ret = new Retorno();
-		
+		Retorno ret = new Retorno();		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
-		
+                Ciudad ciudadObj;
+                Crucero cruceroObj;
+                
+                 if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
+                        // Si la ciudad no existe retorna Error 3
+                                System.out.println("Listar Servicio: La ciudad de nombre " + ciudad + " no existe");
+                                ret.resultado = Resultado.ERROR_2;
+                 }else if ((cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero)) == null) {
+                                // Si el crucero no existe en esa ciudad retorna Error 1
+                                System.out.println("Listar Servicio: El crucero " + crucero + " no existe en la ciudad de "+ciudad);
+                                ret.resultado = Resultado.ERROR_1;
+                 }else {
+                        ListaServicios listaServicio;
+                        listaServicio = cruceroObj.getServicios();
+                                                                      
+                        if(listaServicio.getContador()==0){
+                            System.out.println("No existen servicios registrados en el Crucero "+ crucero);
+                        }else{
+                            System.out.println("Servicios del crucero "+crucero+":");
+                            listaServicio.MostrarLista();
+                        }
+
+                        ret.resultado = Resultado.OK;
+                
+                 }
 		return ret;
 	}
 

@@ -138,9 +138,43 @@ public class TestSistema {
         assertEquals(Retorno.Resultado.ERROR_2,r.resultado);       
         r = s.borrarServicio("Artigas", "AIDAcara", "Bar");
         assertEquals(Retorno.Resultado.ERROR_3,r.resultado);              
+       
         s.destruirSistemaReservas();   
         
     }
         
+     @Test
+    public void TestListarServicios(){
+
+        Sistema s = new Sistema();
+        Retorno r;
+        s.crearSistemaReservas(5);
+        s.registrarCiudad("Montevideo");
+        s.registrarCiudad("Maldonado");
+        s.registrarCiudad("Canelones");
+        s.registrarCrucero("Montevideo", "AIDAcara", 4, 500);
+        s.registrarCrucero("Montevideo", "AIDAsofia", 2, 100);
+        s.registrarCrucero("Maldonado", "MSCclara", 2, 200);
+        s.registrarCrucero("Maldonado", "ROYALcaribbean", 5, 400);
+        s.registrarCrucero("Canelones", "MSClucia", 3, 50);
+        s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Room Service");
+        s.ingresarServicio("Montevideo", "AIDAsofia", "Jacuzzi");
         
+        //El crucero MSCclara no tiene servicios. Devuelve mensaje que no los tiene
+        r = s.listarServicios("Maldonado", "MSCclara");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.listarServicios("Montevideo", "AIDAcara");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.listarServicios("Montevideo", "MSCclara");
+        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
+        r = s.listarServicios("Salto", "MSCclara");
+        assertEquals(Retorno.Resultado.ERROR_2,r.resultado);
+       
+        s.destruirSistemaReservas();   
+        
+    }
+    
+    
 }

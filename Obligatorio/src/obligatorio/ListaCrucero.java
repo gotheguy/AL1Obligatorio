@@ -119,6 +119,16 @@ public class ListaCrucero {
         
         contador++;
     }
-      
+     
+     public void MostrarLista() {
+        NodoCrucero recorrer = inicio;
+        int contador= 1;
+        while (recorrer != null) {
+            System.out.println(contador+"-" + recorrer.getCrucero().getNombre());
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
+    }
+
     
 }

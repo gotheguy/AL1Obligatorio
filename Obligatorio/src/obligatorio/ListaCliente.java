@@ -43,7 +43,7 @@ class ListaCliente {
         return (this.getInicio() == null);
     }
 
-    public Cliente BuscarObjeto(String nombre) {
+    public Cliente BuscarObjeto(int id) {
 
         NodoCliente nuevoNodo;
         
@@ -57,7 +57,7 @@ class ListaCliente {
             while (nuevoNodo != null) 
             {
                 // Compara las ciudades mediante su id
-                if (nuevoNodo.getCliente().getNombre().equals(nombre)) 
+                if (nuevoNodo.getCliente().getId().equals(id)) 
                 {
                     // Retorna la posición del elemento
                     return nuevoNodo.getCliente();
