@@ -57,7 +57,7 @@ class ListaCliente {
             while (nuevoNodo != null) 
             {
                 // Compara las ciudades mediante su id
-                if (nuevoNodo.getCliente().getId().equals(id)) 
+                if (nuevoNodo.getCliente().getId()== id ) 
                 {
                     // Retorna la posición del elemento
                     return nuevoNodo.getCliente();

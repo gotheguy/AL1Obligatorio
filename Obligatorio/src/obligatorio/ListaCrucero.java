@@ -119,7 +119,7 @@ public class ListaCrucero {
         
         contador++;
     }
-     
+
      public void MostrarLista() {
         NodoCrucero recorrer = inicio;
         int contador= 1;
@@ -128,7 +128,6 @@ public class ListaCrucero {
             recorrer = recorrer.getSiguiente();
             contador++;
         }
-    }
-
-    
+    } 
+     
 }

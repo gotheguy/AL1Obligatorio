@@ -6,6 +6,7 @@ public class Crucero {
     private String nombre;
     private int cantidadHabitaciones;
     private int estrellas;
+    private int ocupacion;
     
     private ListaCliente pasajeros;
     private ListaServicios servicios;
@@ -33,6 +34,14 @@ public class Crucero {
 
     public void setEstrellas(int estrellas) {
         this.estrellas = estrellas;
+    }
+    
+     public int getOcupacion() {
+        return ocupacion;
+    }
+
+    public void setOcupacion(int ocupacion) {
+        this.ocupacion = 0;        
     }
 
     public ListaCliente getPasajeros() {
@@ -67,6 +76,10 @@ public class Crucero {
     public boolean Equals(Crucero crucero){
         
         return this.getNombre().equals(crucero.getNombre());
+    }
+    public void sumaOcupacion (Crucero crucero){
+
+        crucero.ocupacion++;
     }
     
 }
