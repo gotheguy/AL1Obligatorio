@@ -65,7 +65,6 @@ public class Sistema {
         this.setListaCliente(new ListaCliente());
         this.setListaReserva(new ListaReserva());
         this.setColaReserva(new ColaReserva());
-        
     }
         
 	public Retorno crearSistemaReservas(int cantCiudades) {
@@ -85,6 +84,9 @@ public class Sistema {
                     }
                      if (this.getListaServicios()== null) {
                         this.setListaServicios(new ListaServicios());
+                    }
+                     if (this.getListaReserva()== null) {
+                        this.setListaReserva(new ListaReserva());
                     }
                 this.getListaCiudades().setTamanio(cantCiudades);
                 ret.resultado = Resultado.OK;
@@ -266,7 +268,8 @@ public class Sistema {
                       //Encuentra el cliente que reserva
                       clienteObj = lisCli.BuscarObjeto(cliente);
                       //Se crea la reserva
-                      Reserva nuevaReserva = new Reserva (ciudadObj,cruceroObj,clienteObj);
+                      
+                      Reserva nuevaReserva = new Reserva(ciudadObj,cruceroObj,clienteObj);
                       ListaReserva lisRes = this.getListaReserva();                      
                       
                       if(cruceroObj.getOcupacion()<cruceroObj.getCantidadHabitaciones()){
@@ -292,7 +295,29 @@ public class Sistema {
 		Retorno ret = new Retorno();
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
                 
-		
+                Ciudad ciudadObj;
+                Crucero cruceroObj;
+                Cliente clienteObj;
+                Reserva reservaObj;
+                
+                if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
+                        // Si la ciudad no existe retorna Error 3
+                                System.out.println("Realizar Reserva: La ciudad de nombre " + ciudad + " no existe");
+                                ret.resultado = Resultado.ERROR_3;
+                } else if ((cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero)) == null) {
+                                // Si el crucero no existe en esa ciudad retorna Error 1
+                                System.out.println("Realizar Reserva: El crucero " + crucero + " no existe en la ciudad de "+ciudad);
+                                ret.resultado = Resultado.ERROR_1;
+//                } else if (reservaObj.getCliente().getId() == getListaCliente().BuscarObjeto(cliente).getId()) {
+//                                // Si el cliente no tiene reserva en el crucero en esa ciudad retorna Error 2
+//                                System.out.println("Realizar Reserva: El cliente " + cliente + " no tiene reserva en el crucero " + crucero + " en la ciudad " + ciudad);
+//                                ret.resultado = Resultado.ERROR_2;                
+                } else {
+                     //Obtengo la lista de clientes                                        
+//                      ListaCliente lisCli = this.getListaCliente();
+//                      //Encuentra el cliente que reserva
+//                      clienteObj = lisCli.BuscarObjeto(cliente);
+                }                  
 		return ret;
 	}
 
