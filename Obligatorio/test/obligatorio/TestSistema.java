@@ -176,5 +176,40 @@ public class TestSistema {
         
     }
     
-    
+     @Test
+    public void TestRealizarReserva(){
+
+        Sistema s = new Sistema();
+        Retorno r;
+        s.crearSistemaReservas(5);
+        s.registrarCiudad("Montevideo");
+        s.registrarCiudad("Maldonado");
+        s.registrarCiudad("Canelones");
+        s.registrarCrucero("Montevideo", "AIDAcara", 4, 5);
+        s.registrarCrucero("Montevideo", "AIDAsofia", 2, 2);
+        s.registrarCrucero("Maldonado", "MSCclara", 2, 200);
+        s.registrarCrucero("Maldonado", "ROYALcaribbean", 5, 400);
+        s.registrarCrucero("Canelones", "MSClucia", 3, 50);
+        s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Room Service");
+        s.ingresarServicio("Montevideo", "AIDAsofia", "Jacuzzi");
+        s.registrarCliente("Martin", 1, "mtisco");
+        s.registrarCliente("Gonzalo", 2, "gOtheguy");
+        s.registrarCliente("Nicolas", 3, "nUmpi");
+        s.registrarCliente("Eduardo", 4, "edupa");
+        
+        r = s.realizarReserva(1,"Montevideo", "AIDAsofia");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.realizarReserva(2,"Montevideo", "AIDAsofia");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+         r = s.realizarReserva(1,"Montevideo", "AIDAsofia");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+         r = s.realizarReserva(3,"Montevideo", "AIDAsofia");
+        assertEquals(Retorno.Resultado.OK,r.resultado);        
+       
+        s.destruirSistemaReservas();   
+        
+    }
+     
 }

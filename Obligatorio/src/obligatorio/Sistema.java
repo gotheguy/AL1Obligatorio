@@ -7,6 +7,9 @@ public class Sistema {
     private ListaCiudades listaCiudades;
     private ListaCrucero listaCruceros;
     private ListaServicios listaServicios;
+    private ListaCliente listaClientes;
+    private ListaReserva listaReservas;
+    private ColaReserva colaReservas;
     
     public ListaCiudades getListaCiudades() {
         return listaCiudades;
@@ -30,6 +33,28 @@ public class Sistema {
 
     public void setListaServicios(ListaServicios listaServicios) {
         this.listaServicios = listaServicios;
+    }
+      public ListaCliente getListaCliente() {
+        return listaClientes;
+    }
+
+    public void setListaCliente(ListaCliente listaCliente) {
+        this.listaClientes = listaCliente;
+    }
+    public ListaReserva getListaReserva() {
+        return listaReservas;
+    }
+
+    public void setListaReserva(ListaReserva listaReservas) {
+        this.listaReservas = listaReservas;
+    } 
+    
+    public ColaReserva getColaReserva() {
+        return colaReservas;
+    }
+
+    public void setColaReserva(ColaReserva colaReservas) {
+        this.colaReservas = colaReservas;
     }  
     
     public Sistema() {
@@ -37,6 +62,10 @@ public class Sistema {
         this.setListaCiudades(new ListaCiudades(0));
         this.setListaCruceros(new ListaCrucero());
         this.setListaServicios(new ListaServicios());
+        this.setListaCliente(new ListaCliente());
+        this.setListaReserva(new ListaReserva());
+        this.setColaReserva(new ColaReserva());
+        
     }
         
 	public Retorno crearSistemaReservas(int cantCiudades) {
@@ -72,7 +101,9 @@ public class Sistema {
                 this.setListaCiudades(null);
                 this.setListaCruceros(null);
                 this.setListaServicios(null);
-		
+                this.setListaCliente(null);
+                this.setListaReserva(null);
+	
 		ret.resultado = Resultado.OK;
 		return ret;
 	}
@@ -105,6 +136,20 @@ public class Sistema {
                    ret.resultado = Resultado.OK;
                 }
 		
+            return ret;
+	}
+        
+        public Retorno registrarCliente(String nombre, int id, String nickname) {
+            Retorno ret = new Retorno();
+            
+            if(this.getListaCliente().BuscarObjeto(id)!=null){
+                ret.resultado = Resultado.ERROR_1;
+                System.out.println("Registro Cliente: Ya existe un cliente con id "+id);
+            }else{
+                Cliente cliente = new Cliente(nombre,id,nickname);
+                this.getListaCliente().agregarAlFinal(cliente);                             
+                ret.resultado = Resultado.OK;                
+            }
             return ret;
 	}
 
@@ -205,6 +250,7 @@ public class Sistema {
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
 		Ciudad ciudadObj;
                 Crucero cruceroObj;
+                Cliente clienteObj;
                 
                  if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
                         // Si la ciudad no existe retorna Error 3
@@ -215,17 +261,32 @@ public class Sistema {
                                 System.out.println("Realizar Reserva: El crucero " + crucero + " no existe en la ciudad de "+ciudad);
                                 ret.resultado = Resultado.ERROR_1;
                  }else{
-                      ListaCliente lisCli = null;
-                      Cliente clienteObj;
+                     //Obtengo la lista de clientes                                        
+                      ListaCliente lisCli = this.getListaCliente();
+                      //Encuentra el cliente que reserva
                       clienteObj = lisCli.BuscarObjeto(cliente);
+                      //Se crea la reserva
                       Reserva nuevaReserva = new Reserva (ciudadObj,cruceroObj,clienteObj);
-                      ListaReserva lisRes = null;
-                      lisRes.agregarAlFinal(nuevaReserva);                                            
+                      ListaReserva lisRes = this.getListaReserva();                      
+                      
+                      if(cruceroObj.getOcupacion()<cruceroObj.getCantidadHabitaciones()){
+                          //Se agrega la reserva a la lista
+                            lisRes.agregarAlFinal(nuevaReserva);
+                           // Se suma ocupación al crucero
+                            cruceroObj.sumaOcupacion(cruceroObj);
+                      }else{
+                          //REVISAR EL ENCOLAR                          
+                          this.getColaReserva().encolar(nuevaReserva);                         
+                      }
+                      ret.resultado = Resultado.OK;
                  }
 		
 		return ret;
 	}
-
+        
+        public void mostrarCola(){
+             this.getColaReserva().MostrarCola();        
+        }
 
 	public Retorno cancelarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();

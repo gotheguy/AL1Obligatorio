@@ -35,7 +35,7 @@ public class Reserva {
     public Reserva(Ciudad ciudad, Crucero crucero, Cliente cliente)
     {
         this.setCiudad(ciudad);
-        this.setCrucero(crucero);
+        this.setCrucero(crucero);        
         this.setCliente(cliente);
     }
 }
