@@ -269,17 +269,17 @@ public class Sistema {
                       clienteObj = lisCli.BuscarObjeto(cliente);
                       //Se crea la reserva
                       
-                      Reserva nuevaReserva = new Reserva(ciudadObj,cruceroObj,clienteObj);
-                      ListaReserva lisRes = this.getListaReserva();                      
+                      Reserva nuevaReserva = new Reserva(ciudadObj,cruceroObj,clienteObj);                                            
                       
                       if(cruceroObj.getOcupacion()<cruceroObj.getCantidadHabitaciones()){
                           //Se agrega la reserva a la lista
-                            lisRes.agregarAlFinal(nuevaReserva);
+                            cruceroObj.getReservasExitosas().agregarAlFinal(nuevaReserva);
                            // Se suma ocupación al crucero
                             cruceroObj.sumaOcupacion(cruceroObj);
                       }else{
-                          //REVISAR EL ENCOLAR                          
-                          this.getColaReserva().encolar(nuevaReserva);                         
+                          //REVISAR EL ENCOLAR
+                          ColaReserva colaRes = cruceroObj.getReservasEnCola();
+                          colaRes.encolar(nuevaReserva);
                       }
                       ret.resultado = Resultado.OK;
                  }
@@ -297,26 +297,32 @@ public class Sistema {
                 
                 Ciudad ciudadObj;
                 Crucero cruceroObj;
-                Cliente clienteObj;
-                Reserva reservaObj;
+                Reserva reservaExitosa;
+                Reserva reservaCola = null;
                 
                 if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
                         // Si la ciudad no existe retorna Error 3
                                 System.out.println("Realizar Reserva: La ciudad de nombre " + ciudad + " no existe");
                                 ret.resultado = Resultado.ERROR_3;
-                } else if ((cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero)) == null) {
+                } else if ( (cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero)) == null ) {
                                 // Si el crucero no existe en esa ciudad retorna Error 1
                                 System.out.println("Realizar Reserva: El crucero " + crucero + " no existe en la ciudad de "+ciudad);
                                 ret.resultado = Resultado.ERROR_1;
-//                } else if (reservaObj.getCliente().getId() == getListaCliente().BuscarObjeto(cliente).getId()) {
-//                                // Si el cliente no tiene reserva en el crucero en esa ciudad retorna Error 2
-//                                System.out.println("Realizar Reserva: El cliente " + cliente + " no tiene reserva en el crucero " + crucero + " en la ciudad " + ciudad);
-//                                ret.resultado = Resultado.ERROR_2;                
+                } else if ( (reservaExitosa = (cruceroObj.getReservasExitosas().BuscarObjeto(cliente, ciudad, crucero)) )== null && (reservaCola = (cruceroObj.getReservasEnCola().BuscarObjeto(cliente, ciudad, crucero))) == null) {
+                              // Si el cliente no tiene reservas en el crucero en dicha ciudad o si no tiene reservas en lista de espera retorna Error 2
+                                System.out.println("Cancelar Reserva: El cliente " + cliente + " no tiene reserva en el crucero " + crucero + " en la ciudad " + ciudad);
+                                ret.resultado = Resultado.ERROR_2;                
                 } else {
-                     //Obtengo la lista de clientes                                        
-//                      ListaCliente lisCli = this.getListaCliente();
-//                      //Encuentra el cliente que reserva
-//                      clienteObj = lisCli.BuscarObjeto(cliente);
+                   
+                        if ( reservaExitosa != null ){
+                            ListaReserva lisRes;
+                            lisRes = cruceroObj.getReservasExitosas();
+                            lisRes.BorrarNodo(reservaExitosa);
+                        }else if ( reservaCola != null){
+                            ColaReserva colaRes;
+                            colaRes = cruceroObj.getReservasEnCola();
+                            colaRes.BorrarNodo(reservaCola);                            
+                        }
                 }                  
 		return ret;
 	}

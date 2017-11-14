@@ -128,6 +128,7 @@ public class ListaCrucero {
             recorrer = recorrer.getSiguiente();
             contador++;
         }
-    } 
+    }
+     
      
 }

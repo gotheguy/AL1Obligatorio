@@ -8,7 +8,8 @@ public class Crucero {
     private int estrellas;
     private int ocupacion;
     
-    private ListaCliente pasajeros;
+    private ListaReserva reservasExitosas;
+    private ColaReserva reservasEnCola;
     private ListaServicios servicios;
     
     
@@ -44,12 +45,20 @@ public class Crucero {
         this.ocupacion = 0;        
     }
 
-    public ListaCliente getPasajeros() {
-        return pasajeros;
+    public ListaReserva getReservasExitosas() {
+        return reservasExitosas;
     }
 
-    public void setPasajeros(ListaCliente pasajeros) {
-        this.pasajeros = pasajeros;
+    public void setReservasExitosas(ListaReserva reservasExitosas) {
+        this.reservasExitosas = reservasExitosas;
+    }
+    
+     public ColaReserva getReservasEnCola() {
+        return reservasEnCola;
+    }
+
+    public void setReservasEnCola(ColaReserva reservasEnCola) {
+        this.reservasEnCola = reservasEnCola;
     }
     
      public ListaServicios getServicios() {
@@ -67,12 +76,13 @@ public class Crucero {
         this.setCantidadHabitaciones(cantidadHabitaciones);
         this.setEstrellas(estrellas);
         
-        this.setPasajeros(new ListaCliente());
+        this.setReservasExitosas(new ListaReserva());
+        this.setReservasEnCola(new ColaReserva());
         this.setServicios(new ListaServicios());
-    }
-     
-      public Crucero(){}
+    }    
     
+    public Crucero(){}
+     
     public boolean Equals(Crucero crucero){
         
         return this.getNombre().equals(crucero.getNombre());
