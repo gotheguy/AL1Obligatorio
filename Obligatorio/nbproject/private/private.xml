@@ -18,11 +18,19 @@
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
         </group>
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Crucero.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaReserva.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ColaReserva.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
+=======
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaRanking.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Crucero.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/NodoRanking.java</file>
+>>>>>>> 6dd2bdab6f05499b7f0b1650f67cf10379d6c7e8
         </group>
     </open-files>
 </project-private>
