@@ -42,7 +42,6 @@ public class ColaReserva implements ICola {
 
     @Override
     public void encolar(Reserva reserva) {  
-                
             
         NodoReserva nuevo = new NodoReserva((Reserva)reserva);                
         

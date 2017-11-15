@@ -5,9 +5,11 @@ public class Crucero {
     
     private String nombre;
     private int cantidadHabitaciones;
-    private int estrellas;
     private int ocupacion;
+    private int estrellas;
     
+    private ListaRanking ranking;
+    private ListaComentarios comentario;
     private ListaReserva reservasExitosas;
     private ColaReserva reservasEnCola;
     private ListaServicios servicios;
@@ -29,22 +31,38 @@ public class Crucero {
         this.cantidadHabitaciones = cantidadHabitaciones;
     }
 
-    public int getEstrellas() {
-        return estrellas;
-    }
-
-    public void setEstrellas(int estrellas) {
-        this.estrellas = estrellas;
-    }
-    
-     public int getOcupacion() {
+    public int getOcupacion() {
         return ocupacion;
     }
 
     public void setOcupacion(int ocupacion) {
         this.ocupacion = 0;        
     }
+    
+    public void setEstrellas(int estrellas) {
+        this.estrellas = estrellas;
+    }    
+    
+    public int getEstrellas() {
+        return estrellas;
+    }
 
+    public ListaRanking getListaRanking() {
+        return ranking;
+    }
+
+    public void setListaRanking(ListaRanking ranking) {
+        this.ranking = ranking;
+    }
+
+    public ListaComentarios getListaComentarios() {
+        return comentario;
+    }
+
+    public void setListaComentarios(ListaComentarios comentario) {
+        this.comentario = comentario;
+    }      
+    
     public ListaReserva getReservasExitosas() {
         return reservasExitosas;
     }
@@ -69,13 +87,13 @@ public class Crucero {
         this.servicios = servicios;
     }
     
-    
-     public Crucero(String nombre, int cantidadHabitaciones,int estrellas) {
+    public Crucero(String nombre, int cantidadHabitaciones,int estrellas) {
 
         this.setNombre(nombre);
         this.setCantidadHabitaciones(cantidadHabitaciones);
-        this.setEstrellas(estrellas);
         
+        this.setListaRanking(new ListaRanking());
+        this.setListaComentarios(new ListaComentarios());
         this.setReservasExitosas(new ListaReserva());
         this.setReservasEnCola(new ColaReserva());
         this.setServicios(new ListaServicios());

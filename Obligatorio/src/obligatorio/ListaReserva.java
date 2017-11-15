@@ -57,7 +57,7 @@ public class ListaReserva {
             while (nuevoNodo != null) 
             {
                 // Compara cliente, ciudad y crucero en la lista
-                if ((nuevoNodo.getReserva().getCliente().equals(cliente)) && (nuevoNodo.getReserva().getCiudad().getNombre().equals(ciudad)) && (nuevoNodo.getReserva().getCrucero().getNombre().equals(crucero))) 
+                if ((nuevoNodo.getReserva().getCliente().getId() == cliente) && (nuevoNodo.getReserva().getCiudad().getNombre().equals(ciudad)) && (nuevoNodo.getReserva().getCrucero().getNombre().equals(crucero))) 
                 {                    
                     // Retorna la posición del elemento
                     return nuevoNodo.getReserva();
@@ -137,4 +137,14 @@ public class ListaReserva {
         }
     }
     
+        public void Mostrarlista() {
+        NodoReserva recorrer = inicio;
+        int contador= 1;
+        while (recorrer != null) {
+            System.out.println(contador+"-" +recorrer.getReserva().getCrucero().getNombre()+"-"+recorrer.getReserva().getCliente().getNombre());
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
+    } 
+     
 }
