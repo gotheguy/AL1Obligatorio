@@ -119,7 +119,46 @@ public class ListaCrucero {
         
         contador++;
     }
-
+     
+     public int cantidadElementos(){
+        NodoCrucero aux;
+        int cantidad=0;
+        aux = inicio;
+ 
+        //Recorremos
+        while(aux != null){
+            cantidad++;
+            aux = aux.getSiguiente();
+        }
+        return cantidad;
+ 
+    }
+    
+    
+    public NodoCrucero devolverPrimero(){
+        NodoCrucero aux = null;
+        if (!esVacia()){
+            aux = inicio;
+        }
+        return  aux;
+    }
+     
+    public NodoCrucero devolverUltimo(){        
+        NodoCrucero aux = null;        
+        if (!esVacia()){
+            aux = inicio;             
+            //Recorremos
+            while(aux.getSiguiente() != null){
+                aux = aux.getSiguiente();
+            }            
+        }
+        return aux;
+    }
+    
+/*    public NodoCrucero elegirPivote (){
+      return ((this.cantidadElementos()/2));    
+    }
+*/
      public void MostrarLista() {
         NodoCrucero recorrer = inicio;
         int contador= 1;
@@ -129,6 +168,12 @@ public class ListaCrucero {
             contador++;
         }
     }
+      
+     public static void OrdenarLista (Object o, Object first, Object last){
+     ListaCrucero lisCru = (ListaCrucero)o;
+     NodoCrucero primero = (NodoCrucero)first;
+     NodoCrucero ultimo = (NodoCrucero)last;
      
+     }
      
 }
