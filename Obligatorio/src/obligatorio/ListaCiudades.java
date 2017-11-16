@@ -132,5 +132,19 @@ public class ListaCiudades {
         
         contador++;
     }
+     
+    public int cantidadElementos(){
+        NodoCiudad aux;
+        int cantidad=0;
+        aux = inicio;
+ 
+        //Recorremos
+        while(aux != null){
+            cantidad++;
+            aux = aux.getSiguiente();
+        }
+        return cantidad;
+ 
+    }        
     
 }

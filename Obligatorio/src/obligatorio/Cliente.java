@@ -3,7 +3,7 @@ package obligatorio;
 class Cliente {
 
 private String nombre;
-private String id;
+private int id;
 private String nickname;
 
     public String getNombre() {
@@ -14,11 +14,11 @@ private String nickname;
         this.nombre = nombre;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -30,7 +30,7 @@ private String nickname;
         this.nickname = nickname;
     }
     
-    public Cliente (String nombre, String id, String nickname)
+    public Cliente (String nombre, int id, String nickname)
     {
         this.setNombre(nombre);
         this.setId(id);

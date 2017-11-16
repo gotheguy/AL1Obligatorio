@@ -1,32 +1,32 @@
 package obligatorio;
 
-class ListaCliente {
+class ListaComentarios {
     
-    private NodoCliente inicio;
-    private NodoCliente ultimo;
+    private NodoComentario inicio;
+    private NodoComentario ultimo;
     private int contador;
     
     
-    public ListaCliente() {
+    public ListaComentarios() {
 
         this.setInicio(null);
         this.setUltimo(null);
         this.contador = 0;
     }
 
-    public NodoCliente getInicio() {
+    public NodoComentario getInicio() {
         return inicio;
     }
 
-    public void setInicio(NodoCliente inicio) {
+    public void setInicio(NodoComentario inicio) {
         this.inicio = inicio;
     }
 
-    public NodoCliente getUltimo() {
+    public NodoComentario getUltimo() {
         return ultimo;
     }
 
-    public void setUltimo(NodoCliente ultimo) {
+    public void setUltimo(NodoComentario ultimo) {
         this.ultimo = ultimo;
     }
 
@@ -42,38 +42,10 @@ class ListaCliente {
 
         return (this.getInicio() == null);
     }
-
-    public Cliente BuscarObjeto(int id) {
-
-        NodoCliente nuevoNodo;
-        
-        // Consulta si la lista esta vacia
-        if (!this.esVacia()) 
-        {
-            // Inicializa la lista agregando como inicio al nuevo nodo
-            nuevoNodo = this.getInicio();
-            
-            // Busca el objeto hasta llegar al último nodo
-            while (nuevoNodo != null) 
-            {
-                // Compara las ciudades mediante su id
-                if (nuevoNodo.getCliente().getId()== id ) 
-                {
-                    // Retorna la posición del elemento
-                    return nuevoNodo.getCliente();
-                }
-                nuevoNodo = nuevoNodo.getSiguiente();
-            }
-
-        }
-
-        return null;
-
-    }
     
-    public void agregarAlInicio(Cliente cliente){
+    public void agregarAlInicio(String comentario, int ranking){
         
-        NodoCliente nuevoNodo = new NodoCliente(cliente);
+        NodoComentario nuevoNodo = new NodoComentario(comentario,ranking);
 
         // Consulta si la lista esta vacia.
         if (esVacia()) {         
@@ -82,7 +54,7 @@ class ListaCliente {
         else
         {
             // Guardo el nodo inicial en una variable auxiliar
-            NodoCliente aux = this.getInicio();
+            NodoComentario aux = this.getInicio();
             //Guardo el nuevo nodo como el inicial
             inicio = nuevoNodo;
             // Renombra al nuevo nodo como el inicio de la lista
@@ -93,9 +65,9 @@ class ListaCliente {
         contador++;
     }
     
-     public void agregarAlFinal(Cliente cliente){
+     public void agregarAlFinal(String comentario, int ranking){
         
-        NodoCliente nuevo = new NodoCliente(cliente);
+        NodoComentario nuevo = new NodoComentario(comentario,ranking);
         
         // Consulta si la lista esta vacia o no
         if (esVacia()) {            
@@ -103,8 +75,7 @@ class ListaCliente {
         } 
         else
         {
- 
-            NodoCliente aux = inicio;
+            NodoComentario aux = inicio;
             // Recorre la lista hasta llegar al ultimo nodo.
             while(aux.getSiguiente() != null)
             {
@@ -115,5 +86,15 @@ class ListaCliente {
         }
         
         contador++;
+    }
+     
+        public void Mostrarlista() {
+        NodoComentario recorrer = inicio;
+        int contador= 1;
+        while (recorrer != null) {
+            System.out.println(recorrer.getComentario());
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
     }
 }

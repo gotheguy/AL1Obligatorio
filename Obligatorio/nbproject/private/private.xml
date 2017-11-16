@@ -9,6 +9,7 @@
 =======
             <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
             <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
+<<<<<<< HEAD
         </group>
         <group>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaServicios.java</file>
@@ -16,6 +17,9 @@
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
 >>>>>>> 031efdd5cc276148502121856c3fa2b42ecfacbd
+=======
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaComentarios.java</file>
+>>>>>>> eb65182d6ffd0047f1353e0ff6183c8a8a06fbc4
         </group>
     </open-files>
 </project-private>

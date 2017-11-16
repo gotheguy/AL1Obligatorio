@@ -159,5 +159,16 @@ public class ListaServicios {
         
         contador++;
     }
+     
+     //Metodo para listar los servicios
+    public void MostrarLista() {
+        NodoServicio recorrer = inicio;
+        int contador= 1;
+        while (recorrer != null) {
+            System.out.println(contador+"-" + recorrer.getServicio().getNombre());
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
+    }
   
 }
