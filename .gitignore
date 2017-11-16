@@ -1,7 +1,11 @@
 /Obligatorio_Algoritmos/nbproject/private/
 /Obligatorio/build/
+<<<<<<< HEAD
+/Obligatorio/nbproject/private/
+=======
 Obligatorio/nbproject/private/private.properties
 Obligatorio/nbproject/private/private.properties
 Obligatorio/nbproject/private/private.properties
 Obligatorio/nbproject/private/private.properties
 *.properties
+>>>>>>> eb65182d6ffd0047f1353e0ff6183c8a8a06fbc4
