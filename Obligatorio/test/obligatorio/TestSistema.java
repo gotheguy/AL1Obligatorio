@@ -1,4 +1,3 @@
-
 package obligatorio;
 
 import static org.junit.Assert.*;

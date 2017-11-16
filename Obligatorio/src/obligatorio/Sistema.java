@@ -124,12 +124,9 @@ public class Sistema {
                 this.setListaCliente(null);
                 this.setListaReserva(null);
                 this.setColaReserva(null);
-<<<<<<< HEAD
-	
-=======
                 this.setListaComentarios(null);
->>>>>>> 07a7d887eb024a8fb97758fccee4351107759aff
-		ret.resultado = Resultado.OK;
+		
+                ret.resultado = Resultado.OK;
 		return ret;
 	}
         //PRE: la ciudad no fue creada anteriormente
