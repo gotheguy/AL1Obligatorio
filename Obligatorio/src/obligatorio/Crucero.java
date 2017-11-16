@@ -8,7 +8,6 @@ public class Crucero {
     private int ocupacion;
     private int estrellas;
     
-    private ListaRanking ranking;
     private ListaComentarios comentario;
     private ListaReserva reservasExitosas;
     private ColaReserva reservasEnCola;
@@ -45,14 +44,6 @@ public class Crucero {
     
     public int getEstrellas() {
         return estrellas;
-    }
-
-    public ListaRanking getListaRanking() {
-        return ranking;
-    }
-
-    public void setListaRanking(ListaRanking ranking) {
-        this.ranking = ranking;
     }
 
     public ListaComentarios getListaComentarios() {
@@ -93,7 +84,6 @@ public class Crucero {
         this.setCantidadHabitaciones(cantidadHabitaciones);
         this.setEstrellas(estrellas);
         
-        this.setListaRanking(new ListaRanking());
         this.setListaComentarios(new ListaComentarios());
         this.setReservasExitosas(new ListaReserva());
         this.setReservasEnCola(new ColaReserva());
@@ -113,6 +103,10 @@ public class Crucero {
 
     public int compareTo(Crucero crucero) {
         return nombre.compareTo((crucero.getNombre()));
+    }
+    
+    public void restaOcupacion(Crucero crucero){
+        crucero.ocupacion--;
     }
     
 }

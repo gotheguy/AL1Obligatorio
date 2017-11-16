@@ -43,9 +43,9 @@ class ListaComentarios {
         return (this.getInicio() == null);
     }
     
-    public void agregarAlInicio(String comentario){
+    public void agregarAlInicio(String comentario, int ranking){
         
-        NodoComentario nuevoNodo = new NodoComentario(comentario);
+        NodoComentario nuevoNodo = new NodoComentario(comentario,ranking);
 
         // Consulta si la lista esta vacia.
         if (esVacia()) {         
@@ -65,9 +65,9 @@ class ListaComentarios {
         contador++;
     }
     
-     public void agregarAlFinal(String comentario){
+     public void agregarAlFinal(String comentario, int ranking){
         
-        NodoComentario nuevo = new NodoComentario(comentario);
+        NodoComentario nuevo = new NodoComentario(comentario,ranking);
         
         // Consulta si la lista esta vacia o no
         if (esVacia()) {            
@@ -75,7 +75,6 @@ class ListaComentarios {
         } 
         else
         {
- 
             NodoComentario aux = inicio;
             // Recorre la lista hasta llegar al ultimo nodo.
             while(aux.getSiguiente() != null)
@@ -87,5 +86,15 @@ class ListaComentarios {
         }
         
         contador++;
+    }
+     
+        public void Mostrarlista() {
+        NodoComentario recorrer = inicio;
+        int contador= 1;
+        while (recorrer != null) {
+            System.out.println(recorrer.getComentario());
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
     }
 }

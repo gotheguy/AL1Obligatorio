@@ -10,7 +10,8 @@ public class Sistema {
     private ListaCliente listaClientes;
     private ListaReserva listaReservas;
     private ColaReserva colaReservas;
-    
+    private ListaComentarios listaComentarios;
+
     public ListaCiudades getListaCiudades() {
         return listaCiudades;
     }
@@ -57,6 +58,14 @@ public class Sistema {
         this.colaReservas = colaReservas;
     }  
     
+    public ListaComentarios getListaComentarios(){
+        return listaComentarios;
+    }
+    
+    public void setListaComentarios(ListaComentarios listaComentarios){
+        this.listaComentarios = listaComentarios;
+    }
+
     public Sistema() {
 
         this.setListaCiudades(new ListaCiudades(0));
@@ -65,6 +74,7 @@ public class Sistema {
         this.setListaCliente(new ListaCliente());
         this.setListaReserva(new ListaReserva());
         this.setColaReserva(new ColaReserva());
+        this.setListaComentarios(new ListaComentarios()); 
     }
         //PRE: cantidad de ciudades > 0   
         //POST: se crea el sistema siempre y cuando no fuese creado anteriormente
@@ -89,6 +99,12 @@ public class Sistema {
                      if (this.getListaReserva()== null) {
                         this.setListaReserva(new ListaReserva());
                     }
+                     if (this.getColaReserva()== null) {
+                        this.setColaReserva(new ColaReserva());
+                    }
+                     if (this.getListaComentarios()== null) {
+                        this.setListaComentarios(new ListaComentarios());
+                    }
                 this.getListaCiudades().setTamanio(cantCiudades);
                 ret.resultado = Resultado.OK;
                 }  
@@ -108,7 +124,11 @@ public class Sistema {
                 this.setListaCliente(null);
                 this.setListaReserva(null);
                 this.setColaReserva(null);
+<<<<<<< HEAD
 	
+=======
+                this.setListaComentarios(null);
+>>>>>>> 07a7d887eb024a8fb97758fccee4351107759aff
 		ret.resultado = Resultado.OK;
 		return ret;
 	}
@@ -294,28 +314,28 @@ public class Sistema {
 //            this.getColaReserva().MostrarCola();        
 //       }
 //        
-//        public void mostrarLista(){
-//             this.getListaReserva().Mostrarlista();
-//        }
+        public void mostrarLista(){
+             this.getListaReserva().Mostrarlista();
+        }
 
 	public Retorno cancelarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
                 
-                Ciudad ciudadObj;
-                Crucero cruceroObj;                
-                Reserva reservaExitosa;
-                Reserva reservaCola = null;
+                Ciudad ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+                Crucero cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);                
+                Reserva reservaExitosa = cruceroObj.getReservasExitosas().BuscarObjeto(cliente, ciudad, crucero);
+                Reserva reservaCola = cruceroObj.getReservasEnCola().BuscarObjeto(cliente, ciudad, crucero);
                 
-                if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
+                if (ciudadObj == null) {
                         // Si la ciudad no existe retorna Error 3
                                 System.out.println("Cancelar Reserva: La ciudad de nombre " + ciudad + " no existe");
                                 ret.resultado = Resultado.ERROR_3;
-                } else if ((cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero)) == null ) {
+                } else if (cruceroObj == null) {
                                 // Si el crucero no existe en esa ciudad retorna Error 1
                                 System.out.println("Cancelar Reserva: El crucero " + crucero + " no existe en la ciudad de " + ciudad);
                                 ret.resultado = Resultado.ERROR_1;
-                } else if ((reservaExitosa = (cruceroObj.getReservasExitosas().BuscarObjeto(cliente, ciudad, crucero))) == null && (reservaCola = (cruceroObj.getReservasEnCola().BuscarObjeto(cliente, ciudad, crucero))) == null) {
+                } else if ( reservaExitosa == null && reservaCola == null) {
                               // Si el cliente no tiene reservas en el crucero en dicha ciudad o si no tiene reservas en lista de espera retorna Error 2                                
                                 System.out.println("Cancelar Reserva: El cliente " + cliente + " no tiene reserva en el crucero " + crucero + " en la ciudad " + ciudad);
                                 ret.resultado = Resultado.ERROR_2;                
@@ -324,13 +344,12 @@ public class Sistema {
                             ListaReserva lisRes;
                             lisRes = cruceroObj.getReservasExitosas();
                             lisRes.BorrarNodo(reservaExitosa);
+                            cruceroObj.restaOcupacion(cruceroObj);
                             ret.resultado = Resultado.OK;
-                            
                         } else if (reservaCola != null){
                             ColaReserva colaRes;
                             colaRes = cruceroObj.getReservasEnCola();
                             colaRes.BorrarNodo(reservaCola);        
-                            cruceroObj.getReservasEnCola().desencolar();
                             ret.resultado = Resultado.OK;
                         }
                 }                  
@@ -359,10 +378,10 @@ public class Sistema {
                         // Si el crucero no existe en esa ciudad retorna Error 2
                         System.out.println("Ingresar Comentario: El crucero " + crucero + " no existe en la ciudad de " + ciudad);
                         ret.resultado = Resultado.ERROR_2;
-                } 
-                
-                
-                
+                } else {
+                        cruceroObj.getListaComentarios().agregarAlFinal(comentario, ranking);
+                        ret.resultado = Resultado.OK;
+                }
 		return ret;
 	}
 

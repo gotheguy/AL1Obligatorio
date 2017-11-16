@@ -1,9 +1,5 @@
 package obligatorio;
 
-/**
- *
- * @author Signature
- */
 public class ColaReserva implements ICola {
     
     private NodoReserva inicio;
@@ -142,7 +138,7 @@ public class ColaReserva implements ICola {
             while (nuevoNodo != null) 
             {
                 // Compara cliente, ciudad y crucero en la lista
-                if ((nuevoNodo.getReserva().getCliente().equals(cliente)) && (nuevoNodo.getReserva().getCiudad().getNombre().equals(ciudad)) && (nuevoNodo.getReserva().getCrucero().getNombre().equals(crucero))) 
+                if ((nuevoNodo.getReserva().getCliente().getId() == cliente) && (nuevoNodo.getReserva().getCiudad().getNombre().equals(ciudad)) && (nuevoNodo.getReserva().getCrucero().getNombre().equals(crucero))) 
                 {                    
                     // Retorna la posición del elemento
                     return nuevoNodo.getReserva();
