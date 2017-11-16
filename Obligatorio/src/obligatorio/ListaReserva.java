@@ -116,25 +116,53 @@ public class ListaReserva {
         
         contador++;
     }
-     
-     public void BorrarNodo(Reserva reserva)
-    {
-        NodoReserva actual;
-        NodoReserva anterior;
-        actual = inicio;
-        anterior = null;
-        
-        while (actual != null){            
-            if(actual.getReserva() == reserva){
-                if(actual == inicio){
-                    inicio = inicio.getSiguiente();                
-                }else{                   
-                    anterior = actual.getSiguiente();
-                }
+    
+    public boolean buscar(Reserva reserva){
+
+        NodoReserva aux = inicio;
+        boolean encontrado = false;
+
+        while(aux != null && encontrado != true){
+            
+            if (reserva == aux.getReserva()){
+                encontrado = true;
             }
-            anterior = actual;
-            actual = actual.getSiguiente();
+            else{
+                aux = aux.getSiguiente();
+            }
         }
+        // Retorna el resultado de la bandera
+        return encontrado;
+     }
+     
+     public void BorrarNodo(Reserva reserva){        
+        if (buscar(reserva)) {
+            if (inicio.getReserva()== reserva) {                
+                inicio = inicio.getSiguiente();
+            } else{                
+                NodoReserva aux = inicio;                
+                while(aux.getSiguiente().getReserva()!= reserva){
+                    aux = aux.getSiguiente();
+                }
+                // Guarda el nodo siguiente del nodo a eliminar
+                NodoReserva siguiente = aux.getSiguiente().getSiguiente();
+                // Enlaza el nodo anterior al de eliminar con el que le sigue
+                aux.setSiguiente(siguiente);  
+            }
+            
+            contador--;
+        }
+    }
+     
+    public void MostrarLista() {
+        NodoReserva recorrer = inicio;
+        int iterador = 1;
+        while (recorrer != null) {
+            System.out.println(iterador+"-" + recorrer.getReserva().getCrucero().getNombre()+ "-" + recorrer.getReserva().getCliente().getNombre());
+            recorrer = recorrer.getSiguiente();
+            iterador++;
+        }
+        System.out.println("");
     }
     
         public void Mostrarlista() {

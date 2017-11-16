@@ -144,7 +144,7 @@ public class ListaCrucero {
         }
         return aux;
     }
-    
+    /*
     public int posicionPivote (){
       int posicion=0;
       posicion = ( (this.cantidadElementos()) /2 );
@@ -153,9 +153,7 @@ public class ListaCrucero {
       return posicion;
       
     }
- 
-    // Devuelve el nodo de la posicion indicada
-    // @return Nodo de la posicion indicada
+ */
     public NodoCrucero devolverNodo(int pos){
         NodoCrucero aux = inicio;
         int cont=0;

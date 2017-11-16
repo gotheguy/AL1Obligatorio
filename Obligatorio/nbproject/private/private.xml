@@ -3,23 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
-            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
-=======
-            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
-            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
-<<<<<<< HEAD
-        </group>
-        <group>
-            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaServicios.java</file>
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/NodoServicio.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Crucero.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaCrucero.java</file>
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/NodoCliente.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
->>>>>>> 031efdd5cc276148502121856c3fa2b42ecfacbd
-=======
-            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaComentarios.java</file>
->>>>>>> eb65182d6ffd0047f1353e0ff6183c8a8a06fbc4
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/NodoCrucero.java</file>
         </group>
     </open-files>
 </project-private>

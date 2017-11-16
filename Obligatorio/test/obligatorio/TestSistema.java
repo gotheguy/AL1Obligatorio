@@ -220,7 +220,8 @@ public class TestSistema {
         assertEquals(Retorno.Resultado.ERROR_2,r.resultado);
         r = s.realizarReserva(1,"Montevideo", "MSCclara");
         assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
-        
+        s.MostrarReservasExitosas("Montevideo", "AIDAsofia");
+        s.MostrarColaReserva("Montevideo", "AIDAsofia");
         s.destruirSistemaReservas();   
     }
     
@@ -257,14 +258,16 @@ public class TestSistema {
         s.realizarReserva(4,"Canelones", "MSClucia");
 
 
-        r = s.cancelarReserva(1,"Montevideo", "AIDAsofia");
-        assertEquals(Retorno.Resultado.OK,r.resultado);
-        r = s.cancelarReserva(2,"Montevideo", "AIDAsofia");
-        assertEquals(Retorno.Resultado.OK,r.resultado);
-        r = s.cancelarReserva(4,"Montevideo", "AIDAsofia");
-        assertEquals(Retorno.Resultado.OK,r.resultado);
-
-        
+          r = s.cancelarReserva(1,"Montevideo", "AIDAsofia");
+          assertEquals(Retorno.Resultado.OK,r.resultado);
+ /*         r = s.cancelarReserva(3,"Montevideo", "AIDAsofia");
+          assertEquals(Retorno.Resultado.OK,r.resultado);
+          r = s.cancelarReserva(4,"Montevideo", "AIDAsofia");
+          assertEquals(Retorno.Resultado.OK,r.resultado); 
+*/
+          s.MostrarReservasExitosas("Montevideo","AIDAsofia");
+          s.MostrarColaReservaCancelar("Montevideo","AIDAsofia");
+       
         s.destruirSistemaReservas();   
     }
     
@@ -332,7 +335,9 @@ public class TestSistema {
         s.registrarCrucero("Montevideo", "MSCclara", 2, 200);
         s.registrarCrucero("Montevideo", "AIDAcara", 4, 5);
         s.registrarCrucero("Canelones", "MSClucia", 3, 50);
-        s.registrarCrucero("Canelones", "AIDAmaria", 3, 50);
+        s.registrarCrucero("Canelones", "MSCana", 1, 50);
+        s.registrarCrucero("Canelones", "AIDAmaria", 3, 50);        
+        s.registrarCrucero("Canelones", "SchandyWell", 5, 50);
     /*    s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
         s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
         s.ingresarServicio("Montevideo", "AIDAcara", "Room Service");
@@ -352,7 +357,9 @@ public class TestSistema {
         s.realizarReserva(4,"Canelones", "MSClucia");*/
 
         r = s.listarCrucerosCiudad("Montevideo");
-        assertEquals(Retorno.Resultado.OK,r.resultado);        
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.listarCrucerosCiudad("Canelones");
+        assertEquals(Retorno.Resultado.OK,r.resultado); 
                 
         s.destruirSistemaReservas();   
     }

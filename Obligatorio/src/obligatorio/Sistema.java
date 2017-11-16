@@ -307,13 +307,46 @@ public class Sistema {
 		return ret;
 	}
         
-//       public void mostrarCola(){
-//            this.getColaReserva().MostrarCola();        
-//       }
+         public void MostrarColaReserva(String ciudad,String crucero){
+           Crucero cruceroObj;
+           Ciudad ciudadObj;
+           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
+           
+           ColaReserva colaRes = cruceroObj.getReservasEnCola();
+           System.out.println("Realizar Reserva:");
+           colaRes.MostrarLista();
+           System.out.println("");
+           
+       };
+        
+       public void MostrarColaReservaCancelar(String ciudad,String crucero){
+           Crucero cruceroObj;
+           Ciudad ciudadObj;
+           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
+           
+           ColaReserva colaRes = cruceroObj.getReservasEnCola();
+           System.out.println("");
+           System.out.println("Cancelar Reserva:");
+           colaRes.MostrarLista();
+           System.out.println("");
+           
+       };
 //        
-        public void mostrarLista(){
-             this.getListaReserva().Mostrarlista();
-        }
+       public void MostrarReservasExitosas(String ciudad,String crucero){
+           Crucero cruceroObj;
+           Ciudad ciudadObj;
+           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
+           
+           ListaReserva lisRes = cruceroObj.getReservasExitosas();
+           System.out.println("");
+           System.out.println("Reserva Exitosas de "+crucero);           
+           lisRes.MostrarLista();
+           System.out.println("");
+           
+       };
 
 	public Retorno cancelarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();
