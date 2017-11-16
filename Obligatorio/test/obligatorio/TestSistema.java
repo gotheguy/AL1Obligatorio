@@ -258,14 +258,61 @@ public class TestSistema {
         s.realizarReserva(4,"Canelones", "MSClucia");
 
 
-        r = s.cancelarReserva(4,"Canelones", "MSClucia");
+        r = s.cancelarReserva(1,"Montevideo", "AIDAsofia");
         assertEquals(Retorno.Resultado.OK,r.resultado);
-        r = s.cancelarReserva(1,"Paysandu", "MSClucia");
-        assertEquals(Retorno.Resultado.ERROR_3,r.resultado);
-        r = s.cancelarReserva(1,"Montevideo", "MSClucia");
-        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
-        r = s.cancelarReserva(1,"Canelones", "MSClucia");
-        assertEquals(Retorno.Resultado.ERROR_2,r.resultado);
+        r = s.cancelarReserva(2,"Montevideo", "AIDAsofia");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.cancelarReserva(4,"Montevideo", "AIDAsofia");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+
+        
+        s.destruirSistemaReservas();   
+    }
+    
+        @Test
+    public void TestIngresarComentario(){
+
+        Sistema s = new Sistema();
+        Retorno r;
+        s.crearSistemaReservas(5);
+        s.registrarCiudad("Montevideo");
+        s.registrarCiudad("Maldonado");
+        s.registrarCiudad("Canelones");
+        s.registrarCrucero("Montevideo", "AIDAcara", 4, 5);
+        s.registrarCrucero("Montevideo", "AIDAsofia", 2, 2);
+        s.registrarCrucero("Maldonado", "MSCclara", 2, 200);
+        s.registrarCrucero("Maldonado", "ROYALcaribbean", 5, 400);
+        s.registrarCrucero("Canelones", "MSClucia", 3, 50);
+        s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Room Service");
+        s.ingresarServicio("Montevideo", "AIDAsofia", "Jacuzzi");
+        s.registrarCliente("Martin", 1, "mtisco");
+        s.registrarCliente("Gonzalo", 2, "gOtheguy");
+        s.registrarCliente("Nicolas", 3, "nUmpi");
+        s.registrarCliente("Eduardo", 4, "edupa");
+        s.realizarReserva(1,"Montevideo", "AIDAsofia");
+        s.realizarReserva(2,"Montevideo", "AIDAsofia");
+        s.realizarReserva(4,"Montevideo", "AIDAsofia");
+        s.realizarReserva(3,"Montevideo", "AIDAsofia");
+        s.realizarReserva(1,"Montevideo", "AIDAsofia");
+        s.realizarReserva(2,"Montevideo", "AIDAsofia");
+        s.realizarReserva(2,"Maldonado", "MSCclara");        
+        s.realizarReserva(3,"Montevideo", "AIDAsofia");        
+        s.realizarReserva(4,"Canelones", "MSClucia");
+        s.cancelarReserva(1,"Montevideo", "AIDAsofia");
+        s.cancelarReserva(2,"Montevideo", "AIDAsofia");
+        s.cancelarReserva(4,"Montevideo", "AIDAsofia");
+        
+        
+        r = s.ingresarComentario("Montevideo", "AIDAsofia", "Gran atención", 3);
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.ingresarComentario("Montevideo", "AIDAsofia", "Recomendado", 4);
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.ingresarComentario("Montevideo", "AIDAsofia", "Precios muy caros", 1);
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        r = s.ingresarComentario("Montevideo", "AIDAsofia", "Excelente todo", 5);
+        assertEquals(Retorno.Resultado.OK,r.resultado);
         
         s.destruirSistemaReservas();   
     }
