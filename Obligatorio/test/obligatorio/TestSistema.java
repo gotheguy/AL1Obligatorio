@@ -220,7 +220,7 @@ public class TestSistema {
         r = s.realizarReserva(1,"Paysandu", "MSClucia");
         assertEquals(Retorno.Resultado.ERROR_2,r.resultado);
         r = s.realizarReserva(1,"Montevideo", "MSCclara");
-        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);  
+        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
         
         s.destruirSistemaReservas();   
     }
@@ -269,7 +269,7 @@ public class TestSistema {
         
         s.destruirSistemaReservas();   
     }
-    
+   
     @Test
     public void TestListarCruceroPorCiudad(){
 
@@ -279,13 +279,15 @@ public class TestSistema {
         s.registrarCiudad("Montevideo");
         s.registrarCiudad("Maldonado");
         s.registrarCiudad("Canelones");        
-        s.registrarCrucero("Montevideo", "AIDAsofia", 2, 2);        
+        s.registrarCrucero("Montevideo", "AIDAsofia", 2, 2);
+        s.registrarCrucero("Montevideo", "AIDAmaria", 2, 2);         
+        s.registrarCrucero("Montevideo", "AIDAirma", 2, 2); 
         s.registrarCrucero("Montevideo", "ROYALcaribbean", 5, 400);
         s.registrarCrucero("Montevideo", "MSCclara", 2, 200);
         s.registrarCrucero("Montevideo", "AIDAcara", 4, 5);
         s.registrarCrucero("Canelones", "MSClucia", 3, 50);
         s.registrarCrucero("Canelones", "AIDAmaria", 3, 50);
-        s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+    /*    s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
         s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
         s.ingresarServicio("Montevideo", "AIDAcara", "Room Service");
         s.ingresarServicio("Montevideo", "AIDAsofia", "Jacuzzi");
@@ -301,8 +303,7 @@ public class TestSistema {
         s.realizarReserva(2,"Montevideo", "AIDAsofia");
         s.realizarReserva(2,"Montevideo", "MSCclara");        
         s.realizarReserva(3,"Montevideo", "AIDAsofia");        
-        s.realizarReserva(4,"Canelones", "MSClucia");
-
+        s.realizarReserva(4,"Canelones", "MSClucia");*/
 
         r = s.listarCrucerosCiudad("Montevideo");
         assertEquals(Retorno.Resultado.OK,r.resultado);        

@@ -91,6 +91,7 @@ public class Crucero {
 
         this.setNombre(nombre);
         this.setCantidadHabitaciones(cantidadHabitaciones);
+        this.setEstrellas(estrellas);
         
         this.setListaRanking(new ListaRanking());
         this.setListaComentarios(new ListaComentarios());
@@ -108,6 +109,10 @@ public class Crucero {
     public void sumaOcupacion (Crucero crucero){
 
         crucero.ocupacion++;
+    }
+
+    public int compareTo(Crucero crucero) {
+        return nombre.compareTo((crucero.getNombre()));
     }
     
 }

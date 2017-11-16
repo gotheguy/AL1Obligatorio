@@ -4,13 +4,11 @@ package obligatorio;
 public class ListaCrucero {
     
     private NodoCrucero inicio;
-    private NodoCrucero ultimo;
     private int contador;
     
      public ListaCrucero() {
 
         this.setInicio(null);
-        this.setUltimo(null);
         this.contador = 0;
     }
 
@@ -20,14 +18,6 @@ public class ListaCrucero {
 
     public void setInicio(NodoCrucero inicio) {
         this.inicio = inicio;
-    }
-
-    public NodoCrucero getUltimo() {
-        return ultimo;
-    }
-
-    public void setUltimo(NodoCrucero ultimo) {
-        this.ultimo = ultimo;
     }
 
     public int getContador() {
@@ -155,25 +145,83 @@ public class ListaCrucero {
         return aux;
     }
     
-/*    public NodoCrucero elegirPivote (){
-      return ((this.cantidadElementos()/2));    
+    public int posicionPivote (){
+      int posicion=0;
+      posicion = ( (this.cantidadElementos()) /2 );
+      Math.round(posicion);
+      
+      return posicion;
+      
     }
-*/
-     public void MostrarLista() {
+ 
+    // Devuelve el nodo de la posicion indicada
+    // @return Nodo de la posicion indicada
+    public NodoCrucero devolverNodo(int pos){
+        NodoCrucero aux = inicio;
+        int cont=0;
+         
+        if(pos<0 || pos>=cantidadElementos()){
+            System.out.println("La posicion insertada no es correcta");
+        }else{
+            //recorremos
+            while(aux!=null){
+                if (pos == cont){
+                    //Devuelvo aux, con esto salimos de la función
+                    return aux; 
+                }
+                 
+                //Actualizo el siguiente
+                aux=aux.getSiguiente();
+                cont++;
+                 
+            }
+        }
+         
+        return aux;
+         
+    }   
+    
+
+    public void MostrarLista() {
         NodoCrucero recorrer = inicio;
         int contador= 1;
         while (recorrer != null) {
-            System.out.println(contador+"-" + recorrer.getCrucero().getNombre());
+            System.out.println(contador+"-" + recorrer.getCrucero().getNombre()+ "-" + recorrer.getCrucero().getEstrellas()+"- ranking");
             recorrer = recorrer.getSiguiente();
             contador++;
         }
+        System.out.println("");
+    }
+    
+     public void Ordenar(Object o) {        
+        NodoCrucero anterior, actual, posterior;
+        anterior = null;
+        actual = inicio;
+        
+        for (int i = 0; i < contador; i++) {
+            posterior = actual.getSiguiente();
+            for (int j = 1; j < contador - i; j++) {
+                if (posterior.getCrucero().compareTo(actual.getCrucero()) < 0) {
+                    if (anterior == null) {
+                        inicio = posterior;
+                    } else {
+                        anterior.setSiguiente(posterior);
+                    }
+                    actual.setSiguiente(posterior.getSiguiente());
+                    posterior.setSiguiente(actual);
+                    anterior = posterior;
+                    posterior = actual.getSiguiente();
+                } else {
+                    anterior = actual;
+                    actual = posterior;
+                    posterior = posterior.getSiguiente();
+                }                
+            }
+            anterior = null;
+            actual = inicio;
+        }
+        
+        
     }
       
-     public static void OrdenarLista (Object o, Object first, Object last){
-     ListaCrucero lisCru = (ListaCrucero)o;
-     NodoCrucero primero = (NodoCrucero)first;
-     NodoCrucero ultimo = (NodoCrucero)last;
-     
-     }
-     
 }

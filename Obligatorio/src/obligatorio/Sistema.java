@@ -66,7 +66,8 @@ public class Sistema {
         this.setListaReserva(new ListaReserva());
         this.setColaReserva(new ColaReserva());
     }
-        
+        //PRE: cantidad de ciudades > 0   
+        //POST: se crea el sistema siempre y cuando no fuese creado anteriormente
 	public Retorno crearSistemaReservas(int cantCiudades) {
 		Retorno ret = new Retorno();
 		
@@ -95,7 +96,8 @@ public class Sistema {
             return ret;
 	} 
 
-	
+	//PRE: 
+        //POST: se destruye el sistema sin generar errores
 	public Retorno destruirSistemaReservas() {
 		Retorno ret = new Retorno();
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
@@ -105,12 +107,13 @@ public class Sistema {
                 this.setListaServicios(null);
                 this.setListaCliente(null);
                 this.setListaReserva(null);
+                this.setColaReserva(null);
 	
 		ret.resultado = Resultado.OK;
 		return ret;
 	}
-
-        
+        //PRE: la ciudad no fue creada anteriormente
+        //POST: si la ciudad a ingresar no existe ya en el sistema, se agrega a la lista de ciudades si no esta llena
 	public Retorno registrarCiudad(String nombre) {
 		Retorno ret = new Retorno();
 		
@@ -270,26 +273,26 @@ public class Sistema {
                       //Se crea la reserva
                       
                       Reserva nuevaReserva = new Reserva(ciudadObj,cruceroObj,clienteObj);                                            
-                      
+
                       if(cruceroObj.getOcupacion()<cruceroObj.getCantidadHabitaciones()){
                           //Se agrega la reserva a la lista
                             cruceroObj.getReservasExitosas().agregarAlFinal(nuevaReserva);
                            // Se suma ocupación al crucero
                             cruceroObj.sumaOcupacion(cruceroObj);
-                      } else {
-                          //REVISAR EL ENCOLAR
+                      } else {                          
                           ColaReserva colaRes = cruceroObj.getReservasEnCola();
                           colaRes.encolar(nuevaReserva);
                       }
+                      
                       ret.resultado = Resultado.OK;
                  }
 		
 		return ret;
 	}
         
-//        public void mostrarCola(){
-//             this.getColaReserva().MostrarCola();        
-//        }
+//       public void mostrarCola(){
+//            this.getColaReserva().MostrarCola();        
+//       }
 //        
 //        public void mostrarLista(){
 //             this.getListaReserva().Mostrarlista();
@@ -401,7 +404,7 @@ public class Sistema {
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
                 
                 Ciudad ciudadObj;                
-                ListaCrucero lisCru= null;
+                ListaCrucero lisCru;
                 
                 if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
                     // Si la ciudad no existe retorna Error 1
@@ -410,7 +413,9 @@ public class Sistema {
                 }else
                 {
                     lisCru = ciudadObj.getLista();
-                    lisCru.devolverPrimero();
+                    lisCru.Ordenar(lisCru);
+                    System.out.println("Cruceros en " + ciudad);
+                    lisCru.MostrarLista();
                     ret.resultado = Resultado.OK;
                 }
 		
