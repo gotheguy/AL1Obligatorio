@@ -372,14 +372,24 @@ public class Sistema {
                 } else {
                         if (reservaExitosa != null){
                             ListaReserva lisRes;
+                            ColaReserva colaRes;
+                            colaRes = cruceroObj.getReservasEnCola();
                             lisRes = cruceroObj.getReservasExitosas();
                             lisRes.BorrarNodo(reservaExitosa);
+                            NodoReserva primeroEnCola = colaRes.devolverPrimero();
+                            lisRes.agregarAlFinal(primeroEnCola.getReserva());
+                            colaRes.desencolar();
                             cruceroObj.restaOcupacion(cruceroObj);
                             ret.resultado = Resultado.OK;
                         } else if (reservaCola != null){
                             ColaReserva colaRes;
                             colaRes = cruceroObj.getReservasEnCola();
-                            colaRes.BorrarNodo(reservaCola);        
+                            colaRes.BorrarNodo(reservaCola);
+                            NodoReserva primeroEnCola = colaRes.devolverPrimero();
+                            ListaReserva lisRes;
+                            lisRes = cruceroObj.getReservasExitosas();
+                            lisRes.agregarAlFinal(primeroEnCola.getReserva());
+                            colaRes.desencolar();
                             ret.resultado = Resultado.OK;
                         }
                 }                  

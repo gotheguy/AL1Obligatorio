@@ -251,16 +251,16 @@ public class TestSistema {
         s.realizarReserva(2,"Montevideo", "AIDAsofia");
         s.realizarReserva(4,"Montevideo", "AIDAsofia");
         s.realizarReserva(3,"Montevideo", "AIDAsofia");
-        s.realizarReserva(1,"Montevideo", "AIDAsofia");
+  /*      s.realizarReserva(1,"Montevideo", "AIDAsofia");
         s.realizarReserva(2,"Montevideo", "AIDAsofia");
         s.realizarReserva(2,"Maldonado", "MSCclara");        
         s.realizarReserva(3,"Montevideo", "AIDAsofia");        
         s.realizarReserva(4,"Canelones", "MSClucia");
+*/
 
-
-          r = s.cancelarReserva(1,"Montevideo", "AIDAsofia");
+          r = s.cancelarReserva(2,"Montevideo", "AIDAsofia");
           assertEquals(Retorno.Resultado.OK,r.resultado);
- /*         r = s.cancelarReserva(3,"Montevideo", "AIDAsofia");
+ /*       r = s.cancelarReserva(3,"Montevideo", "AIDAsofia");
           assertEquals(Retorno.Resultado.OK,r.resultado);
           r = s.cancelarReserva(4,"Montevideo", "AIDAsofia");
           assertEquals(Retorno.Resultado.OK,r.resultado); 

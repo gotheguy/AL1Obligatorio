@@ -64,13 +64,14 @@ public class ColaReserva implements ICola {
 
     @Override
     public void desencolar() {
-        
+        NodoReserva primero;
         if(!this.EstaVacia()){
-            
+            primero = inicio;
             this.setInicio(this.getInicio().getSiguiente());
             
             this.setContador(this.getContador()-1);
         }
+        
     }
 
     @Override
