@@ -3,9 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaCrucero.java</file>
+            <file>file:/C:/Users/inglo_000/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
+=======
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/NodoServicio.java</file>
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Crucero.java</file>
+>>>>>>> 50342edeb23f69de9986d1a31749784dde60fc1d
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ColaReserva.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
+<<<<<<< HEAD
+=======
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/NodoCrucero.java</file>
+>>>>>>> 17ba7e1102d507eff76cf5a0f4c9e20a11a74d46
+>>>>>>> 50342edeb23f69de9986d1a31749784dde60fc1d
         </group>
     </open-files>
 </project-private>

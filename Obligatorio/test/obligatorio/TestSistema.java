@@ -327,7 +327,7 @@ public class TestSistema {
         s.crearSistemaReservas(5);
         s.registrarCiudad("Montevideo");
         s.registrarCiudad("Maldonado");
-        s.registrarCiudad("Canelones");        
+        s.registrarCiudad("Canelones");
         s.registrarCrucero("Montevideo", "AIDAsofia", 2, 2);
         s.registrarCrucero("Montevideo", "AIDAmaria", 2, 2);         
         s.registrarCrucero("Montevideo", "AIDAirma", 2, 2); 
@@ -356,10 +356,15 @@ public class TestSistema {
         s.realizarReserva(3,"Montevideo", "AIDAsofia");        
         s.realizarReserva(4,"Canelones", "MSClucia");*/
 
+
+        r = s.listarCrucerosCiudad("Rio Negro");
+        assertEquals(Retorno.Resultado.ERROR_1,r.resultado);  
         r = s.listarCrucerosCiudad("Montevideo");
         assertEquals(Retorno.Resultado.OK,r.resultado);
         r = s.listarCrucerosCiudad("Canelones");
         assertEquals(Retorno.Resultado.OK,r.resultado); 
+        r = s.listarCrucerosCiudad("Maldonado");
+        assertEquals(Retorno.Resultado.OK,r.resultado);
                 
         s.destruirSistemaReservas();   
     }

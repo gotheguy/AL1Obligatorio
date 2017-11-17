@@ -199,7 +199,7 @@ public class Sistema {
                                 ret.resultado = Resultado.ERROR_3;
                     } else {
                         //Se crea el crucero y se agrega a la lista crucero que contiene la ciudad
-                        Crucero nuevoCrucero = new Crucero(nombre, capacidad, estrellas);                       
+                        Crucero nuevoCrucero = new Crucero(nombre, capacidad, estrellas,0);                       
                         ciudadObj.getLista().agregarAlFinal(nuevoCrucero);
                          //retorna resultado OK
                         ret.resultado = Resultado.OK;
@@ -418,6 +418,8 @@ public class Sistema {
                         ret.resultado = Resultado.ERROR_2;
                 } else {
                         cruceroObj.getListaComentarios().agregarAlFinal(comentario, ranking);
+                        int rankinggeneral = cruceroObj.getListaComentarios().calcularPromedio();
+                        cruceroObj.setRankingGeneral(rankinggeneral);
                         ret.resultado = Resultado.OK;
                 }
 		return ret;
@@ -460,20 +462,24 @@ public class Sistema {
 		Retorno ret = new Retorno();		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
                 
-                Ciudad ciudadObj;                
+                Ciudad ciudadObj;  
+                Crucero cruceroObj;
                 ListaCrucero lisCru;
                 
                 if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
                     // Si la ciudad no existe retorna Error 1
                     System.out.println("Listar Cruceros Por Ciudad: La ciudad de nombre " + ciudad + " no existe");
                     ret.resultado = Resultado.ERROR_1;
-                }else
-                {
-                    lisCru = ciudadObj.getLista();
-                    lisCru.Ordenar(lisCru);
-                    System.out.println("Cruceros en " + ciudad);
-                    lisCru.MostrarLista();
-                    ret.resultado = Resultado.OK;
+                } else {
+                        lisCru = ciudadObj.getLista();
+                    if (lisCru.esVacia()) {
+                        System.out.println("No existen cruceros en " + ciudad);
+                    } else {
+                        lisCru.Ordenar(lisCru);
+                        System.out.println("Cruceros en " + ciudad);
+                        lisCru.MostrarLista();
+                    }
+                        ret.resultado = Resultado.OK; 
                 }
 		
 		return ret;
@@ -484,6 +490,22 @@ public class Sistema {
 		Retorno ret = new Retorno();
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
+		
+		Ciudad ciudadObj;                
+                ListaCrucero lisCru;
+                
+                if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
+                    // Si la ciudad no existe retorna Error 1
+                    System.out.println("Listar Cruceros Por Ranking para Ciudad: La ciudad de nombre " + ciudad + " no existe");
+                    ret.resultado = Resultado.ERROR_1;
+                }else
+                {
+                    lisCru = ciudadObj.getLista();
+                    lisCru.Ordenar(lisCru);
+                    System.out.println(ciudad);
+                    lisCru.MostrarLista();
+                    ret.resultado = Resultado.OK;
+                }
 		
 		return ret;
 	}
