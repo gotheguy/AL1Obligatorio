@@ -370,16 +370,24 @@ public class Sistema {
                                 System.out.println("Cancelar Reserva: El cliente " + cliente + " no tiene reserva en el crucero " + crucero + " en la ciudad " + ciudad);
                                 ret.resultado = Resultado.ERROR_2;                
                 } else {
-                        if (reservaExitosa != null){
                             ListaReserva lisRes;
+                            ColaReserva colaRes;
+                        if (reservaExitosa != null){                            
+                            colaRes = cruceroObj.getReservasEnCola();
                             lisRes = cruceroObj.getReservasExitosas();
                             lisRes.BorrarNodo(reservaExitosa);
+                            NodoReserva primeroEnCola = colaRes.devolverPrimero();
+                            lisRes.agregarAlFinal(primeroEnCola.getReserva());
+                            colaRes.desencolar();
                             cruceroObj.restaOcupacion(cruceroObj);
                             ret.resultado = Resultado.OK;
-                        } else if (reservaCola != null){
-                            ColaReserva colaRes;
+                        } else if (reservaCola != null){                           
                             colaRes = cruceroObj.getReservasEnCola();
-                            colaRes.BorrarNodo(reservaCola);        
+                            colaRes.BorrarNodo(reservaCola);
+                            NodoReserva primeroEnCola = colaRes.devolverPrimero();                            
+                            lisRes = cruceroObj.getReservasExitosas();
+                            lisRes.agregarAlFinal(primeroEnCola.getReserva());
+                            colaRes.desencolar();
                             ret.resultado = Resultado.OK;
                         }
                 }                  
