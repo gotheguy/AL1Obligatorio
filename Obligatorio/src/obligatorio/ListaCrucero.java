@@ -177,7 +177,9 @@ public class ListaCrucero {
          
         return aux;
          
-    }   
+    } 
+    
+   
     
     public void MostrarLista() {
         NodoCrucero recorrer = inicio;
@@ -219,7 +221,64 @@ public class ListaCrucero {
             actual = inicio;
         }
         
+    }
+     
+     public void OrdenarPorRankingASC(Object o) {        
+        NodoCrucero anterior, actual, posterior;
+        anterior = null;
+        actual = inicio;
         
+        for (int i = 0; i < contador; i++) {
+            posterior = actual.getSiguiente();
+            for (int j = 1; j < contador - i; j++) {
+                if (posterior.getCrucero().compareToRanking(actual.getCrucero()) > 0) {
+                    if (anterior == null) {
+                        inicio = posterior;
+                    } else {
+                        anterior.setSiguiente(posterior);
+                    }
+                    actual.setSiguiente(posterior.getSiguiente());
+                    posterior.setSiguiente(actual);
+                    anterior = posterior;
+                    posterior = actual.getSiguiente();
+                } else {
+                    anterior = actual;
+                    actual = posterior;
+                    posterior = posterior.getSiguiente();
+                }                
+            }
+            anterior = null;
+            actual = inicio;
+        }     
+    }
+     
+     public void OrdenarPorRankingDESC(Object o) {        
+        NodoCrucero anterior, actual, posterior;
+        anterior = null;
+        actual = inicio;
+        
+        for (int i = 0; i < contador; i++) {
+            posterior = actual.getSiguiente();
+            for (int j = 1; j < contador - i; j++) {
+                if (posterior.getCrucero().compareToRanking(actual.getCrucero()) < 0) {
+                    if (anterior == null) {
+                        inicio = posterior;
+                    } else {
+                        anterior.setSiguiente(posterior);
+                    }
+                    actual.setSiguiente(posterior.getSiguiente());
+                    posterior.setSiguiente(actual);
+                    anterior = posterior;
+                    posterior = actual.getSiguiente();
+                } else {
+                    anterior = actual;
+                    actual = posterior;
+                    posterior = posterior.getSiguiente();
+                }                
+            }
+            anterior = null;
+            actual = inicio;
+        }     
     }
       
 }
