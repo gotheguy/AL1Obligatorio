@@ -43,6 +43,33 @@ class ListaComentarios {
         return (this.getInicio() == null);
     }
     
+    public int calcularPromedio(){
+        NodoComentario recorrer = inicio;
+        int contador = 1;
+        int promedio = 0;
+        
+        while (recorrer != null) {
+            promedio = promedio + recorrer.getRanking();
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
+        promedio = promedio / this.cantidadElementos();
+        return promedio;
+    }
+    
+    public int cantidadElementos(){
+        NodoComentario aux;
+        int cantidad=0;
+        aux = inicio;
+ 
+        //Recorremos
+        while(aux != null){
+            cantidad++;
+            aux = aux.getSiguiente();
+        }
+        return cantidad;
+    }
+    
     public void agregarAlInicio(String comentario, int ranking){
         
         NodoComentario nuevoNodo = new NodoComentario(comentario,ranking);

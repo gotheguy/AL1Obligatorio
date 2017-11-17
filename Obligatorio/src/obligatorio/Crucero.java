@@ -7,6 +7,7 @@ public class Crucero {
     private int cantidadHabitaciones;
     private int ocupacion;
     private int estrellas;
+    private int rankinggeneral;
     
     private ListaComentarios comentario;
     private ListaReserva reservasExitosas;
@@ -45,6 +46,14 @@ public class Crucero {
     public int getEstrellas() {
         return estrellas;
     }
+    
+    public int getRankingGeneral(){
+        return rankinggeneral;
+    }
+    
+    public void setRankingGeneral(int rankinggeneral){
+        this.rankinggeneral = rankinggeneral;
+    }
 
     public ListaComentarios getListaComentarios() {
         return comentario;
@@ -78,11 +87,12 @@ public class Crucero {
         this.servicios = servicios;
     }
     
-    public Crucero(String nombre, int cantidadHabitaciones,int estrellas) {
+    public Crucero(String nombre, int cantidadHabitaciones,int estrellas,int rankinggeneral) {
 
         this.setNombre(nombre);
         this.setCantidadHabitaciones(cantidadHabitaciones);
         this.setEstrellas(estrellas);
+        this.setRankingGeneral(rankinggeneral);
         
         this.setListaComentarios(new ListaComentarios());
         this.setReservasExitosas(new ListaReserva());
