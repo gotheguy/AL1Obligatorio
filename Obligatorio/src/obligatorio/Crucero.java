@@ -114,6 +114,10 @@ public class Crucero {
     public int compareTo(Crucero crucero) {
         return nombre.compareTo((crucero.getNombre()));
     }
+   
+     public int compareToRanking(Crucero crucero) {
+        return rankinggeneral - ((crucero.getRankingGeneral()));
+    }
     
     public void restaOcupacion(Crucero crucero){
         crucero.ocupacion--;

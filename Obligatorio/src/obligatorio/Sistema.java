@@ -352,8 +352,10 @@ public class Sistema {
 		Retorno ret = new Retorno();
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
                 
+                
+                Cliente clienteObj = this.getListaCliente().BuscarObjeto(cliente);
                 Ciudad ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
-                Crucero cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);                
+                Crucero cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
                 Reserva reservaExitosa = cruceroObj.getReservasExitosas().BuscarObjeto(cliente, ciudad, crucero);
                 Reserva reservaCola = cruceroObj.getReservasEnCola().BuscarObjeto(cliente, ciudad, crucero);
                 
@@ -367,7 +369,7 @@ public class Sistema {
                                 ret.resultado = Resultado.ERROR_1;
                 } else if ( reservaExitosa == null && reservaCola == null) {
                               // Si el cliente no tiene reservas en el crucero en dicha ciudad o si no tiene reservas en lista de espera retorna Error 2                                
-                                System.out.println("Cancelar Reserva: El cliente " + cliente + " no tiene reserva en el crucero " + crucero + " en la ciudad " + ciudad);
+                                System.out.println("Cancelar Reserva: El cliente " + clienteObj.getNombre() + " no tiene reserva en el crucero " + crucero + " en la ciudad " + ciudad);
                                 ret.resultado = Resultado.ERROR_2;                
                 } else {
                             ListaReserva lisRes;
@@ -473,7 +475,7 @@ public class Sistema {
                 } else {
                         lisCru = ciudadObj.getLista();
                     if (lisCru.esVacia()) {
-                        System.out.println("No existen cruceros en " + ciudad);
+                        System.out.println("No hay registros de cruceros en " + ciudad);
                     } else {
                         lisCru.Ordenar(lisCru);
                         System.out.println("Cruceros en " + ciudad);
@@ -498,13 +500,16 @@ public class Sistema {
                     // Si la ciudad no existe retorna Error 1
                     System.out.println("Listar Cruceros Por Ranking para Ciudad: La ciudad de nombre " + ciudad + " no existe");
                     ret.resultado = Resultado.ERROR_1;
-                }else
-                {
+                }else{
                     lisCru = ciudadObj.getLista();
-                    lisCru.Ordenar(lisCru);
-                    System.out.println(ciudad);
+                    if (lisCru.esVacia()) {
+                        System.out.println("No hay registros de cruceros en " + ciudad);
+                    }else{
+                    lisCru.OrdenarPorRankingASC();
+                    System.out.println("Listar Cruceros por ranking en " + ciudad + " (Ascendente)");
                     lisCru.MostrarLista();
                     ret.resultado = Resultado.OK;
+                    }
                 }
 		
 		return ret;
@@ -516,16 +521,46 @@ public class Sistema {
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
 		
+		Ciudad ciudadObj;                
+                ListaCrucero lisCru;
+                
+                if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
+                    // Si la ciudad no existe retorna Error 1
+                    System.out.println("Listar Cruceros Por Ranking para Ciudad: La ciudad de nombre " + ciudad + " no existe");
+                    ret.resultado = Resultado.ERROR_1;
+                }else{
+                    lisCru = ciudadObj.getLista();
+                  if (lisCru.esVacia()) {
+                        System.out.println("No hay registros de cruceros en " + ciudad);
+                    }else{
+                    lisCru.OrdenarPorRankingDESC();
+                    System.out.println("Listar Cruceros por ranking en " + ciudad + " (Descendente)");
+                    lisCru.MostrarLista();
+                    ret.resultado = Resultado.OK;
+                    }
+                  }
+		
 		return ret;
 	}
 
 
-	public Retorno listarCrucerosRanking() {
+	public Retorno listarCrucerosRanking() {		
 		Retorno ret = new Retorno();
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
+                
+		ListaCrucero lisCru = this.getListaCruceros();
 		
-		return ret;
+                  if (lisCru.esVacia()) {
+                        System.out.println("No hay registros de cruceros en el sistema");
+                    }else{
+                    lisCru.OrdenarPorRankingDESC();
+                    System.out.println("Listado de Cruceros por ranking(Descendente):");
+                    lisCru.MostrarLista();
+                    ret.resultado = Resultado.OK;
+                    }
+		
+		return ret;	
 	}
 
 
@@ -534,6 +569,25 @@ public class Sistema {
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
 		
+                Ciudad ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+                Crucero cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
+                
+                if (ciudadObj == null) {
+                        // Si la ciudad no existe retorna Error 3
+                                System.out.println("Listado de Comentarios: La ciudad de nombre " + ciudad + " no existe");
+                                ret.resultado = Resultado.ERROR_2;
+                } else if (cruceroObj == null) {
+                                // Si el crucero no existe en esa ciudad retorna Error 1
+                                System.out.println("Listado de Comentarios: El crucero " + crucero + " no existe en la ciudad de " + ciudad);
+                                ret.resultado = Resultado.ERROR_1;
+                }else{
+                ListaComentarios lisCom = cruceroObj.getListaComentarios();
+                System.out.println("");
+                System.out.println("Listado de Comentarios del crucero "+crucero+" de la ciudad "+ciudad+":");
+                lisCom.Listar();
+                System.out.println("");
+                ret.resultado = Resultado.OK;
+                }
 		return ret;
 	}
 

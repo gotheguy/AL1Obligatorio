@@ -3,14 +3,12 @@ package obligatorio;
 class ListaComentarios {
     
     private NodoComentario inicio;
-    private NodoComentario ultimo;
     private int contador;
     
     
     public ListaComentarios() {
 
-        this.setInicio(null);
-        this.setUltimo(null);
+        this.setInicio(null);        
         this.contador = 0;
     }
 
@@ -20,14 +18,6 @@ class ListaComentarios {
 
     public void setInicio(NodoComentario inicio) {
         this.inicio = inicio;
-    }
-
-    public NodoComentario getUltimo() {
-        return ultimo;
-    }
-
-    public void setUltimo(NodoComentario ultimo) {
-        this.ultimo = ultimo;
     }
 
     public int getContador() {
@@ -114,14 +104,82 @@ class ListaComentarios {
         
         contador++;
     }
+    
+     public NodoComentario devolverUltimo(){        
+        NodoComentario aux = null;
+        int numero= 1;
+        if (!esVacia()){
+            aux = inicio;             
+            //Recorremos
+            while(numero<contador){
+                aux = aux.getSiguiente();   
+                numero ++;
+            }
+            contador--;
+        }
+        return aux;
+    }
+    
+    public boolean buscar(NodoComentario nodo){
+
+        NodoComentario aux = inicio;
+        boolean encontrado = false;
+
+        while(aux != null && encontrado != true){
+            
+            if (nodo == aux){
+                encontrado = true;
+            }
+            else{
+                aux = aux.getSiguiente();
+            }
+        }
+        // Retorna el resultado de la bandera
+        return encontrado;
+     }
      
-        public void Mostrarlista() {
-        NodoComentario recorrer = inicio;
-        int contador= 1;
-        while (recorrer != null) {
-            System.out.println(recorrer.getComentario());
-            recorrer = recorrer.getSiguiente();
-            contador++;
+    public void BorrarNodo(NodoComentario nodo){        
+        if (buscar(nodo)) {
+            if (inicio == nodo) {                
+                inicio = inicio.getSiguiente();
+            } else{                
+                NodoComentario aux = inicio;                
+                while(aux.getSiguiente()!= nodo){
+                    aux = aux.getSiguiente();
+                }
+                // Guarda el nodo siguiente del nodo a eliminar
+                NodoComentario siguiente = aux.getSiguiente().getSiguiente();
+                // Enlaza el nodo anterior al de eliminar con el que le sigue
+                aux.setSiguiente(siguiente);  
+            }
+            
+            contador--;
         }
     }
+    
+    public void Listar() {
+        int numero= contador;
+        NodoComentario recorrer = this.devolverUltimo();        
+        for(int i=contador; i>-1;i--){
+            while (recorrer != null && contador>-1) {                
+                System.out.println(numero+"-" + recorrer.getComentario()+ "-" + recorrer.getRanking());                            
+                recorrer = this.devolverUltimo();
+                numero--;
+            }            
+        }
+    }
+     
+       
+     public void MostrarLista() {
+        NodoComentario recorrer = inicio;
+        int numero= contador;
+        while (recorrer != null) {
+            System.out.println(numero+"-" + recorrer.getComentario()+ "-" + recorrer.getRanking());
+            recorrer = recorrer.getSiguiente();            
+            numero--;
+        }
+
+        System.out.println("");
+    }
+     
 }
