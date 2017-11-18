@@ -505,7 +505,7 @@ public class Sistema {
                     if (lisCru.esVacia()) {
                         System.out.println("No hay registros de cruceros en " + ciudad);
                     }else{
-                    lisCru.OrdenarPorRankingASC(lisCru);
+                    lisCru.OrdenarPorRankingASC();
                     System.out.println("Listar Cruceros por ranking en " + ciudad + " (Ascendente)");
                     lisCru.MostrarLista();
                     ret.resultado = Resultado.OK;
@@ -533,7 +533,7 @@ public class Sistema {
                   if (lisCru.esVacia()) {
                         System.out.println("No hay registros de cruceros en " + ciudad);
                     }else{
-                    lisCru.OrdenarPorRankingDESC(lisCru);
+                    lisCru.OrdenarPorRankingDESC();
                     System.out.println("Listar Cruceros por ranking en " + ciudad + " (Descendente)");
                     lisCru.MostrarLista();
                     ret.resultado = Resultado.OK;
@@ -554,7 +554,7 @@ public class Sistema {
                   if (lisCru.esVacia()) {
                         System.out.println("No hay registros de cruceros en el sistema");
                     }else{
-                    lisCru.OrdenarPorRankingDESC(lisCru);
+                    lisCru.OrdenarPorRankingDESC();
                     System.out.println("Listado de Cruceros por ranking(Descendente):");
                     lisCru.MostrarLista();
                     ret.resultado = Resultado.OK;
@@ -569,6 +569,25 @@ public class Sistema {
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
 		
+                Ciudad ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+                Crucero cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
+                
+                if (ciudadObj == null) {
+                        // Si la ciudad no existe retorna Error 3
+                                System.out.println("Listado de Comentarios: La ciudad de nombre " + ciudad + " no existe");
+                                ret.resultado = Resultado.ERROR_2;
+                } else if (cruceroObj == null) {
+                                // Si el crucero no existe en esa ciudad retorna Error 1
+                                System.out.println("Listado de Comentarios: El crucero " + crucero + " no existe en la ciudad de " + ciudad);
+                                ret.resultado = Resultado.ERROR_1;
+                }else{
+                ListaComentarios lisCom = cruceroObj.getListaComentarios();
+                System.out.println("");
+                System.out.println("Listado de Comentarios del crucero "+crucero+" de la ciudad "+ciudad+":");
+                lisCom.Listar();
+                System.out.println("");
+                ret.resultado = Resultado.OK;
+                }
 		return ret;
 	}
 
