@@ -546,23 +546,25 @@ public class Sistema {
 
 	public Retorno listarCrucerosRanking() {		
 		Retorno ret = new Retorno();
-		
+                
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
                 
-		ListaCrucero lisCru = this.getListaCruceros();
+		ListaCiudades lisCiu = this.getListaCiudades();
+//                Ciudad ciudadObj = lisCiu.devolverCiudad();
+//                ListaCrucero lisCru = ciudadObj.getLista();
+                ListaCrucero lisCru = lisCiu.devolverListaCruceros();
 		
-                  if (lisCru.esVacia()) {
-                        System.out.println("No hay registros de cruceros en el sistema");
-                    }else{
-                    lisCru.OrdenarPorRankingDESC();
-                    System.out.println("Listado de Cruceros por ranking(Descendente):");
-                    lisCru.MostrarLista();
+                if (lisCru.esVacia()) {
+                    System.out.println("Listado de Cruceros por ranking: No hay registros de cruceros en el sistema");
+                } else {
+                    lisCru.OrdenarPorRankingASC();
+                    System.out.println("Listado de Cruceros por ranking:");
+                    lisCiu.MostrarListaRanking();
                     ret.resultado = Resultado.OK;
-                    }
+                }
 		
 		return ret;	
 	}
-
 
 	public Retorno listarComentarios(String ciudad, String crucero) {
 		Retorno ret = new Retorno();
