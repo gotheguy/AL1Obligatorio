@@ -169,13 +169,10 @@ public class ListaCrucero {
     } 
     
 
-<<<<<<< HEAD
-=======
 //    public Object MostrarLista() {
 //    
 //    }
 
->>>>>>> 98ba8a25d99c57092368a06e455345ad051e6470
     public void MostrarLista() {
 
         NodoCrucero recorrer = inicio;
@@ -186,10 +183,9 @@ public class ListaCrucero {
             contador++;
         }
         System.out.println("");
-<<<<<<< HEAD
-=======
+
         //return null;
->>>>>>> 98ba8a25d99c57092368a06e455345ad051e6470
+
     }
    
     public String MostrarNombre() {
