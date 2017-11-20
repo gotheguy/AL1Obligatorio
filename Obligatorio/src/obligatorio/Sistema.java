@@ -201,6 +201,7 @@ public class Sistema {
                         //Se crea el crucero y se agrega a la lista crucero que contiene la ciudad
                         Crucero nuevoCrucero = new Crucero(nombre, capacidad, estrellas,0);                       
                         ciudadObj.getLista().agregarAlFinal(nuevoCrucero);
+                        this.getListaCruceros().agregarAlFinal(nuevoCrucero);
                          //retorna resultado OK
                         ret.resultado = Resultado.OK;
                     }
@@ -473,7 +474,7 @@ public class Sistema {
                     System.out.println("Listar Cruceros Por Ciudad: La ciudad de nombre " + ciudad + " no existe");
                     ret.resultado = Resultado.ERROR_1;
                 } else {
-                        lisCru = ciudadObj.getLista();
+                        lisCru = ciudadObj.getLista();                        
                     if (lisCru.esVacia()) {
                         System.out.println("No hay registros de cruceros en " + ciudad);
                     } else {
@@ -546,16 +547,15 @@ public class Sistema {
 
 	public Retorno listarCrucerosRanking() {		
 		Retorno ret = new Retorno();
-		
-		ret.resultado = Resultado.NO_IMPLEMENTADA;
-                
-		ListaCrucero lisCru = this.getListaCruceros();
+                ListaCrucero lisCru = this.getListaCruceros();                
+		ret.resultado = Resultado.NO_IMPLEMENTADA;                         		
 		
                   if (lisCru.esVacia()) {
                         System.out.println("No hay registros de cruceros en el sistema");
                     }else{
                     lisCru.OrdenarPorRankingDESC();
-                    System.out.println("Listado de Cruceros por ranking(Descendente):");
+                    System.out.println("");
+                    System.out.println("Listado de Cruceros por ranking:");
                     lisCru.MostrarLista();
                     ret.resultado = Resultado.OK;
                     }
@@ -582,10 +582,15 @@ public class Sistema {
                                 ret.resultado = Resultado.ERROR_1;
                 }else{
                 ListaComentarios lisCom = cruceroObj.getListaComentarios();
-                System.out.println("");
-                System.out.println("Listado de Comentarios del crucero "+crucero+" de la ciudad "+ciudad+":");
-                lisCom.Listar();
-                System.out.println("");
+                if(lisCom.esVacia())
+                {
+                    System.out.println("No se han agregado comentarios al Crucero "+crucero+" - "+ciudad);
+                }else{
+                    System.out.println("");
+                    System.out.println("Listado de Comentarios del crucero "+crucero+" de la ciudad "+ciudad+":");
+                    lisCom.Listar();
+                    System.out.println("");
+                }                
                 ret.resultado = Resultado.OK;
                 }
 		return ret;

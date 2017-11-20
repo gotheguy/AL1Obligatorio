@@ -145,6 +145,27 @@ public class ListaCiudades {
         }
         return cantidad;
  
-    }        
+    }
+   /* 
+    public void ListadoTodosCrucerosPorRanking(){
+        NodoCiudad nuevo = inicio;
+        Ciudad ciudadObj;
+        ListaCrucero lisCru;
+        int numero=1;
+         while(nuevo.getSiguiente() != null)
+            {
+                ciudadObj = nuevo.getCiudad();
+                lisCru = ciudadObj.getLista();
+                lisCru.OrdenarPorRankingDESC();
+                nuevo = nuevo.getSiguiente();                        
+            }
+    }
+   
+    public void Listar(){
     
+    NodoCiudad nuevo = inicio;
+    Ciudad ciudadObj;
+    
+    }
+    */
 }
