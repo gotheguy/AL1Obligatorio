@@ -3,21 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Ciudad.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
-            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaCrucero.java</file>
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Matriz.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaCiudades.java</file>
-            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaComentarios.java</file>
+            <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaCrucero.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
-=======
-            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaCiudades.java</file>
-            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/NodoComentario.java</file>
-            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Crucero.java</file>
-            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/ListaCrucero.java</file>
-            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
-            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
->>>>>>> 98ba8a25d99c57092368a06e455345ad051e6470
         </group>
     </open-files>
 </project-private>
