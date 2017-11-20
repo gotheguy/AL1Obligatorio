@@ -144,8 +144,7 @@ public class ListaCiudades {
             aux = aux.getSiguiente();
         }
         return cantidad;
- 
-<<<<<<< HEAD
+
     }
    /* 
     public void ListadoTodosCrucerosPorRanking(){
@@ -168,9 +167,7 @@ public class ListaCiudades {
     Ciudad ciudadObj;
     
     }
-    */
-=======
-    }     
+    */     
     
     public void MostrarListaRanking() {
         NodoCiudad recorrer = inicio;
@@ -204,14 +201,35 @@ public class ListaCiudades {
     public ListaCrucero devolverListaCruceros() {
         NodoCiudad recorrer = inicio;
         ListaCrucero lisCru = null;
-        int contador = 1;
+        ListaCrucero otraLista = null;
+        NodoCrucero otro;
         while (recorrer != null) {
-        
             lisCru = recorrer.getCiudad().getLista();
+            otro = lisCru.getInicio();
+            while(otro !=null){
+              otraLista.agregarAlFinal(otro.getCrucero());
+              otro = otro.getSiguiente();
+            }
             recorrer = recorrer.getSiguiente();
-            contador++;
         }
-        return lisCru;
-    }  
->>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
+        return otraLista;
+    }
+    /*
+    public void buscarCiudadTodos(ListaCrucero lista){
+        NodoCiudad nuevoNodo = this.getInicio();
+        NodoCrucero nodoCru = lista.getInicio();
+
+            while (nuevoNodo != null) 
+            {
+                // Compara las ciudades mediante su id
+                if (nodoCru.getCrucero()) 
+                {
+                    // Retorna la posición del elemento
+                    return nuevoNodo.getCiudad();
+                }
+                nuevoNodo = nuevoNodo.getSiguiente();
+            }
+
+        }
+    }*/
 }

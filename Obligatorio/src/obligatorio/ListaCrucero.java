@@ -168,11 +168,9 @@ public class ListaCrucero {
          
     } 
     
-<<<<<<< HEAD
-    public Object MostrarLista() {
-=======
+
     public void MostrarLista() {
->>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
+
         NodoCrucero recorrer = inicio;
         int contador= 1;
         while (recorrer != null) {
@@ -181,7 +179,6 @@ public class ListaCrucero {
             contador++;
         }
         System.out.println("");
-        return null;
     }
    
     public String MostrarNombre() {
@@ -294,6 +291,6 @@ public class ListaCrucero {
             anterior = null;
             actual = inicio;
         }     
-    }  
-      
+    }   
+     
 }
