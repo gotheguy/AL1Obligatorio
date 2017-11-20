@@ -170,21 +170,49 @@ public class ListaCiudades {
     }
     */     
      
-    public void MostrarListaRanking() {
-        NodoCiudad recorrer = inicio;
-        NodoCrucero recorrer2 = recorrer.getCiudad().getLista().getInicio();
-        
-        while (recorrer != null) {
-        
-            while (recorrer2 != null) {
-                System.out.println(recorrer.getCiudad().getNombre() + " - " + recorrer2.getCrucero().getNombre()+ " - " + recorrer2.getCrucero().getRankingGeneral());
-                recorrer2 = recorrer2.getSiguiente();
+    public void MostrarListaRanking(ListaCrucero lista) {
+        NodoCiudad nodoCiu = inicio;
+       // NodoCiudad ciudad;
+       // NodoCrucero nodoCru = nodoCiu.getCiudad().getLista().getInicio();
+        NodoCrucero nodoCru = lista.getInicio();
+        Ciudad ciudad;
+        while (nodoCiu != null) {        
+            while (nodoCru != null) {
+                ciudad = this.buscarCiudadCrucero(nodoCru.getCrucero());
+                System.out.println(ciudad.getNombre() + " - " + nodoCru.getCrucero().getNombre()+ " - " + nodoCru.getCrucero().getRankingGeneral());
+                //System.out.println(recorrer.getCiudad().getNombre() + " - " + recorrer2.getCrucero().getNombre()+ " - " + recorrer2.getCrucero().getRankingGeneral());
+                nodoCru = nodoCru.getSiguiente();
             }
-            recorrer = recorrer.getSiguiente();
+            nodoCiu = nodoCiu.getSiguiente();
         }
 
         System.out.println("");
     }
+    
+    public Ciudad buscarCiudadCrucero (Crucero crucero){
+    NodoCiudad nodoCiudad = inicio;
+    NodoCrucero nodoCru = nodoCiudad.getCiudad().getLista().getInicio();
+    Crucero compara = nodoCru.getCrucero();
+    Ciudad ciudadObj=null;
+          while (nodoCiudad != null){            
+              while (crucero != compara && nodoCru != null) {
+                nodoCru = nodoCru.getSiguiente();
+                if(nodoCru !=null){
+                    compara = nodoCru.getCrucero();
+                }
+              }
+              if(crucero == compara){
+                  ciudadObj = nodoCiudad.getCiudad();
+                  nodoCiudad=null;
+              }else{
+              nodoCiudad = nodoCiudad.getSiguiente();
+              nodoCru = nodoCiudad.getCiudad().getLista().getInicio();
+              compara = nodoCru.getCrucero();
+              }
+          }
+         return ciudadObj;
+    }
+     
 
 //
 //    public Ciudad devolverCiudad() {

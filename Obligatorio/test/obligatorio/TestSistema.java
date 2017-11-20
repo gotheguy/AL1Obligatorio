@@ -452,16 +452,7 @@ public class TestSistema {
         s.registrarCliente("Gonzalo", 2, "gOtheguy");
         s.registrarCliente("Nicolas", 3, "nUmpi");
         s.registrarCliente("Eduardo", 4, "edupa");
- /*     s.realizarReserva(1,"Montevideo", "AIDAsofia");
-        s.realizarReserva(2,"Montevideo", "AIDAsofia");
-        s.realizarReserva(4,"Montevideo", "AIDAsofia");
-        s.realizarReserva(3,"Montevideo", "AIDAsofia");
-        s.realizarReserva(1,"Montevideo", "AIDAsofia");
-        s.realizarReserva(2,"Montevideo", "AIDAsofia");
-        s.realizarReserva(2,"Maldonado", "MSCclara");        
-        s.realizarReserva(3,"Montevideo", "AIDAsofia");        
-        s.realizarReserva(4,"Canelones", "MSClucia");      
-   */   s.ingresarComentario("Montevideo", "AIDAcara", "Recomendado", 3);
+        s.ingresarComentario("Montevideo", "AIDAcara", "Recomendado", 3);
         s.ingresarComentario("Montevideo", "AIDAsofia", "Muy bueno", 5);
         s.ingresarComentario("Montevideo", "AIDAcara", "Precios muy caros", 1);
         s.ingresarComentario("Montevideo", "AIDAcara", "Excelente todo", 5);
@@ -477,18 +468,6 @@ public class TestSistema {
         s.ingresarComentario("Maldonado", "MSCclara", "Malo", 1);
         s.ingresarComentario("Maldonado", "MSCclara", "Aceptable", 2);
         s.ingresarComentario("Maldonado", "ROYALcaribbean", "Vale cada $ gastado", 5);
-
-//        r=s.listarCrucerosRanking();
-//        assertEquals(Retorno.Resultado.OK,r.resultado);
-//        
-//         s.destruirSistemaReservas();
-//
-//        s.listarCrucerosRankingAsc("Montevideo");
-//        s.listarCrucerosRankingAsc("Maldonado");
-//        s.listarCrucerosRankingDesc("Montevideo");
-//        s.listarCrucerosRankingDesc("Maldonado");
-//        s.listarCrucerosRankingDesc("Paysandú");
-
         
         r = s.listarCrucerosRanking();
         assertEquals(Retorno.Resultado.OK,r.resultado);

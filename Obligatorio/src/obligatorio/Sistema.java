@@ -573,12 +573,11 @@ public class Sistema {
                 if (lisCru.esVacia()) {
                     System.out.println("Listado de Cruceros por ranking: No hay registros de cruceros en el sistema");
                 } else {
-                    ListaCrucero otraLista = this.getListaCiudades().devolverListaCruceros();
-                    lisCru.OrdenarPorRankingASC();
-                    System.out.println("Listado de Cruceros por ranking:");
-                    lisCru.MostrarLista();
-
-                    lisCiu.MostrarListaRanking();
+                    //ListaCrucero otraLista = this.getListaCiudades().devolverListaCruceros();
+                    lisCru.OrdenarPorRankingDESC();
+                    System.out.println("");
+                    System.out.println("LISTADO de Cruceros por ranking:");                    
+                    lisCiu.MostrarListaRanking(lisCru);
                     ret.resultado = Resultado.OK;
                 }	
                 return ret;
