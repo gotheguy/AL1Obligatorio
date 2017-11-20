@@ -562,9 +562,31 @@ public class Sistema {
 
 	public Retorno listarCrucerosRanking() {		
 		Retorno ret = new Retorno();
+<<<<<<< HEAD
                 ListaCrucero lisCru = this.getListaCruceros();                
 		ret.resultado = Resultado.NO_IMPLEMENTADA;                         		
 			
+=======
+
+                ListaCiudades lisCiu = this.getListaCiudades();
+                ListaCrucero lisCru = this.getListaCruceros();                
+		ret.resultado = Resultado.NO_IMPLEMENTADA;                         		
+		
+                  if (lisCru.esVacia()) {
+                        System.out.println("No hay registros de cruceros en el sistema");
+                    }else{
+                    lisCru.OrdenarPorRankingDESC();
+                    System.out.println("");
+                    System.out.println("Listado de Cruceros por ranking:");
+                    lisCru.MostrarLista();
+                }  
+       
+		ret.resultado = Resultado.NO_IMPLEMENTADA;
+                
+//                Ciudad ciudadObj = lisCiu.devolverCiudad();
+//                ListaCrucero lisCru = ciudadObj.getLista();
+                //ListaCrucero lisCru = lisCiu.devolverListaCruceros();
+>>>>>>> 98ba8a25d99c57092368a06e455345ad051e6470
 		
                 if (lisCru.esVacia()) {
                     System.out.println("Listado de Cruceros por ranking: No hay registros de cruceros en el sistema");
@@ -572,7 +594,12 @@ public class Sistema {
                     ListaCrucero otraLista = this.getListaCiudades().devolverListaCruceros();
                     lisCru.OrdenarPorRankingASC();
                     System.out.println("Listado de Cruceros por ranking:");
+<<<<<<< HEAD
                     lisCru.MostrarLista();
+=======
+                    lisCiu.MostrarListaRanking();
+
+>>>>>>> 98ba8a25d99c57092368a06e455345ad051e6470
                     ret.resultado = Resultado.OK;
                 }	
                 return ret;

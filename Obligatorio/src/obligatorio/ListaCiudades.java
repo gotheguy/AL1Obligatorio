@@ -144,7 +144,10 @@ public class ListaCiudades {
             aux = aux.getSiguiente();
         }
         return cantidad;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 98ba8a25d99c57092368a06e455345ad051e6470
     }
    /* 
     public void ListadoTodosCrucerosPorRanking(){
@@ -167,8 +170,13 @@ public class ListaCiudades {
     Ciudad ciudadObj;
     
     }
+<<<<<<< HEAD
     */     
+=======
+>>>>>>> 98ba8a25d99c57092368a06e455345ad051e6470
     
+    }   */ 
+     
     public void MostrarListaRanking() {
         NodoCiudad recorrer = inicio;
         NodoCrucero recorrer2 = recorrer.getCiudad().getLista().getInicio();
@@ -212,6 +220,7 @@ public class ListaCiudades {
             }
             recorrer = recorrer.getSiguiente();
         }
+<<<<<<< HEAD
         return otraLista;
     }
     /*
@@ -232,4 +241,8 @@ public class ListaCiudades {
 
         }
     }*/
+=======
+        return lisCru;
+    }  
+>>>>>>> 98ba8a25d99c57092368a06e455345ad051e6470
 }
