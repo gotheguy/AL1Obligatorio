@@ -168,7 +168,11 @@ public class ListaCrucero {
          
     } 
     
+<<<<<<< HEAD
     public Object MostrarLista() {
+=======
+    public void MostrarLista() {
+>>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
         NodoCrucero recorrer = inicio;
         int contador= 1;
         while (recorrer != null) {
@@ -178,6 +182,30 @@ public class ListaCrucero {
         }
         System.out.println("");
         return null;
+    }
+   
+    public String MostrarNombre() {
+        NodoCrucero recorrer = inicio;
+        int contador= 1;
+        String aux = "";
+        while (recorrer != null) {
+            aux = recorrer.getCrucero().getNombre();
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
+        return aux;
+    }
+    
+    public int MostrarRankingGral() {
+        NodoCrucero recorrer = inicio;
+        int contador= 1;
+        int aux = 0;
+        while (recorrer != null) {
+            aux = recorrer.getCrucero().getRankingGeneral();
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
+        return aux;
     }
     
      public void Ordenar(Object o) {        

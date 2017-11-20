@@ -432,10 +432,16 @@ public class TestSistema {
     
     @Test
     public void TestCrucerosPorRanking(){
+<<<<<<< HEAD
         
         Sistema s = new Sistema();
         Retorno r;
         
+=======
+    
+        Sistema s = new Sistema();
+        Retorno r;
+>>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
         s.crearSistemaReservas(5);
         s.registrarCiudad("Montevideo");
         s.registrarCiudad("Maldonado");
@@ -445,10 +451,18 @@ public class TestSistema {
         s.registrarCrucero("Maldonado", "MSCclara", 2, 200);
         s.registrarCrucero("Maldonado", "ROYALcaribbean", 5, 400);
         s.registrarCrucero("Canelones", "MSClucia", 3, 50);
+<<<<<<< HEAD
+=======
+        s.ingresarServicio("Montevideo", "AIDAcara", "Bar");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Limpieza");
+        s.ingresarServicio("Montevideo", "AIDAcara", "Room Service");
+        s.ingresarServicio("Montevideo", "AIDAsofia", "Jacuzzi");
+>>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
         s.registrarCliente("Martin", 1, "mtisco");
         s.registrarCliente("Gonzalo", 2, "gOtheguy");
         s.registrarCliente("Nicolas", 3, "nUmpi");
         s.registrarCliente("Eduardo", 4, "edupa");
+<<<<<<< HEAD
         s.ingresarComentario("Montevideo", "AIDAsofia", "Gran atención", 5);
         s.ingresarComentario("Montevideo", "AIDAsofia", "Recomendado", 3);
         s.ingresarComentario("Montevideo", "AIDAsofia", "Muy bueno", 4);
@@ -456,6 +470,25 @@ public class TestSistema {
         s.ingresarComentario("Montevideo", "AIDAsofia", "Excelente todo", 5);
         s.ingresarComentario("Montevideo", "Canelones", "Aceptable", 2);
         s.ingresarComentario("Montevideo", "AIDAsofia", "Muy bueno", 4);
+=======
+ /*     s.realizarReserva(1,"Montevideo", "AIDAsofia");
+        s.realizarReserva(2,"Montevideo", "AIDAsofia");
+        s.realizarReserva(4,"Montevideo", "AIDAsofia");
+        s.realizarReserva(3,"Montevideo", "AIDAsofia");
+        s.realizarReserva(1,"Montevideo", "AIDAsofia");
+        s.realizarReserva(2,"Montevideo", "AIDAsofia");
+        s.realizarReserva(2,"Maldonado", "MSCclara");        
+        s.realizarReserva(3,"Montevideo", "AIDAsofia");        
+        s.realizarReserva(4,"Canelones", "MSClucia");      
+   */   s.ingresarComentario("Montevideo", "AIDAcara", "Recomendado", 3);
+        s.ingresarComentario("Montevideo", "AIDAsofia", "Muy bueno", 4);
+        s.ingresarComentario("Montevideo", "AIDAcara", "Precios muy caros", 1);
+        s.ingresarComentario("Montevideo", "AIDAcara", "Excelente todo", 5);
+        s.ingresarComentario("Montevideo", "Canelones", "Aceptable", 2);
+        s.ingresarComentario("Montevideo", "AIDAsofia", "Muy bueno", 4);
+        
+        
+>>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
         s.ingresarComentario("Montevideo", "AIDAsofia", "Muy caro", 1);
         s.ingresarComentario("Montevideo", "AIDAsofia", "Caro", 2);
         s.ingresarComentario("Maldonado", "ROYALcaribbean", "EXCELENTE!", 5);
@@ -466,11 +499,24 @@ public class TestSistema {
         s.ingresarComentario("Maldonado", "MSCclara", "Malo", 1);
         s.ingresarComentario("Maldonado", "MSCclara", "Aceptable", 2);
         s.ingresarComentario("Maldonado", "ROYALcaribbean", "Vale cada $ gastado", 5);
+<<<<<<< HEAD
         
         r=s.listarCrucerosRanking();
         assertEquals(Retorno.Resultado.OK,r.resultado);
         
          s.destruirSistemaReservas();
+=======
+        s.listarCrucerosRankingAsc("Montevideo");
+        s.listarCrucerosRankingAsc("Maldonado");
+        s.listarCrucerosRankingDesc("Montevideo");
+        s.listarCrucerosRankingDesc("Maldonado");
+        s.listarCrucerosRankingDesc("Paysandú");
+        
+        r = s.listarCrucerosRanking();
+        assertEquals(Retorno.Resultado.OK,r.resultado);
+        
+        s.destruirSistemaReservas();   
+>>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
     }
     
     @Test

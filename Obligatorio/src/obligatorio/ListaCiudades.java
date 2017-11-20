@@ -145,6 +145,7 @@ public class ListaCiudades {
         }
         return cantidad;
  
+<<<<<<< HEAD
     }
    /* 
     public void ListadoTodosCrucerosPorRanking(){
@@ -168,4 +169,49 @@ public class ListaCiudades {
     
     }
     */
+=======
+    }     
+    
+    public void MostrarListaRanking() {
+        NodoCiudad recorrer = inicio;
+        NodoCrucero recorrer2 = recorrer.getCiudad().getLista().getInicio();
+        
+        while (recorrer != null) {
+        
+            while (recorrer2 != null) {
+                System.out.println(recorrer.getCiudad().getNombre() + " - " + recorrer2.getCrucero().getNombre()+ " - " + recorrer2.getCrucero().getRankingGeneral());
+                recorrer2 = recorrer2.getSiguiente();
+            }
+            recorrer = recorrer.getSiguiente();
+        }
+
+        System.out.println("");
+    }
+//
+//    public Ciudad devolverCiudad() {
+//        NodoCiudad recorrer = inicio;
+//        Ciudad ciudadObj = null;
+//        int contador = 1;
+//        while (recorrer != null) {
+//        
+//            ciudadObj = recorrer.getCiudad();
+//            recorrer = recorrer.getSiguiente();
+//            contador++;
+//        }
+//        return ciudadObj;
+//    }  
+    
+    public ListaCrucero devolverListaCruceros() {
+        NodoCiudad recorrer = inicio;
+        ListaCrucero lisCru = null;
+        int contador = 1;
+        while (recorrer != null) {
+        
+            lisCru = recorrer.getCiudad().getLista();
+            recorrer = recorrer.getSiguiente();
+            contador++;
+        }
+        return lisCru;
+    }  
+>>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
 }
