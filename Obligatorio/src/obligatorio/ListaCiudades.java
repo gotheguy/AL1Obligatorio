@@ -144,8 +144,6 @@ public class ListaCiudades {
             aux = aux.getSiguiente();
         }
         return cantidad;
- 
-<<<<<<< HEAD
     }
    /* 
     public void ListadoTodosCrucerosPorRanking(){
@@ -168,10 +166,9 @@ public class ListaCiudades {
     Ciudad ciudadObj;
     
     }
-    */
-=======
-    }     
     
+    }   */ 
+     
     public void MostrarListaRanking() {
         NodoCiudad recorrer = inicio;
         NodoCrucero recorrer2 = recorrer.getCiudad().getLista().getInicio();
@@ -213,5 +210,4 @@ public class ListaCiudades {
         }
         return lisCru;
     }  
->>>>>>> 1bef349cdd8588f19a25c009010febd3aca16ddb
 }
