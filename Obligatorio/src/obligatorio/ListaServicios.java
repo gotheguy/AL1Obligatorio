@@ -165,7 +165,7 @@ public class ListaServicios {
         NodoServicio recorrer = inicio;
         int contador= 1;
         while (recorrer != null) {
-            System.out.println(contador+"-" + recorrer.getServicio().getNombre());
+            System.out.println(contador+"-" + recorrer.getServicio().getNombre()+"|");
             recorrer = recorrer.getSiguiente();
             contador++;
         }

@@ -162,24 +162,23 @@ class ListaComentarios {
         NodoComentario recorrer = this.devolverUltimo();        
         for(int i=contador; i>-1;i--){
             while (recorrer != null && contador>-1) {                
-                System.out.println(numero+"-" + recorrer.getComentario()+ "-" + recorrer.getRanking());                            
+                System.out.println(numero+"-" + recorrer.getComentario()+ ";" + recorrer.getRanking() + "|");                            
                 recorrer = this.devolverUltimo();
                 numero--;
             }            
         }
     }
-     
-       
-     public void MostrarLista() {
-        NodoComentario recorrer = inicio;
-        int numero= contador;
-        while (recorrer != null) {
-            System.out.println(numero+"-" + recorrer.getComentario()+ "-" + recorrer.getRanking());
-            recorrer = recorrer.getSiguiente();            
-            numero--;
-        }
-
-        System.out.println("");
-    }
+//       
+//     public void MostrarLista() {
+//        NodoComentario recorrer = inicio;
+//        int numero= contador;
+//        while (recorrer != null) {
+//            System.out.println(numero+"-" + recorrer.getComentario()+ "-" + recorrer.getRanking());
+//            recorrer = recorrer.getSiguiente();            
+//            numero--;
+//        }
+//
+//        System.out.println("");
+//    }
      
 }
