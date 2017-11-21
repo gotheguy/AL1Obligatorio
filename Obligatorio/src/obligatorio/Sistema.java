@@ -633,7 +633,7 @@ public class Sistema {
                         ciudades[0][4] = 30;
                         ciudades[4][0] = ciudades[0][4];  
                         ciudades[1][2] = 20;
-                        ciudades[2][1] = ciudades[1][2];                
+                        ciudades[2][1] = ciudades[1][2];              
                         System.out.print(ciudades[i][j] + "   ");
                     }
                     System.out.println();

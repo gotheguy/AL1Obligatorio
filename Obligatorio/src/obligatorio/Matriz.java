@@ -22,8 +22,8 @@ public class Matriz {
     }
 
     public Matriz(int largo) {
-        this.matriz = new int[largo + 1][largo + 1];
-        this.setLargo(largo + 1);
+        this.matriz = new int[largo][largo];
+        this.setLargo(largo);
     }
     
 }
