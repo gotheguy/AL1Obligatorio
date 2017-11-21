@@ -26,4 +26,19 @@ public class Matriz {
         this.setLargo(largo);
     }
     
+    public int obtenerCamino (int M [][], int desde, int hasta) {
+         int aux;
+         if (desde == hasta) 
+             return M [desde][hasta]; 
+         else{
+             aux = obtenerCamino (M, desde,hasta);
+             if (M [desde][hasta] > aux){ 
+                 return M [desde][hasta];
+             }
+             else{ 
+             return obtenerCamino (M, desde, hasta);
+             }
+         }
+    }     
+    
 }

@@ -2,7 +2,7 @@ package obligatorio;
 
 import obligatorio.Retorno.Resultado;
 
-public class Sistema {
+public class Sistema implements ISistema{
 
     private ListaCiudades listaCiudades;
     private ListaCrucero listaCruceros;
@@ -88,7 +88,8 @@ public class Sistema {
     }
         //PRE: cantidad de ciudades > 0   
         //POST: se crea el sistema siempre y cuando no fuese creado anteriormente
-	public Retorno crearSistemaReservas(int cantCiudades) {
+    @Override
+    public Retorno crearSistemaReservas(int cantCiudades) {
 		Retorno ret = new Retorno();
 		
                 ret.resultado = Resultado.NO_IMPLEMENTADA;
@@ -129,6 +130,7 @@ public class Sistema {
 
 	//PRE: 
         //POST: se destruye el sistema sin generar errores
+        @Override
 	public Retorno destruirSistemaReservas() {
 		Retorno ret = new Retorno();
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
@@ -146,6 +148,7 @@ public class Sistema {
 	}
         //PRE: la ciudad no fue creada anteriormente
         //POST: si la ciudad a ingresar no existe ya en el sistema, se agrega a la lista de ciudades si no esta llena
+        @Override
 	public Retorno registrarCiudad(String nombre) {
 		Retorno ret = new Retorno();
 		
@@ -176,6 +179,7 @@ public class Sistema {
             return ret;
 	}
         
+        
         public Retorno registrarCliente(String nombre, int id, String nickname) {
             Retorno ret = new Retorno();
             
@@ -189,7 +193,8 @@ public class Sistema {
             }
             return ret;
 	}
-
+        
+        @Override
 	public Retorno registrarCrucero(String ciudad, String nombre, int estrellas, int capacidad) {
 		Retorno ret = new Retorno();
                 Ciudad ciudadObj;
@@ -223,7 +228,7 @@ public class Sistema {
             return ret;
         }
 
-
+        @Override
 	public Retorno ingresarServicio(String ciudad, String crucero, String servicio) {
 		Retorno ret = new Retorno();
 		
@@ -250,7 +255,7 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno borrarServicio(String ciudad, String crucero, String servicio) {
 		Retorno ret = new Retorno();
                 Ciudad ciudadObj;
@@ -282,7 +287,7 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno realizarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
@@ -363,7 +368,8 @@ public class Sistema {
            System.out.println("");
            
        };
-
+       
+        @Override
 	public Retorno cancelarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
@@ -412,7 +418,7 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno ingresarComentario(String ciudad, String crucero, String comentario, int ranking) {
 		Retorno ret = new Retorno();
 		
@@ -443,7 +449,7 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno listarServicios(String ciudad, String crucero) {
 		Retorno ret = new Retorno();		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
@@ -475,7 +481,7 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno listarCrucerosCiudad(String ciudad) {
 		Retorno ret = new Retorno();		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
@@ -503,7 +509,7 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno listarCrucerosRankingAsc(String ciudad) {
 		Retorno ret = new Retorno();
 		
@@ -531,7 +537,7 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno listarCrucerosRankingDesc(String ciudad) {
 		Retorno ret = new Retorno();
 		
@@ -559,7 +565,7 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno listarCrucerosRanking() {		
 		Retorno ret = new Retorno();
                 ListaCrucero lisCru = this.getListaCruceros();                		                    		
@@ -578,7 +584,8 @@ public class Sistema {
                 }	
                 return ret;
             }
-
+        
+        @Override
 	public Retorno listarComentarios(String ciudad, String crucero) {
 		Retorno ret = new Retorno();
 		
@@ -611,49 +618,42 @@ public class Sistema {
 		return ret;
 	}
 
-
+        @Override
 	public Retorno cargarDistancias(int[][] ciudades) {
 		Retorno ret = new Retorno();
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
-	
+                
                 int filas = ciudades.length;
                 int columnas = ciudades[0].length;
+                if(filas!=this.listaCiudades.getTamanio()|| columnas!=this.listaCiudades.getTamanio()){
+                    System.out.println("El tamaño de la matriz es distinto a la cantidad de ciudades");
+                    ret.resultado = Resultado.ERROR_1;
+                }else{
+                    System.out.println("Cargar matriz de distancias:");
 
-                System.out.println("Cargar matriz de distancias:");
-                
-                for (int i = 0; i < filas; i++) {
-<<<<<<< HEAD
-                    for (int j = 0; j < columnas; j++) {
-                        ciudades[0][1] = 10;
-                        ciudades[1][0] = ciudades[0][1];
-                        ciudades[0][2] = 25;
-                        ciudades[2][0] = ciudades[0][2];      
-                        ciudades[0][3] = 15;
-                        ciudades[3][0] = ciudades[0][3];  
-                        ciudades[0][4] = 30;
-                        ciudades[4][0] = ciudades[0][4];  
-                        ciudades[1][2] = 20;
-                        ciudades[2][1] = ciudades[1][2];              
-                        System.out.print(ciudades[i][j] + "   ");
-=======
-                    for (int j = 0; j < columnas; j++) {            
-                        System.out.print(ciudades[i][j] + " ");
->>>>>>> 6c526c878800373439d59c54b8e56497693fc207
+                    for (int i = 0; i < filas; i++) {
+                        for (int j = 0; j < columnas; j++) {
+                             System.out.print(ciudades[i][j] + "   ");
+                        }
+                        System.out.println();
                     }
-                    System.out.println();
+                    
+                    ret.resultado = Resultado.OK;
                 }
-
-                ret.resultado = Resultado.OK;
-                
 		return ret;
 	}
-
+        
+        @Override
 	public Retorno buscarCamino(int[][] m, String origen, String destino) {
 		Retorno ret = new Retorno();
-		
-		ret.resultado = Resultado.NO_IMPLEMENTADA;
-		
+	/*	Ciudad cOrigen = getListaCiudades().BuscarObjeto(origen);
+                int pOrigen = cOrigen.getId();                
+                Ciudad cDestino = getListaCiudades().BuscarObjeto(destino);
+		int pDestino = cDestino.getId();
+          */    ret.resultado = Resultado.NO_IMPLEMENTADA;
+                
+          //    this.matriz.obtenerCamino(m, pOrigen, pDestino);
 		return ret;
 	}
 
