@@ -147,29 +147,6 @@ public class ListaCiudades {
 
     }
     
-   /* 
-    public void ListadoTodosCrucerosPorRanking(){
-        NodoCiudad nuevo = inicio;
-        Ciudad ciudadObj;
-        ListaCrucero lisCru;
-        int numero=1;
-         while(nuevo.getSiguiente() != null)
-            {
-                ciudadObj = nuevo.getCiudad();
-                lisCru = ciudadObj.getLista();
-                lisCru.OrdenarPorRankingDESC();
-                nuevo = nuevo.getSiguiente();                        
-            }
-    }
-   
-    public void Listar(){
-    
-    NodoCiudad nuevo = inicio;
-    Ciudad ciudadObj;
-    
-    }
-    */     
-     
     public void MostrarListaRanking(ListaCrucero lista) {
         NodoCiudad nodoCiu = inicio;
        // NodoCiudad ciudad;
@@ -180,7 +157,6 @@ public class ListaCiudades {
             while (nodoCru != null) {
                 ciudad = this.buscarCiudadCrucero(nodoCru.getCrucero());
                 System.out.println(ciudad.getNombre() + " - " + nodoCru.getCrucero().getNombre()+ " - " + nodoCru.getCrucero().getRankingGeneral());
-                //System.out.println(recorrer.getCiudad().getNombre() + " - " + recorrer2.getCrucero().getNombre()+ " - " + recorrer2.getCrucero().getRankingGeneral());
                 nodoCru = nodoCru.getSiguiente();
             }
             nodoCiu = nodoCiu.getSiguiente();
@@ -212,21 +188,6 @@ public class ListaCiudades {
           }
          return ciudadObj;
     }
-     
-
-//
-//    public Ciudad devolverCiudad() {
-//        NodoCiudad recorrer = inicio;
-//        Ciudad ciudadObj = null;
-//        int contador = 1;
-//        while (recorrer != null) {
-//        
-//            ciudadObj = recorrer.getCiudad();
-//            recorrer = recorrer.getSiguiente();
-//            contador++;
-//        }
-//        return ciudadObj;
-//    }  
     
     public ListaCrucero devolverListaCruceros() {
         NodoCiudad recorrer = inicio;
@@ -245,23 +206,4 @@ public class ListaCiudades {
 
         return otraLista;
     }
-    /*
-    public void buscarCiudadTodos(ListaCrucero lista){
-        NodoCiudad nuevoNodo = this.getInicio();
-        NodoCrucero nodoCru = lista.getInicio();
-
-            while (nuevoNodo != null) 
-            {
-                // Compara las ciudades mediante su id
-                if (nodoCru.getCrucero()) 
-                {
-                    // Retorna la posición del elemento
-                    return nuevoNodo.getCiudad();
-                }
-                nuevoNodo = nuevoNodo.getSiguiente();
-            }
-
-        }
-    }*/
-        
 }

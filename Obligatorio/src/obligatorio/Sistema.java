@@ -565,11 +565,7 @@ public class Sistema {
                 ListaCrucero lisCru = this.getListaCruceros();                		                    		
                 ListaCiudades lisCiu = this.getListaCiudades();                
 		ret.resultado = Resultado.NO_IMPLEMENTADA;                         			
-                
-//                Ciudad ciudadObj = lisCiu.devolverCiudad();
-//                ListaCrucero lisCru = ciudadObj.getLista();
-                //ListaCrucero lisCru = lisCiu.devolverListaCruceros();
-		
+
                 if (lisCru.esVacia()) {
                     System.out.println("Listado de Cruceros por ranking: No hay registros de cruceros en el sistema");
                 } else {
@@ -620,10 +616,33 @@ public class Sistema {
 		Retorno ret = new Retorno();
 		
 		ret.resultado = Resultado.NO_IMPLEMENTADA;
-		
+	
+                int filas = ciudades.length;
+                int columnas = ciudades[0].length;
+
+                System.out.println("Cargar matriz de distancias:");
+                
+                for (int i = 0; i < filas; i++) {
+                    for (int j = 0; j < columnas; j++) {
+                        ciudades[0][1] = 10;
+                        ciudades[1][0] = ciudades[0][1];
+                        ciudades[0][2] = 25;
+                        ciudades[2][0] = ciudades[0][2];      
+                        ciudades[0][3] = 15;
+                        ciudades[3][0] = ciudades[0][3];  
+                        ciudades[0][4] = 30;
+                        ciudades[4][0] = ciudades[0][4];  
+                        ciudades[1][2] = 20;
+                        ciudades[2][1] = ciudades[1][2];                
+                        System.out.print(ciudades[i][j] + "   ");
+                    }
+                    System.out.println();
+                }
+
+                ret.resultado = Resultado.OK;
+                
 		return ret;
 	}
-
 
 	public Retorno buscarCamino(int[][] m, String origen, String destino) {
 		Retorno ret = new Retorno();
