@@ -523,7 +523,7 @@ public class TestSistema {
 
         Sistema s = new Sistema();
         Retorno r;
-        s.crearSistemaReservas(5);
+        s.crearSistemaReservas(6);
         s.registrarCiudad("Montevideo");
         s.registrarCiudad("Maldonado");
         s.registrarCiudad("Canelones");
@@ -555,9 +555,14 @@ public class TestSistema {
         s.ingresarComentario("Maldonado", "ROYALcaribbean", "Vale cada $ gastado", 5);
         s.listarComentarios("Montevideo", "AIDAsofia");   
         
-        int[][] matriz = new int[5][5];
+        r = s.cargarDistancias(new int[][] {
+                                {0,10,25,15,30,0},
+                                {10,0,20,0,0,0},
+                                {25,20,0,0,0,40},
+                                {15,0,0,0,0,45},
+                                {30,0,0,0,0,25},
+                                {0,0,40,45,25,0}});
         
-        r = s.cargarDistancias(matriz);
         assertEquals(Retorno.Resultado.OK,r.resultado);
         
         s.destruirSistemaReservas();   
