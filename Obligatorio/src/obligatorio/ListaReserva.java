@@ -156,22 +156,18 @@ public class ListaReserva {
      
     public void MostrarLista() {
         NodoReserva recorrer = inicio;
-        int iterador = 1;
         while (recorrer != null) {
-            System.out.println(iterador+"-" + recorrer.getReserva().getCrucero().getNombre()+ "-" + recorrer.getReserva().getCliente().getNombre());
+            System.out.println(recorrer.getReserva().getCrucero().getNombre()+ ";" + recorrer.getReserva().getCliente().getNombre()+"|");
             recorrer = recorrer.getSiguiente();
-            iterador++;
         }
         System.out.println("");
     }
     
         public void Mostrarlista() {
         NodoReserva recorrer = inicio;
-        int contador= 1;
         while (recorrer != null) {
-            System.out.println(contador+"-" +recorrer.getReserva().getCrucero().getNombre()+"-"+recorrer.getReserva().getCliente().getNombre());
+            System.out.println(recorrer.getReserva().getCrucero().getNombre()+";"+recorrer.getReserva().getCliente().getNombre()+"|");
             recorrer = recorrer.getSiguiente();
-            contador++;
         }
     } 
      

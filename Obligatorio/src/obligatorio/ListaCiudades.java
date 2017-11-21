@@ -149,14 +149,12 @@ public class ListaCiudades {
     
     public void MostrarListaRanking(ListaCrucero lista) {
         NodoCiudad nodoCiu = inicio;
-       // NodoCiudad ciudad;
-       // NodoCrucero nodoCru = nodoCiu.getCiudad().getLista().getInicio();
         NodoCrucero nodoCru = lista.getInicio();
         Ciudad ciudad;
         while (nodoCiu != null) {        
             while (nodoCru != null) {
                 ciudad = this.buscarCiudadCrucero(nodoCru.getCrucero());
-                System.out.println(ciudad.getNombre() + " - " + nodoCru.getCrucero().getNombre()+ " - " + nodoCru.getCrucero().getRankingGeneral());
+                System.out.println(ciudad.getNombre() + ";" + nodoCru.getCrucero().getNombre()+ ";" + nodoCru.getCrucero().getRankingGeneral() + "|");
                 nodoCru = nodoCru.getSiguiente();
             }
             nodoCiu = nodoCiu.getSiguiente();

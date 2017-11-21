@@ -168,24 +168,14 @@ public class ListaCrucero {
          
     } 
     
-
-//    public Object MostrarLista() {
-//    
-//    }
-
     public void MostrarLista() {
 
         NodoCrucero recorrer = inicio;
-        int contador= 1;
         while (recorrer != null) {
-            System.out.println(contador+"-"+ recorrer.getCrucero().getNombre()+ "-" + recorrer.getCrucero().getEstrellas()+" - " + recorrer.getCrucero().getRankingGeneral());
+            System.out.println(recorrer.getCrucero().getNombre()+ ";" + recorrer.getCrucero().getEstrellas()+";" + recorrer.getCrucero().getRankingGeneral() + "|");
             recorrer = recorrer.getSiguiente();
-            contador++;
         }
         System.out.println("");
-
-        //return null;
-
     }
    
     public String MostrarNombre() {

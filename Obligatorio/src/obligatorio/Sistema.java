@@ -623,6 +623,7 @@ public class Sistema {
                 System.out.println("Cargar matriz de distancias:");
                 
                 for (int i = 0; i < filas; i++) {
+<<<<<<< HEAD
                     for (int j = 0; j < columnas; j++) {
                         ciudades[0][1] = 10;
                         ciudades[1][0] = ciudades[0][1];
@@ -635,6 +636,10 @@ public class Sistema {
                         ciudades[1][2] = 20;
                         ciudades[2][1] = ciudades[1][2];              
                         System.out.print(ciudades[i][j] + "   ");
+=======
+                    for (int j = 0; j < columnas; j++) {            
+                        System.out.print(ciudades[i][j] + " ");
+>>>>>>> 6c526c878800373439d59c54b8e56497693fc207
                     }
                     System.out.println();
                 }

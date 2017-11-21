@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Ciudad.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Matriz.java</file>
             <file>file:/C:/Users/SignaturePC/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
+=======
+            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/src/obligatorio/Sistema.java</file>
+            <file>file:/C:/Users/gotheguy/Documents/GitHub/AL1Obligatorio/Obligatorio/test/obligatorio/TestSistema.java</file>
+>>>>>>> 6c526c878800373439d59c54b8e56497693fc207
         </group>
     </open-files>
 </project-private>
