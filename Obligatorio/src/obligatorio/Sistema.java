@@ -383,20 +383,20 @@ public class Sistema implements ISistema{
                 
                 
                 Cliente clienteObj = this.getListaCliente().BuscarObjeto(cliente);
-                Ciudad ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
-                Crucero cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
-                Reserva reservaExitosa = cruceroObj.getReservasExitosas().BuscarObjeto(cliente, ciudad, crucero);
-                Reserva reservaCola = cruceroObj.getReservasEnCola().BuscarObjeto(cliente, ciudad, crucero);
+                Ciudad ciudadObj;
+                Crucero cruceroObj;
+                Reserva reservaExitosa;
+                Reserva reservaCola = null;
                 
-                if (ciudadObj == null) {
+                if ((ciudadObj = getListaCiudades().BuscarObjeto(ciudad)) == null) {
                         // Si la ciudad no existe retorna Error 3
                                 System.out.println("Cancelar Reserva: La ciudad de nombre " + ciudad + " no existe");
                                 ret.resultado = Resultado.ERROR_3;
-                } else if (cruceroObj == null) {
+                } else if ((cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero)) == null) {
                                 // Si el crucero no existe en esa ciudad retorna Error 1
                                 System.out.println("Cancelar Reserva: El crucero " + crucero + " no existe en la ciudad de " + ciudad);
                                 ret.resultado = Resultado.ERROR_1;
-                } else if ( reservaExitosa == null && reservaCola == null) {
+                } else if (((reservaExitosa = cruceroObj.getReservasExitosas().BuscarObjeto(cliente, ciudad, crucero)) == null) && ((reservaCola = cruceroObj.getReservasEnCola().BuscarObjeto(cliente, ciudad, crucero)) == null)) {
                               // Si el cliente no tiene reservas en el crucero en dicha ciudad o si no tiene reservas en lista de espera retorna Error 2                                
                                 System.out.println("Cancelar Reserva: El cliente " + clienteObj.getNombre() + " no tiene reserva en el crucero " + crucero + " en la ciudad " + ciudad);
                                 ret.resultado = Resultado.ERROR_2;                

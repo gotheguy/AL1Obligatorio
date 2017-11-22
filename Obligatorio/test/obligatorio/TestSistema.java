@@ -3,29 +3,35 @@ package obligatorio;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import org.junit.Before;
+import org.junit.Test;
+
 public class TestSistema {
 
+    private Sistema s;
+    private Retorno r;
+    
     public TestSistema()
     {
-                
+    }
+    
+    @Before
+    public void setUp() throws Exception {
+            s = new Sistema();
     }
     
     @Test
     public void TestCrearSistemaReservas() {
-        
-        Sistema s = new Sistema();
-        Retorno r;
     
         r = s.crearSistemaReservas(5);
         //Inicializo el sistema con máximo 5 ciudades
         assertEquals(Retorno.Resultado.OK,r.resultado);
+        
     }
     
     @Test
     public void TestRegistrarCiudad() {
        
-        Sistema s = new Sistema();
-        Retorno r;
         s.crearSistemaReservas(5);
         
         
@@ -44,7 +50,6 @@ public class TestSistema {
         r = s.registrarCiudad("Artigas");
         assertEquals(Retorno.Resultado.ERROR_1,r.resultado);
        
-        
         
         s.destruirSistemaReservas();
     }    
