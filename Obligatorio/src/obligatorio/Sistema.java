@@ -86,8 +86,9 @@ public class Sistema implements ISistema{
         this.setListaComentarios(new ListaComentarios());
         this.setMatriz(null);
     }
-        //PRE: cantidad de ciudades > 0   
-        //POST: se crea el sistema siempre y cuando no fuese creado anteriormente
+    
+    //PRE: cantidad de ciudades > 0   
+    //POST: se crea el sistema siempre y cuando no fuese creado anteriormente
     @Override
     public Retorno crearSistemaReservas(int cantCiudades) {
 		Retorno ret = new Retorno();
@@ -128,7 +129,7 @@ public class Sistema implements ISistema{
             return ret;
 	} 
 
-	//PRE: 
+	//PRE: no se agregaron ciudades
         //POST: se destruye el sistema sin generar errores
         @Override
 	public Retorno destruirSistemaReservas() {
@@ -146,6 +147,7 @@ public class Sistema implements ISistema{
                 ret.resultado = Resultado.OK;
 		return ret;
 	}
+        
         //PRE: la ciudad no fue creada anteriormente
         //POST: si la ciudad a ingresar no existe ya en el sistema, se agrega a la lista de ciudades si no esta llena
         @Override
@@ -180,6 +182,8 @@ public class Sistema implements ISistema{
 	}
         
         
+        //PRE: el cliente no fue registrado anteriormente
+        //POST: si el cliente a ingresar no existe ya en el sistema, se agrega a la lista de ciudades si no esta llena
         public Retorno registrarCliente(String nombre, int id, String nickname) {
             Retorno ret = new Retorno();
             
@@ -194,6 +198,8 @@ public class Sistema implements ISistema{
             return ret;
 	}
         
+        //PRE: el crucero no fue registrado anteriormente en la ciudad, las estrellas del crucero estan dentro del rango 1 a 5
+        //POST: si el crucero a ingresar no existe ya en la ciudad, se agrega a la lista de ciudades si no esta llena
         @Override
 	public Retorno registrarCrucero(String ciudad, String nombre, int estrellas, int capacidad) {
 		Retorno ret = new Retorno();
@@ -227,7 +233,8 @@ public class Sistema implements ISistema{
                     }
             return ret;
         }
-
+        
+        //POST: si la lista de servicios no esta llena, se agrega el servicio
         @Override
 	public Retorno ingresarServicio(String ciudad, String crucero, String servicio) {
 		Retorno ret = new Retorno();
@@ -644,19 +651,12 @@ public class Sistema implements ISistema{
 		return ret;
 	}
         
+        
         @Override
-	public Retorno buscarCamino(int[][] m, String origen, String destino) {
-		Retorno ret = new Retorno();
-
-                ret.resultado = Resultado.NO_IMPLEMENTADA;
-          
-                Ciudad cOrigen = getListaCiudades().BuscarObjeto(origen);
+        public Retorno buscarCamino(int[][] m, String origen, String destino) {
+            Retorno ret = new Retorno();
+            Ciudad cOrigen = getListaCiudades().BuscarObjeto(origen);
                 Ciudad cDestino = getListaCiudades().BuscarObjeto(destino);
-
-                int ciudadOrigenID = cOrigen.getId();
-                int ciudadDestinoID = cDestino.getId();
-                
-                
                 if (cOrigen == null || cDestino == null) {
 
                     if (cOrigen == null) {
@@ -669,43 +669,30 @@ public class Sistema implements ISistema{
                         System.out.println("La ciudad " + destino + " no existe.");
 
                     }
-                    ret.resultado = Resultado.ERROR_1;
-                    
-                    return ret;
+                    ret.resultado = Resultado.ERROR_1;                    
 
+                } else {                
+                int ciudadOrigenID = cOrigen.getId();
+                int ciudadDestinoID = cDestino.getId();
+                if(m[ciudadOrigenID][ciudadDestinoID] != 0) {
+                    System.out.println("Camino Corto:"+origen + "->" + destino);
+                    ret.resultado = Resultado.OK;
                 } else {
-
-                    int[] rutaMasRapida = this.getMatriz().RutaMasRapida(ciudadOrigenID, ciudadDestinoID);
-
-                    System.out.println("Ruta mas rapida de " + cOrigen.getNombre() + " a " + cDestino.getNombre());
-
-                    if (rutaMasRapida == null) {
-
-                        System.out.println("No hay rutas desde " + cOrigen.getNombre() + " a " + cDestino.getNombre());
-
-                    } else {
-
-                        System.out.println(cOrigen.getNombre() + " - " + 0);
-
-                        if (rutaMasRapida[0] == ciudadOrigenID) {
-
-                            System.out.println(cDestino.getNombre() + " - " + rutaMasRapida[1]);
-
-                        } else {
-
-                            Ciudad ciudad = getListaCiudades().BuscarObjeto(rutaMasRapida[0]);
-
-                            System.out.println(ciudad.getNombre() + " - " + m[ciudadOrigenID][rutaMasRapida[0]]);
-                            System.out.println(cDestino.getNombre() + " - " + m[rutaMasRapida[0]][ciudadDestinoID]);
-
-                        }
-
-                        System.out.println("Demora total: " + rutaMasRapida[1]);
+                    int[] camino = new int[] {-1, -1, -1};
+                    (new Matriz(m)).CaminoCorto(ciudadOrigenID, ciudadDestinoID, new int[] {ciudadOrigenID, -1, -1}, camino);
+                    if(camino[2] == ciudadDestinoID) {                        
+                        System.out.println("Camino Corto:"+camino[0] + "->" + camino[1] + "->" + camino[2]);
                         ret.resultado = Resultado.OK;
+                    } else {
+                        ret.resultado = Resultado.ERROR_2;
+                        System.out.println("Camino Corto:No se encontró un camino con una única ciudad intermedia.");                        
                     }
-
                 }
-		return ret;
-	}
+                
+                
+                }
+                 return ret;
+
+        }        	
 
 }

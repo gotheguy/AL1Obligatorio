@@ -589,7 +589,7 @@ public class TestSistema {
                                 {30,0,0,0,0,25},
                                 {0,0,40,45,25,0}
                                             };                             
-        r= s.buscarCamino(M,"Montevideo","Salto");
+        r= s.buscarCamino(M,"Montevideo","Artigas");
         assertEquals(Retorno.Resultado.OK,r.resultado);
     }
     

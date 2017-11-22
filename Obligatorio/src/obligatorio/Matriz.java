@@ -26,6 +26,11 @@ public class Matriz {
         this.setLargo(largo);
     }
     
+    public Matriz(int[][] matriz) {
+        this.matriz = matriz;
+        this.setLargo(matriz[0].length);
+    }
+    
     public int obtenerCamino (int M [][], int desde, int hasta) {
          int aux;
          if (desde == hasta) 
@@ -64,72 +69,30 @@ public class Matriz {
         return resultado;
     }    
 
-    public int[] RutaMasRapida(int origen, int destino) {
-
-        int[] retorno = new int[2];
-
-        int[] minimoValorRutaDirecta = this.MinimoDeFila(destino);
-
-        //cuando devuelve 0 quiere decir que no hay ruta directa
-        int demoraOrigenDestino = this.getMatriz()[origen][destino];
-
-        if (minimoValorRutaDirecta[1] == origen) {
-
-            retorno[0] = origen;
-            retorno[1] = demoraOrigenDestino;
-
-        } else {
-
-            int columna;
-            int minimoRutaIntermedia = Integer.MAX_VALUE;
-            int ciudadIntermedia = 0;
-
-            for (columna = 1; columna < this.getLargo(); columna++) {
-
-                int aux1 = this.getMatriz()[destino][columna];
-                int aux2 = this.getMatriz()[origen][columna];
-
-                if (aux1 > 0 && aux2 > 0 && aux1 + aux2 < minimoRutaIntermedia) {
-
-                    minimoRutaIntermedia = aux1 + aux2;
-                    ciudadIntermedia = columna;
+    private int distanciaRecorrida(int[] camino)
+    {
+        if(camino[0] == -1)
+            return Integer.MAX_VALUE;
+        else
+            return matriz[camino[0]][camino[1]] + matriz[camino[1]][camino[2]];
+    }
+    
+    
+    public void CaminoCorto(int origen, int destino, int[] auxiliar, int[] resultado) {
+        if(auxiliar[1] == -1) {
+            for (int i = 0; i < largo; i++) 
+                if (matriz[origen][i] != 0) {
+                    auxiliar[1] = i;
+                    CaminoCorto(origen, destino, auxiliar, resultado);
                 }
-
-            }
-
-            if (ciudadIntermedia == 0 && demoraOrigenDestino == 0) {
-
-                return null;
-
-            } else {
-
-                if (minimoRutaIntermedia == 0 && demoraOrigenDestino != 0) {
-
-                    retorno[0] = origen;
-                    retorno[1] = demoraOrigenDestino;
-
-                } else if (minimoRutaIntermedia != 0 && demoraOrigenDestino == 0) {
-
-                    retorno[0] = ciudadIntermedia;
-                    retorno[1] = minimoRutaIntermedia;
-
-                } else {
-
-                    if (minimoRutaIntermedia < demoraOrigenDestino) {
-
-                        retorno[0] = ciudadIntermedia;
-                        retorno[1] = minimoRutaIntermedia;
-
-                    } else if (demoraOrigenDestino < minimoRutaIntermedia || demoraOrigenDestino == minimoRutaIntermedia) {
-
-                        retorno[0] = origen;
-                        retorno[1] = demoraOrigenDestino;
-
-                    }
-                }
+        }else if(matriz[auxiliar[1]][destino]!= 0) {
+            auxiliar[2] = destino;
+            if(distanciaRecorrida(auxiliar) < distanciaRecorrida(resultado)) {
+                resultado[0] = auxiliar[0];
+                resultado[1] = auxiliar[1];
+                resultado[2] = auxiliar[2];
             }
         }
-
-        return retorno;
     }
+
 }
