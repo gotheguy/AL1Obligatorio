@@ -647,13 +647,64 @@ public class Sistema implements ISistema{
         @Override
 	public Retorno buscarCamino(int[][] m, String origen, String destino) {
 		Retorno ret = new Retorno();
-	/*	Ciudad cOrigen = getListaCiudades().BuscarObjeto(origen);
-                int pOrigen = cOrigen.getId();                
+
+                ret.resultado = Resultado.NO_IMPLEMENTADA;
+          
+                Ciudad cOrigen = getListaCiudades().BuscarObjeto(origen);
                 Ciudad cDestino = getListaCiudades().BuscarObjeto(destino);
-		int pDestino = cDestino.getId();
-          */    ret.resultado = Resultado.NO_IMPLEMENTADA;
+
+                int ciudadOrigenID = cOrigen.getId();
+                int ciudadDestinoID = cDestino.getId();
                 
-          //    this.matriz.obtenerCamino(m, pOrigen, pDestino);
+                
+                if (cOrigen == null || cDestino == null) {
+
+                    if (cOrigen == null) {
+
+                        System.out.println("La ciudad " + origen + " no existe.");
+                    }
+
+                    if (cDestino == null) {
+
+                        System.out.println("La ciudad " + destino + " no existe.");
+
+                    }
+                    ret.resultado = Resultado.ERROR_1;
+                    
+                    return ret;
+
+                } else {
+
+                    int[] rutaMasRapida = this.getMatriz().RutaMasRapida(ciudadOrigenID, ciudadDestinoID);
+
+                    System.out.println("Ruta mas rapida de " + cOrigen.getNombre() + " a " + cDestino.getNombre());
+
+                    if (rutaMasRapida == null) {
+
+                        System.out.println("No hay rutas desde " + cOrigen.getNombre() + " a " + cDestino.getNombre());
+
+                    } else {
+
+                        System.out.println(cOrigen.getNombre() + " - " + 0);
+
+                        if (rutaMasRapida[0] == ciudadOrigenID) {
+
+                            System.out.println(cDestino.getNombre() + " - " + rutaMasRapida[1]);
+
+                        } else {
+
+                            Ciudad ciudad = getListaCiudades().BuscarObjeto(rutaMasRapida[0]);
+
+                            System.out.println(ciudad.getNombre() + " - " + m[ciudadOrigenID][rutaMasRapida[0]]);
+                            System.out.println(cDestino.getNombre() + " - " + m[rutaMasRapida[0]][ciudadDestinoID]);
+
+                        }
+
+                        System.out.println("Demora total: " + rutaMasRapida[1]);
+                        ret.resultado = Resultado.OK;
+                    }
+
+                }
 		return ret;
 	}
 

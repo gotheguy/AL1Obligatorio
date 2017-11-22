@@ -57,7 +57,6 @@ public class ListaCiudades {
         return this.getTamanio() == this.getContador();
     }
     
-   
     public Ciudad BuscarObjeto(String nombre) {
 
         NodoCiudad nuevoNodo;
@@ -86,6 +85,33 @@ public class ListaCiudades {
 
     }
     
+    public Ciudad BuscarObjeto(int ciudadID) {
+
+        NodoCiudad nuevoNodo;
+        
+        // Consulta si la lista esta vacia
+        if (!this.esVacia()) 
+        {
+            // Inicializa la lista agregando como inicio al nuevo nodo
+            nuevoNodo = this.getInicio();
+            
+            // Busca el objeto hasta llegar al último nodo
+            while (nuevoNodo != null) 
+            {
+                // Compara las ciudades mediante su id
+                if (nuevoNodo.getCiudad().getId() == ciudadID) 
+                {
+                    // Retorna la posición del elemento
+                    return nuevoNodo.getCiudad();
+                }
+                nuevoNodo = nuevoNodo.getSiguiente();
+            }
+
+        }
+
+        return null;
+
+    }
      
     public void agregarAlInicio(Ciudad ciudad){
         

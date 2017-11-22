@@ -561,9 +561,7 @@ public class TestSistema {
                                 {25,20,0,0,0,40},
                                 {15,0,0,0,0,45},
                                 {30,0,0,0,0,25},
-                                {0,0,40,45,25,0}
-                                            }
-                              );
+                                {0,0,40,45,25,0}});
         
         assertEquals(Retorno.Resultado.OK,r.resultado);
         
@@ -592,7 +590,7 @@ public class TestSistema {
                                 {0,0,40,45,25,0}
                                             };                             
         r= s.buscarCamino(M,"Montevideo","Salto");
-        assertEquals(Retorno.Resultado.NO_IMPLEMENTADA,r.resultado);
+        assertEquals(Retorno.Resultado.OK,r.resultado);
     }
     
 }
