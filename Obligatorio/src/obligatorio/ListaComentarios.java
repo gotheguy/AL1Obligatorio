@@ -168,17 +168,4 @@ class ListaComentarios {
             }            
         }
     }
-//       
-//     public void MostrarLista() {
-//        NodoComentario recorrer = inicio;
-//        int numero= contador;
-//        while (recorrer != null) {
-//            System.out.println(numero+"-" + recorrer.getComentario()+ "-" + recorrer.getRanking());
-//            recorrer = recorrer.getSiguiente();            
-//            numero--;
-//        }
-//
-//        System.out.println("");
-//    }
-     
 }

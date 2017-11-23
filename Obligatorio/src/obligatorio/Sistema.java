@@ -181,7 +181,6 @@ public class Sistema implements ISistema{
             return ret;
 	}
         
-        
         //PRE: el cliente no fue registrado anteriormente
         //POST: si el cliente a ingresar no existe ya en el sistema, se agrega a la lista de ciudades si no esta llena
         public Retorno registrarCliente(String nombre, int id, String nickname) {
@@ -262,6 +261,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
 
+        //PRE: El servicio que se busca borrar existe para ese crucero
+        //POST: Si el crucero existe, se borra de la lista de servicios que pertenecen a ese crucero
         @Override
 	public Retorno borrarServicio(String ciudad, String crucero, String servicio) {
 		Retorno ret = new Retorno();
@@ -293,7 +294,52 @@ public class Sistema implements ISistema{
                         
 		return ret;
 	}
+        
+        //Método auxilar que muestra la cola de reservas
+        public void MostrarColaReserva(String ciudad,String crucero){
+           Crucero cruceroObj;
+           Ciudad ciudadObj;
+           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
+           
+           ColaReserva colaRes = cruceroObj.getReservasEnCola();
+           System.out.println("Realizar Reserva:");
+           colaRes.MostrarLista();
+           System.out.println("");
+           
+       };
+       
+        //Método auxilar que muestra la cola de reservas canceladas
+       public void MostrarColaReservaCancelar(String ciudad,String crucero){
+           Crucero cruceroObj;
+           Ciudad ciudadObj;
+           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
+           
+           ColaReserva colaRes = cruceroObj.getReservasEnCola();
+           System.out.println("");
+           System.out.println("Cancelar Reserva:");
+           colaRes.MostrarLista();
+           System.out.println("");
+           
+       };
+       
+       //Método auxiliar que muestra las reservas exitosas
+       public void MostrarReservasExitosas(String ciudad,String crucero){
+           Crucero cruceroObj;
+           Ciudad ciudadObj;
+           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
+           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
+           
+           ListaReserva lisRes = cruceroObj.getReservasExitosas();
+           System.out.println("");
+           System.out.println("Reserva Exitosas de "+crucero);           
+           lisRes.MostrarLista();
+           System.out.println("");
+           
+       };
 
+        //POST: Si el crucero tiene habitaciones disponibles, se agrega la reserva. Si no tiene habitaciones disponibles, se agrega a la cola de espera
         @Override
 	public Retorno realizarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();
@@ -334,48 +380,9 @@ public class Sistema implements ISistema{
 		
 		return ret;
 	}
-        
-         public void MostrarColaReserva(String ciudad,String crucero){
-           Crucero cruceroObj;
-           Ciudad ciudadObj;
-           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
-           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
-           
-           ColaReserva colaRes = cruceroObj.getReservasEnCola();
-           System.out.println("Realizar Reserva:");
-           colaRes.MostrarLista();
-           System.out.println("");
-           
-       };
-        
-       public void MostrarColaReservaCancelar(String ciudad,String crucero){
-           Crucero cruceroObj;
-           Ciudad ciudadObj;
-           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
-           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
-           
-           ColaReserva colaRes = cruceroObj.getReservasEnCola();
-           System.out.println("");
-           System.out.println("Cancelar Reserva:");
-           colaRes.MostrarLista();
-           System.out.println("");
-           
-       };
-//        
-       public void MostrarReservasExitosas(String ciudad,String crucero){
-           Crucero cruceroObj;
-           Ciudad ciudadObj;
-           ciudadObj = getListaCiudades().BuscarObjeto(ciudad);
-           cruceroObj = ciudadObj.getLista().BuscarObjeto(crucero);
-           
-           ListaReserva lisRes = cruceroObj.getReservasExitosas();
-           System.out.println("");
-           System.out.println("Reserva Exitosas de "+crucero);           
-           lisRes.MostrarLista();
-           System.out.println("");
-           
-       };
        
+       //PRE: El cliente tiene reserva exitosa en el crucero o reserva en la lista de espera para el crucero
+       //POST: Si el cliente tiene reserva exitosa en el crucero, se borra y su lugar lo ocupa el primero en la lista de espera. Si el cliente tiene reserva en la lista de espera, se borra de esta
         @Override
 	public Retorno cancelarReserva(int cliente, String ciudad, String crucero) {
 		Retorno ret = new Retorno();
@@ -425,6 +432,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
 
+        //PRE: El ranking se encuentra entre 1 y 5
+        //POST: Se agrega el comentario y su ranking para el crucero y se incluye el ranking en el promedio del ranking general del crucero
         @Override
 	public Retorno ingresarComentario(String ciudad, String crucero, String comentario, int ranking) {
 		Retorno ret = new Retorno();
@@ -456,6 +465,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
 
+        //PRE: El crucero tiene servicios agregados
+        //POST: Se muestra la lista de servicios del crucero
         @Override
 	public Retorno listarServicios(String ciudad, String crucero) {
 		Retorno ret = new Retorno();		
@@ -488,6 +499,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
 
+        //PRE: La ciudad tiene por lo menos un crucero registrado
+        //POST: Se muestra la lista de cruceros para cada ciudad
         @Override
 	public Retorno listarCrucerosCiudad(String ciudad) {
 		Retorno ret = new Retorno();		
@@ -516,6 +529,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
 
+        //PRE: La ciudad tiene por lo menos un crucero registrado
+        //POST: Se muestra la lista de cruceros para cada ciudad ordenada ascendente
         @Override
 	public Retorno listarCrucerosRankingAsc(String ciudad) {
 		Retorno ret = new Retorno();
@@ -544,6 +559,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
 
+        //PRE: La ciudad tiene por lo menos un crucero registrado   
+        //POST: Se muestra la lista de cruceros para cada ciudad ordenada descendente
         @Override
 	public Retorno listarCrucerosRankingDesc(String ciudad) {
 		Retorno ret = new Retorno();
@@ -572,6 +589,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
 
+        //PRE: Existe por lo menos 1 crucero registrado en el sistema
+        //POST: Se muestra la lista de todos los cruceros del sistema en orden descendente
         @Override
 	public Retorno listarCrucerosRanking() {		
 		Retorno ret = new Retorno();
@@ -582,7 +601,6 @@ public class Sistema implements ISistema{
                 if (lisCru.esVacia()) {
                     System.out.println("Listado de Cruceros por ranking: No hay registros de cruceros en el sistema");
                 } else {
-                    //ListaCrucero otraLista = this.getListaCiudades().devolverListaCruceros();
                     lisCru.OrdenarPorRankingDESC();
                     System.out.println("");
                     System.out.println("LISTADO de Cruceros por ranking:");                    
@@ -592,6 +610,8 @@ public class Sistema implements ISistema{
                 return ret;
             }
         
+        //PRE: Existe por lo menos 1 comentario para el crucero
+        //POST: Se muestra la lista de comentarios para ese crucero
         @Override
 	public Retorno listarComentarios(String ciudad, String crucero) {
 		Retorno ret = new Retorno();
@@ -625,6 +645,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
 
+        //PRE: El tamaño de la matriz es acorde a la cantidad de ciudades
+        //POST: Se cargan e imprimen las distancias de la matriz
         @Override
 	public Retorno cargarDistancias(int[][] ciudades) {
 		Retorno ret = new Retorno();
@@ -651,7 +673,8 @@ public class Sistema implements ISistema{
 		return ret;
 	}
         
-        
+        //PRE: Tanto la ciudad de origen como la de destino existen
+        //POST: Si el camino tiene una única ciudad intermedia, se muestra el camino más corto entre la ciudad de origen y la de destino
         @Override
         public Retorno buscarCamino(int[][] m, String origen, String destino) {
             Retorno ret = new Retorno();

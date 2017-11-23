@@ -2,9 +2,9 @@ package obligatorio;
 
 class Cliente {
 
-private String nombre;
-private int id;
-private String nickname;
+    private String nombre;
+    private int id;
+    private String nickname;
 
     public String getNombre() {
         return nombre;
@@ -35,7 +35,5 @@ private String nickname;
         this.setNombre(nombre);
         this.setId(id);
         this.setNickname(nickname);
-    
     }
-    
 }

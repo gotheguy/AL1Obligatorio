@@ -56,7 +56,7 @@ public class ListaServicios {
             // Busca el objeto hasta llegar al último nodo
             while (nuevoNodo != null) 
             {
-                // Compara las ciudades mediante su id
+                // Compara los servicios mediante su nombre
                 if (nuevoNodo.getServicio().getNombre().equals(nombre)) 
                 {
                     // Retorna la posición del elemento

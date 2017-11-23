@@ -70,7 +70,7 @@ public class ListaCiudades {
             // Busca el objeto hasta llegar al último nodo
             while (nuevoNodo != null) 
             {
-                // Compara las ciudades mediante su id
+                // Compara las ciudades mediante su nombre
                 if (nuevoNodo.getCiudad().getNombre().equals(nombre)) 
                 {
                     // Retorna la posición del elemento
